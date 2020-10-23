@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="User_Registration">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/angular/angular.js"></script>
+    <script src="/angular/i18n/angular-locale_pt-br.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+
+    <script>
+
+        angular.module("User_Registration", []);
+        angular.module("User_Registration").controller("User_RegistrationCTRL", 
+        
+        function($scope) {
+            $scope.message="Cadastro de Usuários";
+            $scope.users=[
+            ];
+
+
+            $scope.typeUser = [
+            {tipo: "Funcionário", codigo: "01"},
+            {tipo: "Cliente", codigo: "02"},
+            ];
+
+            $scope.adicionarUsuario = function(user) {
+                $scope.users.push(angular.copy(user));
+                delete $scope.user;
+
+            };
+
+            $scope.apagarUsuario = function(users) {
+                $scope.users = users.filter(function(user) {
+                    if (!user.selected) return user;
+
+                })
+            };
+
+            $scope.temUsuarioSelecionado = function(users) {
+                return users.some(function (user){
+                    return user.selected;
+                })
+            };
+
+            $scope.class1 = "selected";
+        })
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="style2.css">
+
+    <title>Cadastro de Usuarios</title>
+</head>
+
+<body ng-controller="User_RegistrationCTRL">
+    <div class="jumbotron">
+        <h3 ng-bind="message"></h3>
+       <input type="text" class="form-control" ng-model="buscar" placeholder="Filtrar">
+        <table ng-show="users.length > 0" class="table">
+            <tr>
+                <td></td>
+                <td><b>Nome</b></td>
+                <td><b>Usuário</b></td>
+                <td><b>E-mail</b></td>
+                <td><b>Celular</b></td>
+                <td><b>Tipo de Usuário</b></td>
+            </tr>
+            <tr ng-class="{'selected bold': user.selected}" ng-repeat="user in users | filter: search | orderBy: ['nome']">
+                <td><input type="checkbox" ng-model="user.selected"></td>
+                <td>{{user.nome | uppercase}}</td>
+                <td>{{user.login | lowercase}}</td>
+                <td>{{user.email | lowercase}}</td>
+                <td>{{user.celular}}</td>
+                <td>{{user.typeUser.tipo}}</td>
+            </tr>
+        </table>
+        
+        <hr>
+        <form name="usersForm">
+        <input class="form-control" type="text" ng-model="user.nome" placeholder="Nome" ng-required="true">
+        <input class="form-control" type="text" ng-model="user.login" placeholder="Usuário" ng-required="true">
+        <input class="form-control" type="text" ng-model="user.email" placeholder="E-mail" ng-required="true">
+        <input class="form-control" type="text" ng-model="user.celular" placeholder="Celular">
+        <select class="form-control" ng-model="user.typeUser" ng-options="typeUser.tipo for typeUser in typeUser" ng-required="true">
+            <option value="">Selecione o tipo de Usuário</option>
+        </select>
+        </form>
+
+        <button class="btn btn-success" ng-click="adicionarUsuario(user)" ng-disabled="usersForm.$invalid" id="btn-accept">Adicionar Usuário</button>
+        <button class="btn btn-danger" ng-click="apagarUsuario(users)" ng-if="temUsuarioSelecionado(users)" id="btn-reject">Apagar Usuário</button>
+    </div>
+
+    <div class="bottom">
+        <h5>Cicloview</h5>
+    </div>
+    
+    <script src="scriptconnection.js"></script>
+
+</body>
+</html>

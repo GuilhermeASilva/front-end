@@ -20,8 +20,12 @@
 
 .selected{
     background: #f36073c2;
-    font-weight: bold;
 }
+
+.bold{
+	font-weight: bold;
+}
+
 
 .bottom{
     text-align: center;
