@@ -18,6 +18,14 @@
 
 }
 
+.login-form-control{
+    margin-top: 10px;
+    margin-left: 1px;
+    margin-bottom: 3px;
+    width: 250px;
+
+}
+
 .selected{
     background: #f36073c2;
     font-weight: bold;
