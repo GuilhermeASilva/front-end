@@ -1,0 +1,77 @@
+   <!DOCTYPE html>
+   <html lang="en" ng-app="Provider_Update">
+      <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" type="text/css" href="/css/style2.css">
+         <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+         <script src="/angular/angular.js"></script>
+         <script src="/angular/i18n/angular-locale_pt-br.js"></script>
+         <script src="/html_angular/fornecedores.html"></script>
+         <script>
+            angular.module("Provider_Update", []);
+            angular.module("Provider_Update").controller("Provider_UpdateCTRL", 
+            
+            function($scope) {
+                $scope.message = "Atualização de Fornecedores";
+                $scope.providers=[
+                {nome_fantasia: 'STRAVA', razao_social: 'STRAVA INC', cnpj: '234578956', endereco: 'Rua do Aro, 23, Vila do Ciclista', cidade: 'São Paulo' , uf: 'SP', telefone: '1123456789', email: 'contato@strava.com.br', site: 'www.strava.com.br'}
+                ];                
+            
+                $scope.editarFornecedor = function(providers) {
+                    // $scope.providers = providers.filter(function(provider) {
+                    //     if (!provider.selected) return provider;
+            
+                    // })
+                };
+            
+                $scope.temFornecedorSelecionado = function(providers) {
+                    return providers.some(function (provider){
+                        return provider.selected;
+                    })
+                };
+            
+                $scope.class1 = "selected";
+            })
+            
+         </script>
+         <title>Atualização de Fornecedores</title>
+      </head>
+      <body ng-controller="Provider_UpdateCTRL">
+         <div class="jumbotron providers-update">
+            <h3 ng-bind="message"></h3>
+            <input type="text" class="form-control" ng-model="buscar" placeholder="Filtrar">
+            <table ng-show="providers.length > 0" class="table">
+               <tr>
+                  <td></td>
+                  <td><b>Nome Fantasia</b></td>
+                  <td><b>Razão Social</b></td>
+                  <td><b>CNPJ</b></td>
+                  <td><b>Endereço</b></td>
+                  <td><b>Cidade</b></td>
+                  <td><b>Uf</b></td>
+                  <td><b>Telefone</b></td>
+                  <td><b>E-mail</b></td>
+                  <td><b>Site</b></td>
+               </tr>
+               <tr ng-class="{selected: provider.selected}" ng-repeat="provider in providers | filter: buscar ">
+                  <td><input type="checkbox" ng-model="provider.selected"></td>
+                  <td>{{provider.nome_fantasia | uppercase}}</td>
+                  <td>{{provider.razao_social | uppercase}}</td>
+                  <td>{{provider.cnpj}}</td>
+                  <td>{{provider.endereco}}</td>
+                  <td>{{provider.cidade}}</td>
+                  <td>{{provider.uf}}</td>
+                  <td>{{provider.telefone}}</td>
+                  <td>{{provider.email}}</td>
+                  <td>{{provider.site}}</td>
+               </tr>
+            </table>
+            <hr>
+            <button class="btn btn-secondary" ng-click="editarFornecedor(providers)" ng-if="temFornecedorSelecionado(providers)">Editar Fornecedor</button>
+         </div>
+         <div class="bottom">
+            <h5>Cicloview</h5>
+         </div>
+      </body>
+   </html>
