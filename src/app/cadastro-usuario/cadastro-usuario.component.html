@@ -1,0 +1,29 @@
+      <div class="jumbotron">
+         <h3 bind="message"></h3>
+         <table show="users.length > 0" class="table">
+            <tr>
+               <td></td>
+               <td><b>Nome</b></td>
+               <td><b>Usuário</b></td>
+               <td><b>E-mail</b></td>
+            </tr>
+            <tr class="{'selected bold': user.selected}" *ngFor="let user of users">
+               <td><input type="checkbox" model="user.selected"></td>
+               <td>{{user.nome | uppercase}}</td>
+               <td>{{user.login | lowercase}}</td>
+               <td>{{user.email | lowercase}}</td>
+            </tr>
+         </table>
+         <hr>
+         <form name="usersForm">
+            <input class="form-control" type="text" model="user.nome" placeholder="Nome completo" required="true">
+            <input class="form-control" type="email" model="user.email" placeholder="E-mail" required="true">
+            <input class="form-control" type="text" model="user.login" placeholder="Usuário" required="true">
+            <input class="form-control" type="password" model="user.password" placeholder="Senha" required="true">
+         </form>
+         <button class="btn btn-success" click="adicionarUsuario(user)" disabled="usersForm.$invalid" id="btn-accept">Adicionar Usuário</button>
+         <button class="btn btn-danger" click="apagarUsuario(users)" if="temUsuarioSelecionado(users)" id="btn-reject">Apagar Usuário</button>
+      </div>
+      <div class="bottom">
+         <h5>Cicloview</h5>
+      </div>

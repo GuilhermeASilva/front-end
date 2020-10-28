@@ -1,0 +1,52 @@
+    <div class="jumbotron">
+        <h3 bind="message"></h3>
+       <input type="text" class="form-control" model="buscar" placeholder="Filtrar">
+        <table show="clients.length > 0" class="table">
+            <tr>
+                <td></td>
+                <td><b>Nome</b></td>
+                <td><b>CPF</b></td>
+                <td><b>Data de Nascimento</b></td>
+                <td><b>Endereço</b></td>
+                <td><b>Cidade</b></td>
+                <td><b>UF</b></td>
+                <td><b>Telefone</b></td>
+                <td><b>E-mail</b></td>
+            </tr>
+            <tr class="{selected: client.selected}" *ngFor="let client of clients">
+                <td><input type="checkbox" model="client.selected"></td>
+                <td>{{client.nome | uppercase}}</td>
+                <td>{{client.cpf}}</td>
+                <td>{{client.dataNascimento | date:'dd/MM/yyyy'}}</td>
+                <td>{{client.endereco}}</td>
+                <td>{{client.cidade}}</td>
+                <td>{{client.uf}}</td>
+                <td>{{client.telefone}}</td>
+                <td>{{client.email}}</td>
+
+            </tr>
+        </table>
+        <hr>
+        <form name="clientsForm">
+        <input class="form-control" type="text" model="client.nome" placeholder="Nome" required="true">
+        <input class="form-control" type="text" model="client.cpf" placeholder="CPF" required="true">
+        <input class="form-control" type="date" model="client.dataNascimento" placeholder="Data de Nascimento" required="true">
+        <input class="form-control" type="text" model="client.endereco" placeholder="Endereco" required="true">
+        <input class="form-control" type="text" model="client.cidade" placeholder="Cidade" required="true">
+        <input class="form-control" type="text" model="client.uf" placeholder="UF" required="true">
+        <input class="form-control" type="text" model="client.telefone" placeholder="Telefone" required="true">
+        <input class="form-control" type="email" model="client.email" placeholder="E-mail" required="true">
+
+
+        </form>
+        <!-- <button class="btn btn-success" (click)="adicionarCliente(null)" disabled="clientsForm.$invalid">Adicionar Cliente</button> -->
+        <button class="btn btn-success" (click)="adicionarCliente(null)">Adicionar Cliente</button>
+
+        <button class="btn btn-success" (click)="buscarClientes()">Buscar Clientes</button>
+
+        <button class="btn btn-danger" click="apagarCliente(clients)" if="temClienteSelecionado(clients)">Apagar Cliente</button>
+    </div>
+
+    <div class="bottom">
+        <h5>Cicloview</h5>
+    </div>
