@@ -26,7 +26,7 @@
      </ul>
   </div>
 </nav>
-<div class="jumbotron">
+<div class="jumbotron lista-clientes">
   <h3>Lista de Clientes</h3>
   <input type="text" class="form-control" model="buscar" placeholder="Buscar">
   <table show="customers.length > 0" class="table">
@@ -36,24 +36,40 @@
         <td><b>CPF</b></td>
         <td><b>Data de Nascimento</b></td>
         <td><b>Endereço</b></td>
-        <td><b>Cidade</b></td>
-        <td><b>UF</b></td>
+        <!-- <td><b>Cidade</b></td>
+        <td><b>UF</b></td> -->
         <td><b>Telefone</b></td>
         <td><b>E-mail</b></td>
+                <!-- <td>{{customer.edit}}</td> -->
+        <!--
+          - Inserir uma coluna no final da tabela com icone "editar"
+          - No ngfor colocar metodo de edicao que recebe customerID
+          - Mandar pra rota de editar passando o ID de parametro
+          <td>{{customer.edit}}</td> -->
+
      </tr>
-     <!-- <tr class="tabelinha" *ngFor="let customer of customers">
+     <tr class="{selected: customer.selected}" *ngFor="let customer of customers">
         <td><input type="checkbox" model="selected"></td>
         <td>{{customer.nome | uppercase}}</td>
         <td>{{customer.cpf}}</td>
         <td>{{customer.dataNascimento | date:'dd/MM/yyyy'}}</td>
         <td>{{customer.endereco}}</td>
-        <td>{{customer.cidade}}</td>
-        <td>{{customer.uf}}</td>
+        <!-- <td>{{customer.cidade}}</td> -->
+        <!-- <td>{{customer.uf}}</td> -->
         <td>{{customer.telefone}}</td>
         <td>{{customer.email}}</td>
-     </tr> -->
+     </tr>
   </table>
   <hr>
+  <!-- Botões -->
+  <div hidden="!temClienteSelecionado">
+    <button class="btn btn-success" onclick="redirectTo='/customer_update'" id="btn-accept">Editar Cliente</button>
+  </div>
+  <!-- (click)="editarCliente(customer)"  -->
+
+<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
+  ...
+  </div>?? -->
 </div>
 <div class="bottom">
   <h5>Cicloview</h5>

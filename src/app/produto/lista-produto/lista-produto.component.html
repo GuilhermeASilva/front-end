@@ -1,1 +1,67 @@
-<p>lista-produto works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/','home']">Cicloview</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="navbar-nav">
+        <li class="nav-item">
+           <a class="nav-link" [routerLink]="['/','customers']">Clientes</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" [routerLink]="['/','suppliers']">Fornecedores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/','products']">Produtos</a>
+       </li>
+        <li class="nav-item">
+           <a class="nav-link" [routerLink]="['/','orders']">Serviços</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" [routerLink]="['/','users']">Usuários</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" [routerLink]="['/']">Sair</a>
+        </li>
+     </ul>
+  </div>
+</nav>
+<div class="jumbotron">
+  <h3>Produtos</h3>
+  <input type="text" class="form-control" model="buscar" placeholder="Buscar">
+  <table show="products.length > 0" class="table">
+     <tr>
+        <td></td>
+        <td><b>Nome</b></td>
+        <td><b>Marca</b></td>
+        <td><b>Código de Barras</b></td>
+        <td><b>Preço</b></td>
+                <!-- <td>{{product.edit}}</td> -->
+        <!--
+          - Inserir uma coluna no final da tabela com icone "editar"
+          - No ngfor colocar metodo de edicao que recebe productID
+          - Mandar pra rota de editar passando o ID de parametro
+          <td>{{product.edit}}</td> -->
+     </tr>
+     <tr class="{selected: product.selected}" *ngFor="let product of products">
+        <td><input type="checkbox" model="selected"></td>
+        <td>{{product.nome | uppercase}}</td>
+        <td>{{product.marca}}</td>
+        <td>{{product.codBarras}}</td>
+        <td>{{product.preco}}</td>
+     </tr>
+  </table>
+  <hr>
+  <!-- Botões -->
+  <div hidden="!temProdutoSelecionado">
+    <button class="btn btn-success" onclick="redirectTo='/product_update'" id="btn-accept">Editar Produto</button>
+  </div>
+  <!-- (click)="editarFornecedor(product)"  -->
+
+<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
+  ...
+  </div>?? -->
+</div>
+<div class="bottom">
+  <h5>Cicloview</h5>
+</div>

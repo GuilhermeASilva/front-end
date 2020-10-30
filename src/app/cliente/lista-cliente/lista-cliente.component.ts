@@ -8,10 +8,11 @@ import { ListaClienteService } from './lista-cliente.service';
   templateUrl: './lista-cliente.component.html',
   styleUrls: ['./lista-cliente.component.less']
 })
+
 export class ListaClienteComponent implements OnInit {
 
-  customers = [];
-  selected = "selected";
+  customers = []
+  selected = "selected"
   customer
   customerForm : FormGroup
 
@@ -34,7 +35,15 @@ export class ListaClienteComponent implements OnInit {
   }
 
   buscarClientes() {
-    this.customers = this.listaClienteService.buscarClientes().subscribe(res => console.log(res)).data
+    this.listaClienteService.buscarClientes().subscribe(res => {
+      this.customers = res.data
+      // console.log(this.customers)
+    })
   }
 
+  temClienteSelecionado = function(customers) {
+    return customers.some(function (customer){
+        return customer.selected;
+    })
+  }
 }
