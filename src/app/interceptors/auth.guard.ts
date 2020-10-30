@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     // console.log(token, "Token aqui no Auth")
     const loggedIn = token?true:false
     if (!loggedIn) {
-      console.log("Não logado!")
+      alert("Favor realizar login.")
     }
 
     return loggedIn;

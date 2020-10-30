@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ListaClienteService } from './lista-cliente.service';
 
@@ -10,19 +10,31 @@ import { ListaClienteService } from './lista-cliente.service';
 })
 export class ListaClienteComponent implements OnInit {
 
-  message = "Cadastro de Clientes";
   customers = [];
-  class1 = "selected";
+  selected = "selected";
   customer
   customerForm : FormGroup
 
-  constructor(private listaClienteService : ListaClienteService) { }
+  constructor(private listaClienteService : ListaClienteService, private fb : FormBuilder) {
+    this.customerForm = this.fb.group({
+      nome : [''],
+      cpf : [''],
+      dataNascimento  : [''],
+      endereco : [''],
+      cidade : [''],
+      uf : [''],
+      telefone : [''],
+      sexo : [''],
+      email : ['']
+    })
+   }
 
   ngOnInit(): void {
+    this.buscarClientes()
   }
 
   buscarClientes() {
-    this.listaClienteService.buscarClientes().subscribe(res => console.log(res));
+    this.customers = this.listaClienteService.buscarClientes().subscribe(res => console.log(res)).data
   }
 
 }
