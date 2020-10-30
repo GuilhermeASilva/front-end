@@ -1,0 +1,9 @@
+<div class="jumbotron" ng-controller="loginCtrl">
+  <h3>Cicloview</h3>
+  <form [formGroup]="loginForm">
+      <input class="login-form-control" type="email" id="username" placeholder="E-mail" formControlName="email"><br>
+      <input class="login-form-control" type="password" id="password" placeholder="Senha" formControlName="senha">
+      <br>
+      <button class="btn btn-success" type="button" (click)="onSubmit()" ng-disabled="!username || !password">Entrar</button>
+  </form>
+</div>
