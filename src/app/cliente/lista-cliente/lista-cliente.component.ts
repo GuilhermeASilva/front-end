@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { ListaClienteService } from './lista-cliente.service';
+import { Router } from '@angular/router';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-lista-cliente',
@@ -16,7 +16,7 @@ export class ListaClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private listaClienteService : ListaClienteService, private fb : FormBuilder) {
+  constructor(private listaClienteService : ClienteService, private fb : FormBuilder, private router : Router) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -39,6 +39,10 @@ export class ListaClienteComponent implements OnInit {
       this.customers = res.data
       // console.log(this.customers)
     })
+  }
+
+  alterarCliente(id : number) {
+    this.router.navigateByUrl(`customer_update/${id}`)
   }
 
   temClienteSelecionado = function(customers) {

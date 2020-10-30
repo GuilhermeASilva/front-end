@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup } from '@angular/forms';
-import { CadastroClienteService } from './cadastro-cliente.service';
+import { ClienteService } from '../cliente.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -16,7 +16,7 @@ export class CadastroClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private customerService: CadastroClienteService, private fb : FormBuilder) {
+  constructor(private customerService: ClienteService, private fb : FormBuilder) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],

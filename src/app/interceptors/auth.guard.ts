@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
+    private router : Router
   ) {}
 
   canActivate(
@@ -26,6 +27,7 @@ export class AuthGuard implements CanActivate {
     const loggedIn = token?true:false
     if (!loggedIn) {
       alert("Favor realizar login.")
+      this.router.navigateByUrl('login')
     }
 
     return loggedIn;

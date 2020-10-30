@@ -26,6 +26,7 @@ import { AtualizaUsuarioComponent } from './usuario/atualiza-usuario/atualiza-us
 import { CadastroProdutoComponent } from './produto/cadastro-produto/cadastro-produto.component';
 import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
 import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ListaServicoComponent } from './servico/lista-servico/lista-servico.com
     ListaProdutoComponent,
     ListaServicoComponent,
     ListaUsuarioComponent,
+    NavBarComponent,
   ],
   imports: [
     CommonModule,
