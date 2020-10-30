@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+import { ListaClienteService } from './lista-cliente.service';
 
 @Component({
   selector: 'app-lista-cliente',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaClienteComponent implements OnInit {
 
-  constructor() { }
+  message = "Cadastro de Clientes";
+  customers = [];
+  class1 = "selected";
+  customer
+  customerForm : FormGroup
+
+  constructor(private listaClienteService : ListaClienteService) { }
 
   ngOnInit(): void {
+  }
+
+  buscarClientes() {
+    this.listaClienteService.buscarClientes().subscribe(res => console.log(res));
   }
 
 }

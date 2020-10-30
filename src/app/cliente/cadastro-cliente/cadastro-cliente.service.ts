@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class CadastroClienteService {
 
   constructor(private http: HttpClient) { }
 
@@ -21,10 +21,4 @@ export class ClienteService {
           return this.http.delete(`http://localhost:3333/customers/${customer.id}`)
       })
   }
-
-  buscarClientes = function () {
-    // console.log("Função buscarClientes do front.");
-    return this.http.get('http://localhost:3333/customers')
-  }
-
 }

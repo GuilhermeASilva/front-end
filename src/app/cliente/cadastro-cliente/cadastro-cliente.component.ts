@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup } from '@angular/forms';
-import { ClienteService } from './cliente-service.service';
+import { CadastroClienteService } from './cadastro-cliente.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -16,7 +16,7 @@ export class CadastroClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private customereService: ClienteService, private fb : FormBuilder) {
+  constructor(private customerService: CadastroClienteService, private fb : FormBuilder) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -39,12 +39,6 @@ export class CadastroClienteComponent implements OnInit {
           })
       }
 
-      // get
-      // let data = response.data.data;
-      // for (let resp in data){
-      //     customers.push(data[resp]);
-      // }
-
       adicionarCliente() {
         let form = this.customerForm.controls
         console.log("Método add cliente", form)
@@ -59,14 +53,7 @@ export class CadastroClienteComponent implements OnInit {
           email: form.email.value,
           sexo: form.sexo.value
         }
-        this.customereService.adicionarCliente(customer).subscribe(res => console.log(res, "Resposta POST"));
+        this.customerService.adicionarCliente(customer).subscribe(res => console.log(res, "Resposta POST"));
         // console.log(this.return);
       }
-
-      buscarClientes() {
-        // console.log("Chamando buscarClientes pelo TS");
-        this.customereService.buscarClientes().subscribe(res => console.log(res));
-      }
-
-
 }

@@ -17,19 +17,37 @@ import { CadastroClienteComponent } from './cliente/cadastro-cliente/cadastro-cl
 import { AtualizaClienteComponent } from './cliente/atualiza-cliente/atualiza-cliente.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { CadastroFornecedorComponent } from './fornecedor/cadastro-fornecedor/cadastro-fornecedor.component';
+import { AtualizaFornecedorComponent } from './fornecedor/atualiza-fornecedor/atualiza-fornecedor.component';
+import { AtualizaServicoComponent } from './servico/atualiza-servico/atualiza-servico.component';
+import { AtualizaProdutoComponent } from './produto/atualiza-produto/atualiza-produto.component';
+import { ListaFornecedorComponent } from './fornecedor/lista-fornecedor/lista-fornecedor.component';
+import { AtualizaUsuarioComponent } from './usuario/atualiza-usuario/atualiza-usuario.component';
+import { CadastroProdutoComponent } from './produto/cadastro-produto/cadastro-produto.component';
+import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
+import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
+
 
 @NgModule({
   declarations: [
-    LoginComponent,
     AppComponent,
-    CadastroUsuarioComponent,
-    CadastroClienteComponent,
-    ListaClienteComponent,
+    HomeComponent,
+    LoginComponent,
     AtualizaClienteComponent,
+    AtualizaFornecedorComponent,
+    AtualizaProdutoComponent,
+    AtualizaServicoComponent,
+    AtualizaUsuarioComponent,
+    CadastroClienteComponent,
+    CadastroFornecedorComponent,
+    CadastroProdutoComponent,
+    CadastroServicoComponent,
+    CadastroUsuarioComponent,
+    ListaClienteComponent,
+    ListaFornecedorComponent,
     ListaProdutoComponent,
-    ListaProdutoComponent,
+    ListaServicoComponent,
     ListaUsuarioComponent,
-    HomeComponent
   ],
   imports: [
     CommonModule,

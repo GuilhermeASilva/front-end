@@ -39,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
           if (err.status === 401) {
             if (this.redirTryes < 3) {
               this.redirTryes += 1;
-              alert('Digite um usuário válido.')
+              alert('Credenciais inválidas.')
               // console.log(this.router.url);
                 //Inserir lógica de redirecionamento quando não estiver logado!
                 //Usar navigate.
@@ -54,7 +54,8 @@ export class AuthInterceptor implements HttpInterceptor {
           } else if (err.error && err.error.length > 0 && err.status !== 500) {
             console.log(err.error)
           } else {
-            console.log('Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!', err)
+            alert('Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!')
+            console.log('Erro: ', err)
           }
           return throwError(err);
         }
