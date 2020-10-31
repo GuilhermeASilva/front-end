@@ -27,8 +27,20 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth');
     this.userSubject.next(null)
+    alert('Até mais!')
     // emite valor null
   }
+
+  // logout() {
+  //   if(confirm("Deseja sair do sistema?")) {
+  //     localStorage.removeItem('auth');
+  //     this.userSubject.next(null)     // emite valor null
+  //     this.cdr.detectChanges()
+  //     this.router.navigateByUrl('login')
+  //     alert('Até mais!')
+  //   } else {
+  //     }
+  // }
 
   getToken(): string {
     const authData = JSON.parse(localStorage.getItem('auth'));

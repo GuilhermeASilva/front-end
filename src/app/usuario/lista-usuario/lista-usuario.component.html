@@ -1,1 +1,34 @@
-<p>lista-usuario works!</p>
+<div class="jumbotron">
+  <h3>Usuários</h3>
+  <input type="text" class="form-control" model="buscar" placeholder="Buscar">
+  <table show="users.length > 0" class="table">
+     <tr>
+        <td></td>
+        <td><b>Usuário</b></td>
+        <td><b>Tipo</b></td>
+        <td><b>E-mail</b></td>
+                <!-- <td>{{user.edit}}</td> -->
+        <!--
+          - Inserir uma coluna no final da tabela com icone "editar"
+          - No ngfor colocar metodo de edicao que recebe userID
+          - Mandar pra rota de editar passando o ID de parametro
+          <td>{{user.edit}}</td> -->
+     </tr>
+     <tr class="{selected: user.selected}" *ngFor="let user of users">
+        <td><input type="checkbox" model="selected"></td>
+        <td>{{user.nomeUsuario | uppercase}}</td>
+        <td>{{user.tipoUsuario}}</td>
+        <td>{{user.email}}</td>
+     </tr>
+  </table>
+  <hr>
+  <!-- Botões -->
+  <div hidden="!temServicoSelecionado">
+    <button class="btn btn-success" onclick="redirectTo='/user_update'" id="btn-accept">Editar Serviço</button>
+  </div>
+  <!-- (click)="editarFornecedor(user)"  -->
+
+<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
+  ...
+  </div>?? -->
+</div>

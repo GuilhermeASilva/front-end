@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
       if(res && res.token!= undefined) {
         this.authService.login(res.token)
         this.router.navigateByUrl('home')
+        alert('Bem vinde!')
       } else {
-      console.log("Erro ao tentar realizar login!")
+      alert("Erro ao tentar realizar login!")
     }
 })
     }

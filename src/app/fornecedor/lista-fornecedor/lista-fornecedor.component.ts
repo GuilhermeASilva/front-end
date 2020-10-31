@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { ListaFornecedorService } from './lista-fornecedor.service';
+import { FornecedorService } from '../fornecedor.service';
 
 @Component({
   selector: 'app-lista-fornecedor',
@@ -16,7 +15,7 @@ export class ListaFornecedorComponent implements OnInit {
   supplier
   supplierForm : FormGroup
 
-  constructor(private listaFornecedorService : ListaFornecedorService, private fb : FormBuilder) {
+  constructor(private fornecedorService : FornecedorService, private fb : FormBuilder) {
     this.supplierForm = this.fb.group({
       razaoSocial : [''],
       nomeFantasia : [''],
@@ -34,7 +33,7 @@ export class ListaFornecedorComponent implements OnInit {
   }
 
   buscarFornecedores() {
-    this.listaFornecedorService.buscarFornecedores().subscribe(res => {
+    this.fornecedorService.buscarFornecedores().subscribe(res => {
       this.suppliers = res.data
       // console.log(this.suppliers)
     })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProdutoService } from '../produto.service';
 
-import { ListaProdutoService } from './lista-produto.service';
 
 @Component({
   selector: 'app-lista-produto',
@@ -16,7 +16,7 @@ export class ListaProdutoComponent implements OnInit {
   product
   productForm : FormGroup
 
-  constructor(private listaProdutoService : ListaProdutoService, private fb : FormBuilder) {
+  constructor(private produtoService : ProdutoService, private fb : FormBuilder) {
     this.productForm = this.fb.group({
       nome : [''],
       marca : [''],
@@ -30,7 +30,7 @@ export class ListaProdutoComponent implements OnInit {
   }
 
   buscarProdutos() {
-    this.listaProdutoService.buscarProdutos().subscribe(res => {
+    this.produtoService.buscarProdutos().subscribe(res => {
       this.products = res.data
       // console.log(this.products)
     })
