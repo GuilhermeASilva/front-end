@@ -16,7 +16,7 @@ export class CadastroClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private customerService: ClienteService, private fb : FormBuilder) {
+  constructor(private clienteService: ClienteService, private fb : FormBuilder) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -41,7 +41,6 @@ export class CadastroClienteComponent implements OnInit {
 
       adicionarCliente() {
         let form = this.customerForm.controls
-        console.log("Método add cliente", form)
         let customer = {
           nome: form.nome.value,
           cpf: form.cpf.value,
@@ -53,7 +52,6 @@ export class CadastroClienteComponent implements OnInit {
           email: form.email.value,
           sexo: form.sexo.value
         }
-        this.customerService.adicionarCliente(customer).subscribe(res => console.log(res, "Resposta POST"));
-        // console.log(this.return);
+        this.clienteService.adicionarCliente(customer).subscribe(res => console.log("Retorno do back: ", res));
       }
 }

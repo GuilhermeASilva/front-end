@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { AtualizaClienteComponent } from './cliente/atualiza-cliente/atualiza-cliente.component';
 import { CadastroClienteComponent } from './cliente/cadastro-cliente/cadastro-cliente.component';
 import { ListaClienteComponent } from './cliente/lista-cliente/lista-cliente.component';
@@ -43,7 +42,7 @@ component: ListaClienteComponent,
 canActivate: [AuthGuard],
 component: CadastroClienteComponent,
 },
-{ path: 'customer_update/:id',
+{ path: 'customer/:id',
 canActivate: [AuthGuard],
 component: AtualizaClienteComponent,
 },

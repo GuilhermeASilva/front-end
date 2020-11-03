@@ -37,18 +37,11 @@ export class AtualizaClienteComponent implements OnInit {
       }
   }
 
-  loadCustomer(id : number) {
-    this.clienteService.buscarClientes().subscribe(clientes => {
-      if(clientes) {
-        clientes.data.forEach(cliente => {
-          if(cliente.id === id) {
-            this.customer = cliente
-            let dataFormatada = FormatDate.timestampToDate(this.customer.dataNascimento)
-            this.customer.dataNascimento = dataFormatada
-            this.preencheForm()
-          }
-        })
-      }
+ loadCustomer(id: number) {
+    this.clienteService.buscarClientePorId(id).subscribe(res => {
+      this.customer = res.data
+      this.customer.dataNascimento = FormatDate.timestampToDate(this.customer.dataNascimento)
+      this.preencheForm()
     })
   }
 
@@ -57,5 +50,19 @@ export class AtualizaClienteComponent implements OnInit {
   }
 
   atualizarCliente() {
+    let form = this.customerForm.controls
+    let customer = {
+      nome: form.nome.value,
+      cpf: form.cpf.value,
+      dataNascimento: form.dataNascimento.value,
+      endereco: form.endereco.value,
+      cidade: form.cidade.value,
+      uf: form.uf.value,
+      telefone: form.telefone.value,
+      email: form.email.value,
+      sexo: form.sexo.value
+    }
+    console.log("Objeto enviado: ", this.customerId, customer);
+    this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => console.log(res, "Resposta POST"));
   }
 }

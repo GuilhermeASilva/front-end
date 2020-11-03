@@ -16,7 +16,7 @@ export class ListaClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private listaClienteService : ClienteService, private fb : FormBuilder, private router : Router) {
+  constructor(private clienteService : ClienteService, private fb : FormBuilder, private router : Router) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -31,18 +31,17 @@ export class ListaClienteComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.buscarClientes()
+    this.listarClientes()
   }
 
-  buscarClientes() {
-    this.listaClienteService.buscarClientes().subscribe(res => {
+  listarClientes() {
+    this.clienteService.listarClientes().subscribe(res => {
       this.customers = res.data
-      // console.log(this.customers)
     })
   }
 
   alterarCliente(id : number) {
-    this.router.navigateByUrl(`customer_update/${id}`)
+    this.router.navigateByUrl(`customer/${id}`)
   }
 
   temClienteSelecionado = function(customers) {
