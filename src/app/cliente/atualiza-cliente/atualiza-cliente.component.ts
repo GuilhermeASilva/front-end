@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { FormatDate } from 'src/app/utilities/format-date';
 import { ClienteService } from '../cliente.service';
 
 @Component({
@@ -42,6 +43,8 @@ export class AtualizaClienteComponent implements OnInit {
         clientes.data.forEach(cliente => {
           if(cliente.id === id) {
             this.customer = cliente
+            let dataFormatada = FormatDate.timestampToDate(this.customer.dataNascimento)
+            this.customer.dataNascimento = dataFormatada
             this.preencheForm()
           }
         })
@@ -54,6 +57,5 @@ export class AtualizaClienteComponent implements OnInit {
   }
 
   atualizarCliente() {
-
   }
 }
