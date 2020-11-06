@@ -33,7 +33,6 @@ import { LoadingComponent } from './shared/loading/loading.component';
 import { ModalConfirmacaoComponent } from './shared/modal-confirmacao/modal-confirmacao.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

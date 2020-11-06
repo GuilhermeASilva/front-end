@@ -1,5 +1,7 @@
 <div class="jumbotron lista-clientes">
   <h3>Fornecedores</h3>
+  <!-- <app-loading [loading]="loading"> -->
+  <!-- <app-filtro-entidade [lista]="suppliers" (buscar)="atualizarLista($event)"></app-filtro-entidade> -->
   <input type="text" class="form-control" model="buscar" placeholder="Buscar">
   <table show="suppliers.length > 0" class="table">
      <tr>
@@ -33,12 +35,6 @@
      </tr>
   </table>
   <hr>
-  <!-- Botões -->
   <div hidden="!temFornecedorSelecionado">
     <button class="btn btn-success" onclick="redirectTo='/supplier_update'" id="btn-accept">Editar Fornecedor</button>
   </div>
-  <!-- (click)="editarFornecedor(supplier)"  -->
-
-<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
-  ...
-  </div>?? -->

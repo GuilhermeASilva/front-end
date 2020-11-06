@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 
@@ -16,6 +16,7 @@ export class CadastroClienteComponent implements OnInit {
   class1 = "selected";
   customer
   customerForm : FormGroup
+  loading = false
 
   constructor(private clienteService: ClienteService, private fb : FormBuilder, private router : Router) {
     this.customerForm = this.fb.group({
@@ -29,18 +30,21 @@ export class CadastroClienteComponent implements OnInit {
       sexo : [''],
       email : ['']
     })
-   }
+  }
 
   ngOnInit(): void {
   }
 
-      temClienteSelecionado = function(customers) {
-          return customers.some(function (customer){
-              return customer.selected;
-          })
-      }
+      // temClienteSelecionado = function(customers) {
+      //     return customers.some(function (customer){
+      //         return customer.selected;
+      //     })
+      // }
 
       adicionarCliente() {
+        this.loading = true
+        // console.log("Rodando!")
+
         let form = this.customerForm.controls
         let customer = {
           nome: form.nome.value,
@@ -53,11 +57,13 @@ export class CadastroClienteComponent implements OnInit {
           email: form.email.value,
           sexo: form.sexo.value
         }
-        console.log("Objeto enviado: ", customer)
+        // console.log("Objeto enviado: ", customer)
         this.clienteService.adicionarCliente(customer).subscribe(res => {
           if(res && res.status){
             // console.log("Retorno da deleção: ", res)
             //Adicionar notificação melhor
+            this.loading = false
+            // console.log("Parando de rodar!")
             alert("Cliente criado com sucesso!")
             this.router.navigateByUrl('customers')
           }
