@@ -13,7 +13,6 @@ export class CadastroClienteComponent implements OnInit {
 
   message = "Cadastro de Clientes";
   customers = [];
-  class1 = "selected";
   customer
   customerForm : FormGroup
   loading = false
@@ -34,12 +33,6 @@ export class CadastroClienteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-      // temClienteSelecionado = function(customers) {
-      //     return customers.some(function (customer){
-      //         return customer.selected;
-      //     })
-      // }
 
       adicionarCliente() {
         this.loading = true

@@ -12,7 +12,6 @@ export class ListaClienteComponent implements OnInit {
 
   customers = []
   customersAux = []
-  selected = "selected"
   customer
   loading = false
 
@@ -35,12 +34,6 @@ export class ListaClienteComponent implements OnInit {
 
   alterarCliente(id : number) {
     this.router.navigateByUrl(`customer/${id}`)
-  }
-
-  temClienteSelecionado = function(customers) {
-    return customers.some(function (customer){
-        return customer.selected;
-    })
   }
 
   atualizarLista(lista){

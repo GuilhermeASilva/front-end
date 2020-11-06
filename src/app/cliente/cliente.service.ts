@@ -18,8 +18,6 @@ export class ClienteService {
 
   adicionarCliente = function(customer) {
     return this.http.post('http://localhost:3333/customers', customer)
-    // console.log("add cliente serviço", douglas)
-    // return this.http.post('http://localhost:3333/customers', client)
   }
 
   atualizarCliente = function(id: number, customer) {

@@ -12,7 +12,6 @@ import { ProdutoService } from '../produto.service';
 export class ListaProdutoComponent implements OnInit {
 
   products = []
-  selected = "selected"
   product
   productForm : FormGroup
 

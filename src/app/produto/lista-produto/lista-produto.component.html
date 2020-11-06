@@ -16,7 +16,6 @@
           <td>{{product.edit}}</td> -->
      </tr>
      <tr class="{selected: product.selected}" *ngFor="let product of products">
-        <td><input type="checkbox" model="selected"></td>
         <td>{{product.nome | uppercase}}</td>
         <td>{{product.marca}}</td>
         <td>{{product.codBarras}}</td>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FornecedorService } from '../fornecedor.service';
 
 @Component({
@@ -11,37 +11,33 @@ import { FornecedorService } from '../fornecedor.service';
 export class ListaFornecedorComponent implements OnInit {
 
   suppliers = []
-  selected = "selected"
+  suppliersAux = []
   supplier
-  supplierForm : FormGroup
+  loading = false
 
-  constructor(private fornecedorService : FornecedorService, private fb : FormBuilder) {
-    this.supplierForm = this.fb.group({
-      razaoSocial : [''],
-      nomeFantasia : [''],
-      endereco : [''],
-      cidade : [''],
-      uf : [''],
-      telefone : [''],
-      email : [''],
-      site : ['']
-    })
-   }
 
-  ngOnInit(): void {
-    this.buscarFornecedores()
+   constructor(private fornecedorService : FornecedorService, private router : Router) {
   }
 
-  buscarFornecedores() {
-    this.fornecedorService.buscarFornecedores().subscribe(res => {
+  ngOnInit(): void {
+    this.loading = true
+    this.listarFornecedores()
+  }
+
+  listarFornecedores() {
+    this.fornecedorService.listarFornecedores().subscribe(res => {
       this.suppliers = res.data
+      this.suppliersAux = this.suppliers
+      this.loading = false
       // console.log(this.suppliers)
     })
   }
 
-  temFornecedorSelecionado = function(suppliers) {
-    return suppliers.some(function (supplier){
-        return supplier.selected;
-    })
+  alterarFornecedor(id : number) {
+    this.router.navigateByUrl(`supplier/${id}`)
+  }
+
+  atualizarLista(lista){
+    this.suppliersAux = lista
   }
 }
