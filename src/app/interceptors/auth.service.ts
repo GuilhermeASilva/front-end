@@ -37,7 +37,7 @@ export class AuthService {
     localStorage.removeItem('tipoUsuario');
     this.userSubject.next(null)
     this.administrador.next(false)
-    alert('Até mais!')
+    // alert('Até mais!')
     // emite valor null
   }
 
