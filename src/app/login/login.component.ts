@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
       email: form.email.value,
       senha: form.senha.value
     }
-    let retorno = this.authService.validaLogin(login).subscribe((res: any) => {
-      console.log(res)
+    this.authService.validaLogin(login).subscribe((res: any) => {
+      // console.log("Retorno", res)
       if(res && res.token!= undefined) {
-        this.authService.login(res.token)
+        this.authService.login(res.token, res.user.tipoUsuario)
         this.router.navigateByUrl('home')
         alert('Bem vinde!')
       } else {

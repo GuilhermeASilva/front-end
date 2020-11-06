@@ -23,14 +23,10 @@ export class ClienteService {
   }
 
   atualizarCliente = function(id: number, customer) {
-    return this.http.put(`http://localhost:3333/customer/${id},`, customer)
+    return this.http.put(`http://localhost:3333/customer/${id}`, customer)
   }
 
-  apagarCliente = function(customers) {
-    // Implementar
-    //   customers = customers.filter(function(customer) {
-    //     if (!customer.selected) return customer;
-    //       return this.http.delete(`http://localhost:3333/customers/${customer.id}`)
-    //   })
+  apagarCliente = function(id : number) {
+    return this.http.delete(`http://localhost:3333/customer/${id}`)
   }
 }

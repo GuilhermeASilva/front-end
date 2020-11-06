@@ -12,31 +12,25 @@ import { ClienteService } from '../cliente.service';
 export class ListaClienteComponent implements OnInit {
 
   customers = []
+  customersAux = []
   selected = "selected"
   customer
-  customerForm : FormGroup
+  loading = false
 
-  constructor(private clienteService : ClienteService, private fb : FormBuilder, private router : Router) {
-    this.customerForm = this.fb.group({
-      nome : [''],
-      cpf : [''],
-      dataNascimento  : [''],
-      endereco : [''],
-      cidade : [''],
-      uf : [''],
-      telefone : [''],
-      sexo : [''],
-      email : ['']
-    })
+  constructor(private clienteService : ClienteService, private router : Router) {
    }
 
   ngOnInit(): void {
+    this.loading = true
     this.listarClientes()
   }
 
   listarClientes() {
     this.clienteService.listarClientes().subscribe(res => {
       this.customers = res.data
+      this.customersAux = this.customers
+      this.loading = false
+      // console.log(this.customersAux)
     })
   }
 
@@ -48,5 +42,9 @@ export class ListaClienteComponent implements OnInit {
     return customers.some(function (customer){
         return customer.selected;
     })
+  }
+
+  atualizarLista(lista){
+    this.customersAux = lista
   }
 }

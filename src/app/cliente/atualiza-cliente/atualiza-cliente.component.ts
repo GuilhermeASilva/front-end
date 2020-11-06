@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormatDate } from 'src/app/utilities/format-date';
 import { ClienteService } from '../cliente.service';
 
@@ -14,8 +14,9 @@ export class AtualizaClienteComponent implements OnInit {
   customerId : number
   customer
   customerForm : FormGroup
+  loading = false
 
-  constructor(private activatedRoute : ActivatedRoute, private clienteService : ClienteService, private fb : FormBuilder) {
+  constructor(private activatedRoute : ActivatedRoute, private clienteService : ClienteService, private fb : FormBuilder, private router: Router) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -33,6 +34,7 @@ export class AtualizaClienteComponent implements OnInit {
       this.customerId = parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10) // Get ID value from route
 
       if (this.customerId !== 0) { // se houver ID ele carrega
+        this.loading = true
         this.loadCustomer(this.customerId) // Exibe dados no front
       }
   }
@@ -47,6 +49,7 @@ export class AtualizaClienteComponent implements OnInit {
 
   preencheForm() {
     this.customerForm.patchValue(this.customer)
+    this.loading = false
   }
 
   atualizarCliente() {
@@ -62,7 +65,25 @@ export class AtualizaClienteComponent implements OnInit {
       email: form.email.value,
       sexo: form.sexo.value
     }
-    console.log("Objeto enviado: ", this.customerId, customer);
-    this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => console.log(res, "Resposta POST"));
+    // console.log("Objeto enviado: ", this.customerId, customer);
+    this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => {
+      if(res && res.status){
+        // console.log("Retorno da deleção: ", res)
+        //Adicionar notificação melhor
+        alert("Cliente alterado com sucesso!")
+        this.router.navigateByUrl('customers')
+      }
+    });
+    }
+
+  apagarCliente(){
+    this.clienteService.apagarCliente(this.customerId).subscribe(res => {
+      if(res && res.message && res.message == "Cliente deletado"){
+        // console.log("Retorno da deleção: ", res)
+        //Adicionar notificação melhor
+        alert("Cliente apagado com sucesso!")
+        this.router.navigateByUrl('customers')
+      }
+    })
   }
 }

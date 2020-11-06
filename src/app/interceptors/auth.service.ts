@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   private userSubject = new BehaviorSubject<any>(null) //BehaviorSubject precisa de um valor inicial, nesse caso null
+  private administrador = new BehaviorSubject<any>(null) //BehaviorSubject precisa de um valor inicial, nesse caso null
 
   constructor(private http : HttpClient) { }
 
@@ -20,13 +21,22 @@ export class AuthService {
      // observable para que quem chamar conseguir fazer o subscribe
   }
 
-  login(token) {
+  ehAdministrador(){
+    return this.administrador.asObservable()
+  }
+
+  login(token, tipoUsuario) {
     localStorage.setItem('auth', JSON.stringify(token));
+    localStorage.setItem('tipoUsuario', JSON.stringify(tipoUsuario));
+    if(tipoUsuario == 'admin') this.administrador.next(true)
+    else this.administrador.next(false)
   }
 
   logout() {
     localStorage.removeItem('auth');
+    localStorage.removeItem('tipoUsuario');
     this.userSubject.next(null)
+    this.administrador.next(false)
     alert('Até mais!')
     // emite valor null
   }

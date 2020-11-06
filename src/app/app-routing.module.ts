@@ -15,6 +15,7 @@ import { ListaProdutoComponent } from './produto/lista-produto/lista-produto.com
 import { AtualizaServicoComponent } from './servico/atualiza-servico/atualiza-servico.component';
 import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
 import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
+import { UserComponent } from './user2/user2.component';
 import { AtualizaUsuarioComponent } from './usuario/atualiza-usuario/atualiza-usuario.component';
 import { CadastroUsuarioComponent } from './usuario/cadastro-usuario/cadastro-usuario.component';
 import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.component';
@@ -101,7 +102,12 @@ component: CadastroUsuarioComponent,
 { path: 'user_update/:id',
 canActivate: [AuthGuard],
 component: AtualizaUsuarioComponent,
-}];
+},
+
+//Teste
+{ path: 'users2',
+component: UserComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

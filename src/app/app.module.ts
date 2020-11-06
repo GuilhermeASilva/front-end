@@ -27,6 +27,10 @@ import { CadastroProdutoComponent } from './produto/cadastro-produto/cadastro-pr
 import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
 import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent2 } from './shared/footer2/footer2.component';
+import { FiltroEntidadeComponent } from './shared/filtro-entidade/filtro-entidade.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+import { ModalConfirmacaoComponent } from './shared/modal-confirmacao/modal-confirmacao.component';
 
 
 @NgModule({
@@ -50,6 +54,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ListaServicoComponent,
     ListaUsuarioComponent,
     NavBarComponent,
+    // FooterComponent,
+    FooterComponent2,
+    FiltroEntidadeComponent,
+    LoadingComponent,
+    ModalConfirmacaoComponent,
   ],
   imports: [
     CommonModule,

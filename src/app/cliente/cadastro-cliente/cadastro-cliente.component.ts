@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class CadastroClienteComponent implements OnInit {
   customer
   customerForm : FormGroup
 
-  constructor(private clienteService: ClienteService, private fb : FormBuilder) {
+  constructor(private clienteService: ClienteService, private fb : FormBuilder, private router : Router) {
     this.customerForm = this.fb.group({
       nome : [''],
       cpf : [''],
@@ -52,6 +53,14 @@ export class CadastroClienteComponent implements OnInit {
           email: form.email.value,
           sexo: form.sexo.value
         }
-        this.clienteService.adicionarCliente(customer).subscribe(res => console.log("Retorno do back: ", res));
+        console.log("Objeto enviado: ", customer)
+        this.clienteService.adicionarCliente(customer).subscribe(res => {
+          if(res && res.status){
+            // console.log("Retorno da deleção: ", res)
+            //Adicionar notificação melhor
+            alert("Cliente criado com sucesso!")
+            this.router.navigateByUrl('customers')
+          }
+        });
       }
 }

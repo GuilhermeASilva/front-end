@@ -1,0 +1,7 @@
+<div *ngIf="loading; else conteudo" class="spinner-border" role="status">
+  <span class="sr-only">Carregando...</span>
+</div>
+
+<ng-template #conteudo>
+  <ng-content></ng-content>
+</ng-template>

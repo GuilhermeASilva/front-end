@@ -2,8 +2,7 @@
   <h3>Cicloview</h3>
   <form [formGroup]="loginForm">
       <input class="login-form-control" type="email" id="email" placeholder="E-mail" formControlName="email"><br>
-      <input class="login-form-control" type="password" id="senha" placeholder="Senha" formControlName="senha">
-      <br>
-      <button class="btn btn-success" type="button" (click)="onSubmit()">Entrar</button>
+      <input class="login-form-control" type="password" id="senha" placeholder="Senha" formControlName="senha"><br>
+      <button class="btn btn-success" type="button" [disabled]="loginForm.controls.email.value && loginForm.controls.senha.value? false : true" (click)="onSubmit()">Entrar</button>
   </form>
 </div>

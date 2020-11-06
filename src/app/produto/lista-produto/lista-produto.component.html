@@ -7,7 +7,7 @@
         <td><b>Nome</b></td>
         <td><b>Marca</b></td>
         <td><b>Código de Barras</b></td>
-        <td><b>Preço</b></td>
+        <td><b>Valor</b></td>
                 <!-- <td>{{product.edit}}</td> -->
         <!--
           - Inserir uma coluna no final da tabela com icone "editar"
@@ -20,7 +20,7 @@
         <td>{{product.nome | uppercase}}</td>
         <td>{{product.marca}}</td>
         <td>{{product.codBarras}}</td>
-        <td>{{product.preco}}</td>
+        <td>{{product.preco | currency: 'BRL'}}</td>
      </tr>
   </table>
   <hr>

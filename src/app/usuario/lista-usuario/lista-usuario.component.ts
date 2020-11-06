@@ -26,7 +26,9 @@ export class ListaUsuarioComponent implements OnInit {
   }
 
   buscarUsuarios() {
+    console.log("Iniciando componente de listagem de usuários!")
     this.usuarioService.buscarUsuarios().subscribe(res => {
+      console.log(res)
       this.users = res.data
       // console.log(this.users)
     })

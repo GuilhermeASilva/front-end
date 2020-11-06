@@ -1,6 +1,7 @@
 <div class="jumbotron lista-clientes">
   <h3>Lista de Clientes</h3>
-  <input type="text" class="form-control" model="buscar" placeholder="Buscar">
+<app-loading [loading]="loading">
+  <app-filtro-entidade [lista]="customers" (buscar)="atualizarLista($event)"></app-filtro-entidade>
   <table show="customers.length > 0" class="table">
      <tr>
         <td></td>
@@ -8,18 +9,10 @@
         <td><b>CPF</b></td>
         <td><b>Data de Nascimento</b></td>
         <td><b>Endereço</b></td>
-        <!-- <td><b>Cidade</b></td>
-        <td><b>UF</b></td> -->
         <td><b>Telefone</b></td>
         <td><b>E-mail</b></td>
-                <!-- <td>{{customer.edit}}</td> -->
-        <!--
-          - Inserir uma coluna no final da tabela com icone "editar"
-          - No ngfor colocar metodo de edicao que recebe customerID
-          - Mandar pra rota de editar passando o ID de parametro
-          <td>{{customer.edit}}</td> -->
      </tr>
-     <tr class="{selected: customer.selected}" *ngFor="let customer of customers">
+     <tr class="{selected: customer.selected}" *ngFor="let customer of customersAux">
       <td><a (click)="alterarCliente(customer.id)"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
       </svg></a></td>
@@ -27,19 +20,13 @@
         <td>{{customer.cpf}}</td>
         <td>{{customer.dataNascimento | date:'dd/MM/yyyy'}}</td>
         <td>{{customer.endereco}}</td>
-        <!-- <td>{{customer.cidade}}</td> -->
-        <!-- <td>{{customer.uf}}</td> -->
         <td>{{customer.telefone}}</td>
-        <td>{{customer.email}}</td>
+        <td><a href="mailto:{{customer.email}}">{{customer.email}}</a></td>
      </tr>
   </table>
   <hr>
-  <!-- Botões -->
   <div hidden="!temClienteSelecionado">
     <button class="btn btn-success" onclick="redirectTo='/customer_update'" id="btn-accept">Editar Cliente</button>
   </div>
-  <!-- (click)="editarCliente(customer)"  -->
-<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
-  ...
-  </div>?? -->
+</app-loading>
 </div>

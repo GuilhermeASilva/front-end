@@ -5,7 +5,7 @@
      <tr>
         <td></td>
         <td><b>Nome</b></td>
-        <td><b>Tipo</b></td>
+        <td><b>Cateoria</b></td>
         <td><b>Prazo</b></td>
         <td><b>Valor</b></td>
                 <!-- <td>{{service.edit}}</td> -->
@@ -18,9 +18,9 @@
      <tr class="{selected: service.selected}" *ngFor="let service of services">
         <td><input type="checkbox" model="selected"></td>
         <td>{{service.nome | uppercase}}</td>
-        <td>{{service.tipo}}</td>
-        <td>{{service.prazoDias}}</td>
-        <td>{{service.valor}}</td>
+        <td>{{service.categoria}}</td>
+        <td>{{service.prazoDias}} dias</td>
+        <td>{{service.valor | currency: "BRL"}}</td>
      </tr>
   </table>
   <hr>
