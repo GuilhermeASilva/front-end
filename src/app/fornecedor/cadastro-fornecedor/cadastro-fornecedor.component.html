@@ -1,1 +1,17 @@
-<p>cadastro-fornecedor works!</p>
+<div class="jumbotron">
+  <h3>Cadastro de Fornecedor</h3>
+  <app-loading [loading]="loading">
+     <form [formGroup]="supplierForm" name="suppliersForm" (submit)="adicionarFornecedor()">
+     <input class="form-control" type="text" formControlName="razaoSocial" placeholder="Razão Social" required="true">
+     <input class="form-control" type="text" formControlName="cnpj" placeholder="CNPJ" required="true">
+     <input class="form-control" type="text" formControlName="nomeFantasia" placeholder="Nome Fantasia" required="true">
+     <input class="form-control" type="text" formControlName="endereco" placeholder="Endereço" required="true">
+     <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade" required="true">
+     <input class="form-control" type="text" formControlName="uf" placeholder="UF" required="true">
+     <input class="form-control" type="text" formControlName="telefone" placeholder="Telefone" required="true">
+     <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
+     <input class="form-control" type="text" formControlName="site" placeholder="Site" required="true">
+     </form>
+     <button class="btn btn-success" (click)="adicionarFornecedor()">Adicionar Fornecedor</button>
+  </app-loading>
+</div>
