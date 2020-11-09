@@ -27,7 +27,9 @@ export class AtualizaFornecedorComponent implements OnInit {
 	supplierId: number
 	supplier
 	supplierForm: FormGroup
-	loading = false
+  loading = false
+  modalUpdate = false
+  modalDelete = false
 
 	constructor(private activatedRoute: ActivatedRoute, private fornecedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
 		this.supplierForm = this.fb.group({
@@ -64,7 +66,9 @@ export class AtualizaFornecedorComponent implements OnInit {
 		this.loading = false
 	}
 
-	atualizarFornecedor() {
+	atualizarFornecedor(modalUpdate?) {
+    if(!modalUpdate) this.exibeModalUpdate(!modalUpdate)
+    else {
 		let form = this.supplierForm.controls
 		let supplier = {
 			razaoSocial: form.razaoSocial.value,
@@ -83,19 +87,37 @@ export class AtualizaFornecedorComponent implements OnInit {
 				// console.log("Retorno da deleção: ", res)
 				//Adicionar notificação melhor
 				alert("Fornecedor alterado com sucesso!")
-				this.router.navigateByUrl('suppliers')
-			}
-		});
-	}
+        this.router.navigateByUrl('suppliers')
 
-	apagarFornecedor() {
+			}
+    });
+      this.exibeModalUpdate(modalUpdate)
+    }
+  }
+
+	apagarFornecedor(modalDelete?) {
+    if(!modalDelete) this.exibeModalDelete(!modalDelete)
+    else {
+      console.log(this.supplierId)
 		this.fornecedorService.apagarFornecedor(this.supplierId).subscribe(res => {
 			if (res && res.message && res.message == "Fornecedor deletado") {
-          // console.log("Retorno da deleção: ", res)
+          console.log("Retorno da deleção: ", res)
 				//Adicionar notificação melhor
 				alert("Fornecedor apagado com sucesso!")
-				this.router.navigateByUrl('suppliers')
+        this.router.navigateByUrl('suppliers')
+        this.exibeModalDelete(modalDelete)
 			}
 		})
-	}
+  }
+}
+
+  exibeModalUpdate(fechar?){
+    if(fechar) this.modalUpdate = false
+    else this.modalUpdate = true
+  }
+
+  exibeModalDelete(fechar?){
+    if(fechar) this.modalDelete= false
+    else this.modalDelete = true
+  }
 }

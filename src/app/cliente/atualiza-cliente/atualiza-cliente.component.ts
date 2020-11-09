@@ -110,19 +110,17 @@ export class AtualizaClienteComponent implements OnInit {
         this.router.navigateByUrl('customers')
         this.exibeModalDelete(modalDelete)
     		}
-		})
-	}
-}
+      })
+    }
+  }
 
-exibeModalUpdate(fechar?){
-  if(fechar) this.modalUpdate = false
-  else this.modalUpdate = true
-}
+  exibeModalUpdate(fechar?){
+    if(fechar) this.modalUpdate = false
+    else this.modalUpdate = true
+  }
 
-exibeModalDelete(fechar?){
-  if(fechar) this.modalDelete= false
-  else this.modalDelete = true
-}
-
-
+  exibeModalDelete(fechar?){
+    if(fechar) this.modalDelete= false
+    else this.modalDelete = true
+  }
 }

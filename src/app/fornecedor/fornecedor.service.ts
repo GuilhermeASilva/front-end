@@ -29,6 +29,6 @@ export class FornecedorService {
 	}
 
 	apagarFornecedor = function (id: number) {
-		return this.http.delete(`http://localhost:3333/customer/${id}`)
+		return this.http.delete(`http://localhost:3333/supplier/${id}`)
 	}
 }

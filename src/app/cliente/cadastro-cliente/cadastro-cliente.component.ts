@@ -66,7 +66,7 @@ export class CadastroClienteComponent implements OnInit {
 				//Adicionar notificação melhor
 				this.loading = false
 				// console.log("Parando de rodar!")
-				alert("Cliente criado com sucesso!")
+				alert("Cliente cadastrado com sucesso!")
 				this.router.navigateByUrl('customers')
 			}
 		});

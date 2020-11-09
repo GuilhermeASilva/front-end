@@ -66,7 +66,7 @@ export class CadastroFornecedorComponent implements OnInit {
 				//Adicionar notificação melhor
 				this.loading = false
 				// console.log("Parando de rodar!")
-				alert("Fornecedor criado com sucesso!")
+				alert("Fornecedor cadastrado com sucesso!")
 				this.router.navigateByUrl('suppliers')
 			}
 		});

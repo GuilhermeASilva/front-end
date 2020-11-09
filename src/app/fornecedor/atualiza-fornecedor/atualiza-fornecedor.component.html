@@ -1,7 +1,8 @@
 <div class="jumbotron">
   <h3>Atualização de Fornecedor</h3>
   <app-loading [loading]="loading">
-     <form [formGroup]="supplierForm" name="suppliersForm" (submit)="atualizarFornecedor()">
+    <form [formGroup]="supplierForm" name="suppliersForm">
+     <!-- <form [formGroup]="supplierForm" name="suppliersForm" (submit)="atualizarFornecedor()"> -->
       <input class="form-control" type="text" formControlName="razaoSocial" placeholder="Razão Social" required="true">
       <input class="form-control" type="text" formControlName="cnpj" placeholder="CNPJ" required="true">
       <input class="form-control" type="text" formControlName="nomeFantasia" placeholder="Nome Fantasia" required="true">
@@ -12,7 +13,19 @@
       <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
       <input class="form-control" type="text" formControlName="site" placeholder="Site" required="true">
       </form>
-     <button class="btn btn-success" (click)="atualizarFornecedor()">Atualizar Fornecedor</button>
-     <button class="btn btn-danger" (click)="apagarFornecedor()">Apagar Fornecedor</button>
+     <button class="btn btn-success" (click)="exibeModalUpdate()">Atualizar Fornecedor</button>
+     <button class="btn btn-danger" (click)="exibeModalDelete()">Apagar Fornecedor</button>
   </app-loading>
+</div>
+
+<div *ngIf="modalDelete">
+  <app-modal-confirmacao [title]="'Apagar'" (confirmar)="apagarFornecedor($event)">
+    Deseja realmente apagar esse cadastro?
+  </app-modal-confirmacao>
+</div>
+
+<div *ngIf="modalUpdate">
+  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarFornecedor($event)">
+    Deseja realmente atualizar esse cadastro?
+  </app-modal-confirmacao>
 </div>
