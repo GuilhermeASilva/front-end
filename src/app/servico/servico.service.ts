@@ -13,7 +13,7 @@ export class ServicoService {
   }
 
   adicionarServico = function(service) {
-    console.log(service)
+    // console.log(service)
     return this.http.post('http://localhost:3333/services', service)
 }
 

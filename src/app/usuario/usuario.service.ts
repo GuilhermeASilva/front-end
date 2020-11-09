@@ -19,7 +19,7 @@ export class UsuarioService {
   }
 
   adicionarUsuario = function(user) {
-    console.log(user)
+    // console.log(user)
     return this.http.post('http://localhost:3333/users', user)
 }
 

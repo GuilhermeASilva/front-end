@@ -98,10 +98,10 @@ export class AtualizaFornecedorComponent implements OnInit {
 	apagarFornecedor(modalDelete?) {
     if(!modalDelete) this.exibeModalDelete(!modalDelete)
     else {
-      console.log(this.supplierId)
+      // console.log(this.supplierId)
 		this.fornecedorService.apagarFornecedor(this.supplierId).subscribe(res => {
 			if (res && res.message && res.message == "Fornecedor deletado") {
-          console.log("Retorno da deleção: ", res)
+          // console.log("Retorno da deleção: ", res)
 				//Adicionar notificação melhor
 				alert("Fornecedor apagado com sucesso!")
         this.router.navigateByUrl('suppliers')

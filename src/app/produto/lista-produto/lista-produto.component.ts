@@ -1,43 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ProdutoService } from '../produto.service';
-
+import {
+	Component,
+	OnInit
+} from '@angular/core';
+import {
+	Router
+} from '@angular/router';
+import {
+	ProdutoService
+} from '../produto.service';
 
 @Component({
-  selector: 'app-lista-produto',
-  templateUrl: './lista-produto.component.html',
-  styleUrls: ['./lista-produto.component.less']
+	selector: 'app-lista-produto',
+	templateUrl: './lista-produto.component.html',
+	styleUrls: ['./lista-produto.component.less']
 })
 
 export class ListaProdutoComponent implements OnInit {
 
-  products = []
-  product
-  productForm : FormGroup
+	products = []
+	productsAux = []
+	product
+	loading = false
 
-  constructor(private produtoService : ProdutoService, private fb : FormBuilder) {
-    this.productForm = this.fb.group({
-      nome : [''],
-      marca : [''],
-      preco : [''],
-      codBarras : ['']
-    })
-   }
+	constructor(private produtoService: ProdutoService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.buscarProdutos()
-  }
+	ngOnInit(): void {
+		this.loading = true
+		this.listarProdutos()
+	}
 
-  buscarProdutos() {
-    this.produtoService.buscarProdutos().subscribe(res => {
-      this.products = res.data
-      // console.log(this.products)
-    })
-  }
+	listarProdutos() {
+		this.produtoService.listarProdutos().subscribe(res => {
+			this.products = res.data
+			this.productsAux = this.products
+			this.loading = false
+		})
+	}
 
-  temProdutoSelecionado = function(products) {
-    return products.some(function (product){
-        return product.selected;
-    })
-  }
+	alterarProduto(id: number) {
+		this.router.navigateByUrl(`product/${id}`)
+	}
+
+	atualizarLista(lista) {
+		this.productsAux = lista
+	}
 }

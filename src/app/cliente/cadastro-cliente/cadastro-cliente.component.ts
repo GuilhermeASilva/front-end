@@ -62,7 +62,8 @@ export class CadastroClienteComponent implements OnInit {
 		// console.log("Objeto enviado: ", customer)
 		this.clienteService.adicionarCliente(customer).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da deleção: ", res)
+        // console.log(res.status)
+				// console.log("Retorno da inserção: ", res)
 				//Adicionar notificação melhor
 				this.loading = false
 				// console.log("Parando de rodar!")
@@ -70,5 +71,6 @@ export class CadastroClienteComponent implements OnInit {
 				this.router.navigateByUrl('customers')
 			}
 		});
-	}
+    this.loading = false
+  }
 }

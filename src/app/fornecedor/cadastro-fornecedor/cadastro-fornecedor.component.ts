@@ -70,5 +70,6 @@ export class CadastroFornecedorComponent implements OnInit {
 				this.router.navigateByUrl('suppliers')
 			}
 		});
-	}
+    this.loading = false
+  }
 }

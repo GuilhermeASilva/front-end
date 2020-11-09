@@ -1,1 +1,26 @@
-<p>atualiza-produto works!</p>
+<div class="jumbotron">
+  <h3>Atualização de Produto</h3>
+  <app-loading [loading]="loading">
+    <form [formGroup]="productForm" name="productsForm">
+     <!-- <form [formGroup]="productForm" name="productsForm" (submit)="atualizarProduto()"> -->
+      <input class="form-control" type="text" formControlName="nome" placeholder="Produto" required="true">
+      <input class="form-control" type="text" formControlName="marca" placeholder="Marca " required="true">
+      <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras" required="true">
+      <input class="form-control" type="number" formControlName="preco" placeholder="Valor" required="true">
+      </form>
+     <button class="btn btn-success" (click)="exibeModalUpdate()">Atualizar Produto</button>
+     <button class="btn btn-danger" (click)="exibeModalDelete()">Apagar Produto</button>
+  </app-loading>
+</div>
+
+<div *ngIf="modalDelete">
+  <app-modal-confirmacao [title]="'Apagar'" (confirmar)="apagarProduto($event)">
+    Deseja realmente apagar esse cadastro?
+  </app-modal-confirmacao>
+</div>
+
+<div *ngIf="modalUpdate">
+  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarProduto($event)">
+    Deseja realmente atualizar esse cadastro?
+  </app-modal-confirmacao>
+</div>

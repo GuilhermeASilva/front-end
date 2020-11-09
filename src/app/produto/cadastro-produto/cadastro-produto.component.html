@@ -1,1 +1,12 @@
-<p>cadastro-produto works!</p>
+<div class="jumbotron">
+  <h3>Cadastro de Produto</h3>
+  <app-loading [loading]="loading">
+     <form [formGroup]="productForm" name="productsForm" (submit)="adicionarProduto()">
+     <input class="form-control" type="text" formControlName="nome" placeholder="Produto" required="true">
+     <input class="form-control" type="text" formControlName="marca" placeholder="Marca" required="true">
+     <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras" required="true">
+     <input class="form-control" type="number" formControlName="preco" placeholder="Valor" required="true">
+     </form>
+     <button class="btn btn-success" (click)="adicionarProduto()">Adicionar Produto</button>
+  </app-loading>
+</div>
