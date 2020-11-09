@@ -14,7 +14,19 @@
      <input class="form-control" type="text" formControlName="sexo" placeholder="Sexo" required="true">
      <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
      </form>
-     <button class="btn btn-success" (click)="atualizarCliente()">Atualizar Cliente</button>
-     <button class="btn btn-danger" (click)="apagarCliente()">Apagar Cliente</button>
+     <button class="btn btn-success" (click)="exibeModalUpdate()">Atualizar Cliente</button>
+     <button class="btn btn-danger" (click)="exibeModalDelete()">Apagar Cliente</button>
   </app-loading>
+</div>
+
+<div *ngIf="modalDelete">
+  <app-modal-confirmacao [title]="'Apagar'" (confirmar)="apagarCliente($event)">
+    Deseja realmente apagar esse cadastro?
+  </app-modal-confirmacao>
+</div>
+
+<div *ngIf="modalUpdate">
+  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarCliente($event)">
+    Deseja realmente atualizar esse cadastro?
+  </app-modal-confirmacao>
 </div>

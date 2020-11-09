@@ -23,13 +23,19 @@ import {
 	styleUrls: ['./atualiza-cliente.component.less']
 })
 export class AtualizaClienteComponent implements OnInit {
-
 	customerId: number
 	customer
 	customerForm: FormGroup
-	loading = false
+  loading = false
+  modalUpdate = false
+  modalDelete = false
 
-	constructor(private activatedRoute: ActivatedRoute, private clienteService: ClienteService, private fb: FormBuilder, private router: Router) {
+
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private clienteService: ClienteService,
+              private fb: FormBuilder,
+              private router: Router) {
 		this.customerForm = this.fb.group({
 			nome: [''],
 			cpf: [''],
@@ -65,7 +71,9 @@ export class AtualizaClienteComponent implements OnInit {
 		this.loading = false
 	}
 
-	atualizarCliente() {
+	atualizarCliente(modalUpdate?) {
+    if(!modalUpdate) this.exibeModalUpdate(!modalUpdate)
+    else {
 		let form = this.customerForm.controls
 		let customer = {
 			nome: form.nome.value,
@@ -87,16 +95,34 @@ export class AtualizaClienteComponent implements OnInit {
 				this.router.navigateByUrl('customers')
 			}
 		});
-	}
+    this.exibeModalUpdate(modalUpdate)
+    }
+  }
 
-	apagarCliente() {
+	apagarCliente(modalDelete?) {
+    if(!modalDelete) this.exibeModalDelete(!modalDelete)
+    else {
 		this.clienteService.apagarCliente(this.customerId).subscribe(res => {
 			if (res && res.message && res.message == "Cliente deletado") {
 				// console.log("Retorno da deleção: ", res)
 				//Adicionar notificação melhor
 				alert("Cliente apagado com sucesso!")
-				this.router.navigateByUrl('customers')
-			}
+        this.router.navigateByUrl('customers')
+        this.exibeModalDelete(modalDelete)
+    		}
 		})
 	}
+}
+
+exibeModalUpdate(fechar?){
+  if(fechar) this.modalUpdate = false
+  else this.modalUpdate = true
+}
+
+exibeModalDelete(fechar?){
+  if(fechar) this.modalDelete= false
+  else this.modalDelete = true
+}
+
+
 }
