@@ -1,38 +1,56 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="['/','home']">Cicloview</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" *ngIf="(logado$ | async)" id="navbarNav">
      <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/','customers']">Listar</a>
-            <a class="dropdown-item" [routerLink]="['/','customer_registration']">Cadastrar</a>
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','customers']">Lista</a>
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','customer_registration']">Cadastro</a>
+           </div>
+        </li>
+        <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fornecedores</a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','suppliers']">Lista</a>
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','supplier_registration']">Cadastro</a>
+           </div>
+        </li>
+        <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produtos</a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','products']">Lista</a>
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','product_registration']">Cadastro</a>
+           </div>
+        </li>
+        <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Serviços</a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','serivices']">Lista</a>
+              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','service_registration']">Cadastro</a>
+           </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="admin$ | async">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuários</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','users']">Lista</a>
+             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','user_registration']">Cadastro</a>
           </div>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" [routerLink]="['/','suppliers']">Fornecedores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/','products']">Produtos</a>
        </li>
-        <li class="nav-item">
-           <a class="nav-link" [routerLink]="['/','services']">Serviços</a>
-        </li>
-        <li *ngIf="admin$ | async" class="nav-item">
+        <!-- <li *ngIf="admin$ | async" class="nav-item">
            <a class="nav-link" [routerLink]="['/','users']">Usuários</a>
-        </li>
+        </li> -->
         <div class="botao-sair">
-          <button type=button class="btn btn-danger" (click)="exibeModal()">Sair</button>
+           <button type=button class="btn btn-danger" (click)="exibeModal()">Sair</button>
         </div>
      </ul>
-    </div>
+  </div>
 </nav>
-
 <div *ngIf="modal">
   <app-modal-confirmacao [title]="'Logout'" (confirmar)="logout($event)">
-    Deseja sair do sistema?
+  Deseja sair do sistema?
   </app-modal-confirmacao>
 </div>
