@@ -12,6 +12,7 @@ export class FiltroEntidadeComponent {
   @Output() buscar = new EventEmitter<any>()
   filtroForm : FormGroup
   aux = []
+  @Input() parametro: string
 
   constructor(private fb : FormBuilder) {
     this.filtroForm = this.fb.group({
@@ -28,7 +29,7 @@ export class FiltroEntidadeComponent {
           this.lista.forEach(customer => {
               var expressao = new RegExp(campoFiltro, "i")
 
-              if (expressao.test(customer.nome)) { // Valida o nome com o regex
+              if (expressao.test(customer[this.parametro])) { // Valida o nome com o regex
                   this.aux.push(customer)
               }
           })

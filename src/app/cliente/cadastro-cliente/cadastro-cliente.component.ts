@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	Router
@@ -29,7 +30,7 @@ export class CadastroClienteComponent implements OnInit {
 
 	constructor(private clienteService: ClienteService, private fb: FormBuilder, private router: Router) {
 		this.customerForm = this.fb.group({
-			nome: [''],
+			nome: ['', [Validators.required]],
 			cpf: [''],
 			dataNascimento: [''],
 			endereco: [''],
@@ -44,6 +45,9 @@ export class CadastroClienteComponent implements OnInit {
 	ngOnInit(): void {}
 
 	adicionarCliente() {
+    if (this.customerForm.invalid) {
+      console.log("Invalido!")
+    }
 		this.loading = true
 		// console.log("Rodando!")
 

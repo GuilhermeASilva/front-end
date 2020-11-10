@@ -1,7 +1,7 @@
 <div class="jumbotron listagem">
   <h3>Lista de Clientes</h3>
   <app-loading [loading]="loading">
-     <app-filtro-entidade [lista]="customers" (buscar)="atualizarLista($event)"></app-filtro-entidade>
+     <app-filtro-entidade [lista]="customers" [parametro]="'nome'" (buscar)="atualizarLista($event)"></app-filtro-entidade>
      <table show="customers.length > 0" class="table">
         <tr>
            <td></td>

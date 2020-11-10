@@ -1,1 +1,14 @@
-<p>cadastro-servico works!</p>
+<div class="jumbotron">
+  <h3>Cadastro de Servico</h3>
+  <app-loading [loading]="loading">
+     <form [formGroup]="serviceForm" name="servicesForm" (submit)="adicionarServico()">
+     <input class="form-control" type="number" formControlName="nroServico" placeholder="Número" required="true">
+     <input class="form-control" type="text" formControlName="nome" placeholder="Nome" required="true">
+     <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria" required="true">
+     <input class="form-control" type="number" formControlName="prazoDias" placeholder="Prazo" required="true">
+     <input class="form-control" type="text" formControlName="descricao" placeholder="Descrição" required="true">
+     <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required="true">
+     </form>
+     <button class="btn btn-success" (click)="adicionarServico()">Adicionar Servico</button>
+  </app-loading>
+</div>
