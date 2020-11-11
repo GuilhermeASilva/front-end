@@ -68,11 +68,8 @@ export class AtualizaProdutoComponent implements OnInit {
 			preco: form.preco.value,
 			codBarras: form.codBarras.value,
 		}
-		// console.log("Objeto enviado: ", this.productId, product);
 		this.produtoService.atualizarProduto(this.productId, product).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da atualização: ", res)
-				//Adicionar notificação melhor
 				alert("Produto alterado com sucesso!")
         this.router.navigateByUrl('products')
 			}
@@ -84,11 +81,8 @@ export class AtualizaProdutoComponent implements OnInit {
 	apagarProduto(modalDelete?) {
     if(!modalDelete) this.exibeModalDelete(!modalDelete)
     else {
-      // console.log(this.productId)
 		this.produtoService.apagarProduto(this.productId).subscribe(res => {
 			if (res && res.message && res.message == "Produto deletado") {
-          // console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				alert("Produto apagado com sucesso!")
         this.router.navigateByUrl('products')
         this.exibeModalDelete(modalDelete)

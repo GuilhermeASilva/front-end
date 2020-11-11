@@ -1,1 +1,26 @@
-<p>atualiza-servico works!</p>
+<div class="jumbotron">
+  <h3>Atualização de Serviço</h3>
+  <app-loading [loading]="loading">
+    <form [formGroup]="serviceForm" name="servicesForm">
+      <input class="form-control" type="text" formControlName="nroServico" placeholder="Número" required="true">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Servico" required="true">
+      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria " required="true">
+      <input class="form-control" type="text" formControlName="prazoDias" placeholder="Prazo" required="true">
+      <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required="true">
+      </form>
+     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Servico</button>
+     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Servico</button>
+  </app-loading>
+</div>
+
+<div *ngIf="modalDelete">
+  <app-modal-confirmacao [title]="'Apagar'" (confirmar)="apagarServico($event)">
+    Deseja realmente apagar esse cadastro?
+  </app-modal-confirmacao>
+</div>
+
+<div *ngIf="modalUpdate">
+  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarServico($event)">
+    Deseja realmente atualizar esse cadastro?
+  </app-modal-confirmacao>
+</div>
