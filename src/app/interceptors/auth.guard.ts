@@ -3,7 +3,8 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
+  ActivatedRoute
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -14,7 +15,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
-    private router : Router
+    private router : Router,
   ) {}
 
   canActivate(
@@ -23,13 +24,12 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const nextUrl = state.url !== '/' ? `/${btoa(state.url)}` : '';
     const token = this.authService.getToken();
-    // console.log(token, "Token aqui no Auth")
     const loggedIn = token?true:false
-    if (!loggedIn) {
+    // console.log("Ativa: ", this.router.url)
+    if (!loggedIn && this.router.url != "/login") {
       alert("Favor realizar login.")
-      this.router.navigateByUrl('login')
+      this.router.navigate(['login'])
     }
-
     return loggedIn;
   }
 }

@@ -1,4 +1,4 @@
-import {
+  import {
 	Component,
 	OnInit
 } from '@angular/core';
@@ -10,9 +10,6 @@ import {
 	ActivatedRoute,
 	Router
 } from '@angular/router';
-import {
-	FormatDate
-} from 'src/app/utilities/format-date';
 import {
 	FornecedorService
 } from '../fornecedor.service';
@@ -81,11 +78,8 @@ export class AtualizaFornecedorComponent implements OnInit {
 			email: form.email.value,
 			site: form.site.value
 		}
-		// console.log("Objeto enviado: ", this.supplierId, supplier);
 		this.fornecedorService.atualizarFornecedor(this.supplierId, supplier).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				alert("Fornecedor alterado com sucesso!")
         this.router.navigateByUrl('suppliers')
 
@@ -98,11 +92,8 @@ export class AtualizaFornecedorComponent implements OnInit {
 	apagarFornecedor(modalDelete?) {
     if(!modalDelete) this.exibeModalDelete(!modalDelete)
     else {
-      // console.log(this.supplierId)
 		this.fornecedorService.apagarFornecedor(this.supplierId).subscribe(res => {
 			if (res && res.message && res.message == "Fornecedor deletado") {
-          // console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				alert("Fornecedor apagado com sucesso!")
         this.router.navigateByUrl('suppliers')
         this.exibeModalDelete(modalDelete)

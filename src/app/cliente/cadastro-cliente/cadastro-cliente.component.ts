@@ -10,6 +10,7 @@ import {
 import {
 	Router
 } from '@angular/router';
+import { CorrigeData } from 'src/app/utilities/corrige-data';
 import {
 	ClienteService
 } from '../cliente.service';
@@ -45,32 +46,24 @@ export class CadastroClienteComponent implements OnInit {
 	ngOnInit(): void {}
 
 	adicionarCliente() {
-    if (this.customerForm.invalid) {
-      console.log("Invalido!")
-    }
-		this.loading = true
-		// console.log("Rodando!")
+    if (this.customerForm.invalid) alert("Erro, favor verificar os dados enviados!")
+    this.loading = true
 
 		let form = this.customerForm.controls
 		let customer = {
 			nome: form.nome.value,
 			cpf: form.cpf.value,
-			dataNascimento: form.dataNascimento.value,
+			dataNascimento: CorrigeData.corrigeData(form.dataNascimento.value),
 			endereco: form.endereco.value,
 			cidade: form.cidade.value,
 			uf: form.uf.value,
 			telefone: form.telefone.value,
 			email: form.email.value,
 			sexo: form.sexo.value
-		}
-		// console.log("Objeto enviado: ", customer)
+    }
 		this.clienteService.adicionarCliente(customer).subscribe(res => {
 			if (res && res.status) {
-        // console.log(res.status)
-				// console.log("Retorno da inserção: ", res)
-				//Adicionar notificação melhor
 				this.loading = false
-				// console.log("Parando de rodar!")
 				alert("Cliente cadastrado com sucesso!")
 				this.router.navigateByUrl('customers')
 			}

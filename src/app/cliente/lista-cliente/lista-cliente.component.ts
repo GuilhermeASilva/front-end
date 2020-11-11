@@ -33,11 +33,6 @@ export class ListaClienteComponent implements OnInit {
 		this.clienteService.listarClientes().subscribe(res => {
 			this.customers = res.data
       this.customersAux = this.customers
-      this.customersAux.forEach(c => {
-        let data : Date = new Date(c.dataNascimento)
-        data.setDate(data.getDate() + 1)
-        c.dataNascimento = data
-      })
 			this.loading = false
 		})
 	}

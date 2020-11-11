@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { AtualizaClienteComponent } from './cliente/atualiza-cliente/atualiza-cliente.component';
 import { CadastroClienteComponent } from './cliente/cadastro-cliente/cadastro-cliente.component';
 import { ListaClienteComponent } from './cliente/lista-cliente/lista-cliente.component';
@@ -15,7 +16,6 @@ import { ListaProdutoComponent } from './produto/lista-produto/lista-produto.com
 import { AtualizaServicoComponent } from './servico/atualiza-servico/atualiza-servico.component';
 import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
 import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
-import { UserComponent } from './user2/user2.component';
 import { AtualizaUsuarioComponent } from './usuario/atualiza-usuario/atualiza-usuario.component';
 import { CadastroUsuarioComponent } from './usuario/cadastro-usuario/cadastro-usuario.component';
 import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.component';
@@ -23,15 +23,14 @@ import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.com
 const routes: Routes = [
   //Padrão
   { path: '',
-  pathMatch: 'full', // exatamente como está no path para não considerar nas outras rotas
-  redirectTo: 'login',
+  // pathMatch: 'full' // exatamente como está no path para não considerar nas outras rotas
+  // redirectTo: 'login',
+  component: HomeComponent,
+  canActivate: [AuthGuard], // Guarda de rotas
 },
-  { path: 'login',
+
+{ path: 'login',
 component: LoginComponent,
-},
-{ path: 'home',
-canActivate: [AuthGuard],
-component: HomeComponent,
 },
 
 // Cliente
@@ -102,12 +101,7 @@ component: CadastroUsuarioComponent,
 { path: 'user/:id',
 canActivate: [AuthGuard],
 component: AtualizaUsuarioComponent,
-},
-
-//Teste
-{ path: 'users2',
-component: UserComponent}
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

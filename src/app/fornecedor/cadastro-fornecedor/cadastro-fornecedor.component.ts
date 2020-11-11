@@ -44,8 +44,8 @@ export class CadastroFornecedorComponent implements OnInit {
 	ngOnInit(): void {}
 
 	adicionarFornecedor() {
+    if (this.supplierForm.invalid) alert("Erro, favor verificar os dados enviados!")
 		this.loading = true
-		// console.log("Rodando!")
 
 		let form = this.supplierForm.controls
 		let supplier = {
@@ -59,13 +59,9 @@ export class CadastroFornecedorComponent implements OnInit {
 			email: form.email.value,
 			site: form.site.value
 		}
-		// console.log("Objeto enviado: ", supplier)
 		this.fornecedorService.adicionarFornecedor(supplier).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				this.loading = false
-				// console.log("Parando de rodar!")
 				alert("Fornecedor cadastrado com sucesso!")
 				this.router.navigateByUrl('suppliers')
 			}

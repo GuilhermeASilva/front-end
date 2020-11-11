@@ -16,6 +16,10 @@ export class AuthService {
   return this.http.post('http://localhost:3333/login', login)
   }
 
+  estaLogadoBolean(){
+    return !!this.estaLogado()
+  }
+
   estaLogado(){
     return this.userSubject.asObservable()
      // observable para que quem chamar conseguir fazer o subscribe
@@ -35,22 +39,11 @@ export class AuthService {
   logout() {
     localStorage.removeItem('auth');
     localStorage.removeItem('tipoUsuario');
-    this.userSubject.next(null)
+    this.userSubject.next(false)
     this.administrador.next(false)
     // alert('Até mais!')
     // emite valor null
   }
-
-  // logout() {
-  //   if(confirm("Deseja sair do sistema?")) {
-  //     localStorage.removeItem('auth');
-  //     this.userSubject.next(null)     // emite valor null
-  //     this.cdr.detectChanges()
-  //     this.router.navigateByUrl('login')
-  //     alert('Até mais!')
-  //   } else {
-  //     }
-  // }
 
   getToken(): string {
     const authData = JSON.parse(localStorage.getItem('auth'));

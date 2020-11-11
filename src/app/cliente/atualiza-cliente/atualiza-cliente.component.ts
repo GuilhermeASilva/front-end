@@ -10,6 +10,7 @@ import {
 	ActivatedRoute,
 	Router
 } from '@angular/router';
+import { CorrigeData } from 'src/app/utilities/corrige-data';
 import {
 	FormatDate
 } from 'src/app/utilities/format-date';
@@ -60,8 +61,8 @@ export class AtualizaClienteComponent implements OnInit {
 
 	loadCustomer(id: number) {
 		this.clienteService.buscarClientePorId(id).subscribe(res => {
-			this.customer = res.data
-			this.customer.dataNascimento = FormatDate.timestampToDate(this.customer.dataNascimento)
+      this.customer = res.data
+      this.customer.dataNascimento = FormatDate.timestampToDate(this.customer.dataNascimento)
 			this.preencheForm()
 		})
 	}
@@ -78,19 +79,16 @@ export class AtualizaClienteComponent implements OnInit {
 		let customer = {
 			nome: form.nome.value,
 			cpf: form.cpf.value,
-			dataNascimento: form.dataNascimento.value,
+			dataNascimento: CorrigeData.corrigeData(form.dataNascimento.value),
 			endereco: form.endereco.value,
 			cidade: form.cidade.value,
 			uf: form.uf.value,
 			telefone: form.telefone.value,
 			email: form.email.value,
 			sexo: form.sexo.value
-		}
-		// console.log("Objeto enviado: ", this.customerId, customer);
+    }
 		this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				alert("Cliente alterado com sucesso!")
 				this.router.navigateByUrl('customers')
 			}
@@ -104,8 +102,6 @@ export class AtualizaClienteComponent implements OnInit {
     else {
 		this.clienteService.apagarCliente(this.customerId).subscribe(res => {
 			if (res && res.message && res.message == "Cliente deletado") {
-				// console.log("Retorno da deleção: ", res)
-				//Adicionar notificação melhor
 				alert("Cliente apagado com sucesso!")
         this.router.navigateByUrl('customers')
         this.exibeModalDelete(modalDelete)

@@ -2,9 +2,7 @@
   <h3>Atualização de Cliente</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="customerForm" name="customersForm">
-      <!-- Verificar impacto -->
-      <!-- <form [formGroup]="customerForm" name="customersForm" (submit)="atualizarCliente()"> -->
-        <input class="form-control" type="text" formControlName="nome" placeholder="Nome" required="true">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Nome" required="true">
      <input class="form-control" type="text" formControlName="cpf" placeholder="CPF" required="true">
      <input class="form-control" type="date" formControlName="dataNascimento" placeholder="Data de Nascimento" required="true">
      <input class="form-control" type="text" formControlName="endereco" placeholder="Endereco" required="true">
@@ -14,8 +12,8 @@
      <input class="form-control" type="text" formControlName="sexo" placeholder="Sexo" required="true">
      <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
      </form>
-     <button class="btn btn-success" (click)="exibeModalUpdate()">Atualizar Cliente</button>
-     <button class="btn btn-danger" (click)="exibeModalDelete()">Apagar Cliente</button>
+     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Cliente</button>
+     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Cliente</button>
   </app-loading>
 </div>
 

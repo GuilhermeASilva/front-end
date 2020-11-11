@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,11 +27,12 @@ import { CadastroProdutoComponent } from './produto/cadastro-produto/cadastro-pr
 import { CadastroServicoComponent } from './servico/cadastro-servico/cadastro-servico.component';
 import { ListaServicoComponent } from './servico/lista-servico/lista-servico.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-// import { FooterComponent2 } from './shared/footer2/footer2.component';
 import { FiltroEntidadeComponent } from './shared/filtro-entidade/filtro-entidade.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { ModalConfirmacaoComponent } from './shared/modal-confirmacao/modal-confirmacao.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NotificationToastComponent } from './shared/notification-toast/notification-toast.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -55,10 +56,11 @@ import { FooterComponent } from './shared/footer/footer.component';
     ListaUsuarioComponent,
     NavBarComponent,
     FooterComponent,
-    // FooterComponent2,
     FiltroEntidadeComponent,
     LoadingComponent,
     ModalConfirmacaoComponent,
+    NotificationToastComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
