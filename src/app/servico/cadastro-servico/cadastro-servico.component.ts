@@ -47,18 +47,15 @@ export class CadastroServicoComponent implements OnInit {
 		let service = {
 			nroServico: form.nroServico.value,
 			nome: form.nome.value,
+			descricao: form.descricao.value,
 			valor: form.valor.value,
       prazoDias: form.prazoDias.value,
       categoria: form.categoria.value
 
 		}
-		// console.log("Objeto enviado: ", service)
 		this.servicoService.adicionarServico(service).subscribe(res => {
 			if (res && res.status) {
-				// console.log("Retorno da inserção: ", res)
-				//Adicionar notificação melhor
 				this.loading = false
-				// console.log("Parando de rodar!")
 				alert("Servico cadastrado com sucesso!")
 				this.router.navigateByUrl('services')
 			}

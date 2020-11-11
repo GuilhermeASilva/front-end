@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3>Cadastro de Servico</h3>
+  <h3>Cadastro de Serviço</h3>
   <app-loading [loading]="loading">
      <form [formGroup]="serviceForm" name="servicesForm" (submit)="adicionarServico()">
      <input class="form-control" type="number" formControlName="nroServico" placeholder="Número" required="true">
@@ -8,7 +8,7 @@
      <input class="form-control" type="number" formControlName="prazoDias" placeholder="Prazo" required="true">
      <input class="form-control" type="text" formControlName="descricao" placeholder="Descrição" required="true">
      <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required="true">
+     <button class="btn btn-success mt-3" type="submit">Adicionar Serviço</button>
      </form>
-     <button class="btn btn-success" (click)="adicionarServico()">Adicionar Servico</button>
   </app-loading>
 </div>

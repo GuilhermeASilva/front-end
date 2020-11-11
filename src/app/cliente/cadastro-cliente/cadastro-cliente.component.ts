@@ -48,9 +48,11 @@ export class CadastroClienteComponent implements OnInit {
 	ngOnInit(): void {}
 
 	adicionarCliente() {
-    if (this.customerForm.invalid) alert("Erro, favor verificar os dados enviados!")
-    this.loading = true
-
+    if (this.customerForm.invalid) {
+      this.loading = true
+      alert("Erro, favor verificar os dados enviados!")
+      this.loading = false
+    } else {
 		let form = this.customerForm.controls
 		let customer = {
 			nome: form.nome.value,
@@ -64,12 +66,14 @@ export class CadastroClienteComponent implements OnInit {
 			sexo: form.sexo.value
     }
 		this.clienteService.adicionarCliente(customer).subscribe(res => {
+      this.loading = true
 			if (res && res.status) {
 				this.loading = false
 				alert("Cliente cadastrado com sucesso!")
 				this.router.navigateByUrl('customers')
 			}
 		});
+    }
     this.loading = false
   }
 }

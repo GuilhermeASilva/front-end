@@ -7,12 +7,6 @@
         <td><b>Usuário</b></td>
         <td><b>Tipo</b></td>
         <td><b>E-mail</b></td>
-                <!-- <td>{{user.edit}}</td> -->
-        <!--
-          - Inserir uma coluna no final da tabela com icone "editar"
-          - No ngfor colocar metodo de edicao que recebe userID
-          - Mandar pra rota de editar passando o ID de parametro
-          <td>{{user.edit}}</td> -->
      </tr>
      <tr class="{selected: user.selected}" *ngFor="let user of users">
         <td><input type="checkbox" model="selected"></td>
@@ -22,13 +16,4 @@
      </tr>
   </table>
   <hr>
-  <!-- Botões -->
-  <div hidden="!temServicoSelecionado">
-    <button class="btn btn-success" onclick="redirectTo='/user_update'" id="btn-accept">Editar Serviço</button>
-  </div>
-  <!-- (click)="editarFornecedor(user)"  -->
-
-<!-- <div class="yourCssClass" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">
-  ...
-  </div>?? -->
 </div>

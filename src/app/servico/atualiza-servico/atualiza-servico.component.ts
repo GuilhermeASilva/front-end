@@ -67,6 +67,7 @@ export class AtualizaServicoComponent implements OnInit {
 		let service = {
 			nroServico: form.nroServico.value,
 			nome: form.nome.value,
+			descricao: form.descricao.value,
 			valor: form.valor.value,
       prazoDias: form.prazoDias.value,
       categoria: form.categoria.value
@@ -85,8 +86,8 @@ export class AtualizaServicoComponent implements OnInit {
     if(!modalDelete) this.exibeModalDelete(!modalDelete)
     else {
 		this.servicoService.apagarServico(this.serviceId).subscribe(res => {
-			if (res && res.message && res.message == "Servico deletado") {
-				alert("Servico apagado com sucesso!")
+			if (res && res.message && res.message == "Serviço deletado com sucesso") {
+				alert("Serviço apagado com sucesso!")
         this.router.navigateByUrl('services')
         this.exibeModalDelete(modalDelete)
 			}

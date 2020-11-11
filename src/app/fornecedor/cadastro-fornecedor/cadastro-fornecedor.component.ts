@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	Router
@@ -29,7 +30,7 @@ export class CadastroFornecedorComponent implements OnInit {
 
 	constructor(private fornecedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
 		this.supplierForm = this.fb.group({
-			razaoSocial: [''],
+			razaoSocial: ['', [Validators.required]],
 			cnpj: [''],
 			nomeFantasia: [''],
 			endereco: [''],

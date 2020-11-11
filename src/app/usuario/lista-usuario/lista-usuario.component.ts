@@ -1,42 +1,47 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { UsuarioService } from '../usuario.service';
+import {
+	Component,
+	OnInit
+} from '@angular/core';
+import {
+	Router
+} from '@angular/router';
+import {
+	UsuarioService
+} from '../usuario.service';
 
 @Component({
-  selector: 'app-lista-usuario',
-  templateUrl: './lista-usuario.component.html',
-  styleUrls: ['./lista-usuario.component.less']
+	selector: 'app-lista-usuario',
+	templateUrl: './lista-usuario.component.html',
+	styleUrls: ['./lista-usuario.component.less']
 })
+
 export class ListaUsuarioComponent implements OnInit {
-  users = []
-  selected = "selected"
-  user
-  userForm : FormGroup
 
-  constructor(private usuarioService : UsuarioService, private fb : FormBuilder) {
-    this.userForm = this.fb.group({
-      nomeUsuario : [''],
-      tipoUsuario : [''],
-      email : ['']
-    })
-   }
+	users = []
+	usersAux = []
+	user
+	loading = false
 
-  ngOnInit(): void {
-    this.buscarUsuarios()
-  }
+	constructor(private usuarioService: UsuarioService, private router: Router) {}
 
-  buscarUsuarios() {
-    // console.log("Iniciando componente de listagem de usuários!")
-    this.usuarioService.buscarUsuarios().subscribe(res => {
-      // console.log(res)
-      this.users = res.data
-      // console.log(this.users)
-    })
-  }
+	ngOnInit(): void {
+		this.loading = true
+		this.listarUsuarios()
+	}
 
-  temUsuarioSelecionado = function(users) {
-    return users.some(function (user){
-        return user.selected;
-    })
-  }
+	listarUsuarios() {
+		this.usuarioService.listarUsuarios().subscribe(res => {
+			this.users = res.data
+			this.usersAux = this.users
+			this.loading = false
+		})
+	}
+
+	alterarUsuario(id: number) {
+		this.router.navigateByUrl(`user/${id}`)
+	}
+
+	atualizarLista(lista) {
+		this.usersAux = lista
+	}
 }
