@@ -21,10 +21,10 @@
               </a>
            </td>
            <td>{{customer.nome | uppercase}}</td>
-           <td>{{customer.cpf}}</td>
+           <td>{{customer.cpf | mask:'000.000.000-00'}}</td>
            <td>{{customer.dataNascimento | date:'dd/MM/yyyy'}}</td>
            <td>{{customer.endereco}}</td>
-           <td>{{customer.telefone}}</td>
+           <td>{{customer.telefone | mask:'(00) 00000-0000'}}</td>
            <td><a href="mailto:{{customer.email}}">{{customer.email}}</a></td>
         </tr>
      </table>

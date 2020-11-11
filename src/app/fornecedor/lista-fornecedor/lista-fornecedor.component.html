@@ -19,8 +19,8 @@
               </a>
            </td>
            <td>{{supplier.nomeFantasia | uppercase}}</td>
-           <td>{{supplier.cnpj}}</td>
-           <td>{{supplier.telefone}}</td>
+           <td>{{supplier.cnpj | mask:'00.000.000/0000-00'}}</td>
+           <td>{{supplier.telefone | mask:'(00) 00000-0000'}}</td>
            <td><a href="mailto:{{supplier.email}}">{{supplier.email}}</a></td>
         </tr>
      </table>

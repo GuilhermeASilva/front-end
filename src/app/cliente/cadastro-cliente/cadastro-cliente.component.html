@@ -3,12 +3,12 @@
   <app-loading [loading]="loading">
      <form [formGroup]="customerForm" name="customersForm" (submit)="adicionarCliente()">
      <input class="form-control" type="text" formControlName="nome" placeholder="Nome">
-     <input class="form-control" type="text" formControlName="cpf" placeholder="CPF" required="true">
+     <input class="form-control" type="text" formControlName="cpf" placeholder="CPF" mask="000.000.000-00" required="true">
      <input class="form-control" type="date" formControlName="dataNascimento" placeholder="Data de Nascimento" required="true">
      <input class="form-control" type="text" formControlName="endereco" placeholder="Endereço" required="true">
      <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade" required="true">
      <input class="form-control" type="text" formControlName="uf" placeholder="UF" required="true">
-     <input class="form-control" type="tel" formControlName="telefone" placeholder="Telefone" required="true">
+     <input class="form-control" type="tel" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000" required="true">
      <input class="form-control" type="text" formControlName="sexo" placeholder="Sexo" required="true">
      <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
      <button class="btn btn-success mt-3" type="submit">Adicionar Cliente</button>
