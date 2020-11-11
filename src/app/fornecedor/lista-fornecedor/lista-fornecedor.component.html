@@ -1,7 +1,7 @@
 <div class="jumbotron listagem">
   <h3>Fornecedores</h3>
   <app-loading [loading]="loading">
-     <app-filtro-entidade [lista]="suppliers" (buscar)="atualizarLista($event)"></app-filtro-entidade>
+     <app-filtro-entidade [lista]="suppliers" [parametro]="'nomeFantasia'" (buscar)="atualizarLista($event)"></app-filtro-entidade>
      <table show="suppliers.length > 0" class="table">
         <tr>
            <td></td>

@@ -33,6 +33,15 @@ import { ModalConfirmacaoComponent } from './shared/modal-confirmacao/modal-conf
 import { FooterComponent } from './shared/footer/footer.component';
 import { NotificationToastComponent } from './shared/notification-toast/notification-toast.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+// import { NgxMaskModule } from 'ngx-mask/lib/ngx-mask.module';
+import { IConfig } from 'ngx-mask';
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
+
 
 @NgModule({
   declarations: [
@@ -68,6 +77,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule, // Controlar formulário
+    // NgxMaskModule.forRoot(maskConfigFunction),
+
   ],
   providers: [
     {

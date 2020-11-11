@@ -1,7 +1,7 @@
 <div class="jumbotron listagem">
   <h3>Produtos</h3>
   <app-loading [loading]="loading">
-     <app-filtro-entidade [lista]="products" (buscar)="atualizarLista($event)"></app-filtro-entidade>
+     <app-filtro-entidade [lista]="products" [parametro]="'nome'" (buscar)="atualizarLista($event)"></app-filtro-entidade>
      <table show="products.length > 0" class="table">
         <tr>
            <td></td>
@@ -10,7 +10,7 @@
            <td><b>Código de Barras</b></td>
            <td><b>Valor</b></td>
         </tr>
-        <tr class="{selected: product.selected}" *ngFor="let product of products">
+        <tr class="{selected: product.selected}" *ngFor="let product of productsAux">
            <td>
               <a (click)="alterarProduto(product.id)">
                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

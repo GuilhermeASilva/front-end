@@ -14,6 +14,8 @@ import { CorrigeData } from 'src/app/utilities/corrige-data';
 import {
 	ClienteService
 } from '../cliente.service';
+// import { NgxMaskModule, IConfig } from 'ngx-mask'
+
 
 @Component({
 	selector: 'app-cadastro-cliente',
