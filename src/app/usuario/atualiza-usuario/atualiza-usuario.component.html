@@ -1,1 +1,25 @@
-<p>atualiza-usuario works!</p>
+<div class="jumbotron">
+  <h3>Atualização de Usuário</h3>
+  <app-loading [loading]="loading">
+    <form [formGroup]="userForm" name="usersForm">
+      <input class="form-control" type="text" formControlName="nomeUsuario" placeholder="Usuário" required="true">
+      <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
+      <input class="form-control" type="password" formControlName="senha" placeholder="Senha " required="true">
+      <input class="form-control" type="text" formControlName="tipoUsuario" placeholder="Tipo " required="true">
+      </form>
+     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Usuário</button>
+     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Usuário</button>
+  </app-loading>
+</div>
+
+<div *ngIf="modalDelete">
+  <app-modal-confirmacao [title]="'Apagar'" (confirmar)="apagarUsuario($event)">
+    Deseja realmente apagar esse cadastro?
+  </app-modal-confirmacao>
+</div>
+
+<div *ngIf="modalUpdate">
+  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarUsuario($event)">
+    Deseja realmente atualizar esse cadastro?
+  </app-modal-confirmacao>
+</div>
