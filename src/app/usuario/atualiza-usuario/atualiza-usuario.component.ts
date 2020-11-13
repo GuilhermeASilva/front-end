@@ -32,7 +32,9 @@ export class AtualizaUsuarioComponent implements OnInit {
 		this.userForm = this.fb.group({
 			nomeUsuario: [''],
 			email: [''],
+			senhaAntiga: [''],
 			senha: [''],
+			confirmarSenha: [''],
 			tipoUsuario: ['']
     })
 	}
@@ -65,10 +67,15 @@ export class AtualizaUsuarioComponent implements OnInit {
 		let user = {
 			nomeUsuario: form.nomeUsuario.value,
 			email: form.email.value,
-			senha: form.senha.value,
+      senhaAntiga: form.senhaAntiga.value,
+      senha: form.senha.value,
+      confirmarSenha: form.confirmarSenha.value,
       tipoUsuario: form.tipoUsuario.value
-		}
-		this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {
+    }
+    console.log("Objeto enviado: ", user)
+		// this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {
+      this.usuarioService.atualizarUsuario(user).subscribe(res => {
+        console.log(res)
 			if (res && res.status) {
 				alert("Usuario alterado com sucesso!")
         this.router.navigateByUrl('users')

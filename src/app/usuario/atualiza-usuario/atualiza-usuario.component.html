@@ -4,7 +4,9 @@
     <form [formGroup]="userForm" name="usersForm">
       <input class="form-control" type="text" formControlName="nomeUsuario" placeholder="Usuário" required="true">
       <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
+      <input class="form-control" type="password" formControlName="senhaAntiga" placeholder="Senha Antiga " required="true">
       <input class="form-control" type="password" formControlName="senha" placeholder="Senha " required="true">
+      <input class="form-control" type="password" formControlName="confirmarSenha" placeholder="Confirme a Senha " required="true">
       <input class="form-control" type="text" formControlName="tipoUsuario" placeholder="Tipo " required="true">
       </form>
      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Usuário</button>
