@@ -34,6 +34,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NotificationToastComponent } from './shared/notification-toast/notification-toast.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { AlteraSenhaUsuarioComponent } from './usuario/altera-senha-usuario/altera-senha-usuario.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -69,6 +70,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     ModalConfirmacaoComponent,
     NotificationToastComponent,
     DashboardComponent,
+    AlteraSenhaUsuarioComponent,
   ],
   imports: [
     CommonModule,

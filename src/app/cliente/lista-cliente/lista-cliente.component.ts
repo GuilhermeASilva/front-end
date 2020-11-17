@@ -21,7 +21,7 @@ export class ListaClienteComponent implements OnInit {
 	customers = []
 	customersAux = []
 	customer
-	loading = false
+  loading = false
 
 	constructor(private clienteService: ClienteService, private router: Router) {}
 

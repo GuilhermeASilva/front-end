@@ -29,13 +29,13 @@ import {
 export class AtualizaClienteComponent implements OnInit {
 
   message = "Atualização de Cliente";
+  entidade = "Cliente"
 	customerId: number
 	customer
 	customerForm: FormGroup
 	loading = false
 	modalUpdate = false
-	modalDelete = false
-
+  modalDelete = false
 
 	constructor(private activatedRoute: ActivatedRoute,
 		private clienteService: ClienteService,
@@ -93,20 +93,20 @@ export class AtualizaClienteComponent implements OnInit {
 			}
 			this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => {
 				if (res && res.status) {
-					alert("Cliente alterado com sucesso!")
-					this.router.navigateByUrl('customers')
+          // alert("Cliente alterado com sucesso!")
+          this.router.navigateByUrl('customers')
 				}
 			});
-			this.exibeModalUpdate(modalUpdate)
+      this.exibeModalUpdate(modalUpdate)
 		}
-	}
+  }
 
 	apagarCliente(modalDelete ? ) {
 		if (!modalDelete) this.exibeModalDelete(!modalDelete)
 		else {
 			this.clienteService.apagarCliente(this.customerId).subscribe(res => {
 				if (res && res.message && res.message == "Cliente deletado") {
-					alert("Cliente apagado com sucesso!")
+          alert("Cliente apagado com sucesso!")
 					this.router.navigateByUrl('customers')
 					this.exibeModalDelete(modalDelete)
 				}

@@ -33,11 +33,12 @@ export class AtualizaUsuarioComponent implements OnInit {
 	constructor(private activatedRoute: ActivatedRoute, private usuarioService: UsuarioService, private fb: FormBuilder, private router: Router) {
 		this.userForm = this.fb.group({
 			nomeUsuario: ['', [Validators.required]],
-			email: ['', [Validators.required]],
-			senhaAntiga: ['', [Validators.required]],
-			senha: ['', [Validators.required]],
-			confirmarSenha: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      senhaNova: ['', [Validators.required]],
 			tipoUsuario: ['', [Validators.required]]
+			// senhaAntiga: ['', [Validators.required]],
+			// senha: ['', [Validators.required]],
+			// confirmarSenha: ['', [Validators.required]],
     })
 	}
 
@@ -46,11 +47,11 @@ export class AtualizaUsuarioComponent implements OnInit {
 
 		if (this.userId !== 0) { // se houver ID ele carrega
 			this.loading = true
-			this.loadSupplier(this.userId) // Exibe dados no front
+			this.loadUser(this.userId) // Exibe dados no front
 		}
 	}
 
-	loadSupplier(id: number) {
+	loadUser(id: number) {
 		this.usuarioService.buscarUsuarioPorId(id).subscribe(res => {
 			this.user = res.data
 			this.preencheForm()
@@ -68,15 +69,16 @@ export class AtualizaUsuarioComponent implements OnInit {
 		let form = this.userForm.controls
 		let user = {
 			nomeUsuario: form.nomeUsuario.value,
-			email: form.email.value,
-      senhaAntiga: form.senhaAntiga.value,
-      senha: form.senha.value,
-      confirmarSenha: form.confirmarSenha.value,
+      email: form.email.value,
+      senhaNova: form.senhaNova.value,
       tipoUsuario: form.tipoUsuario.value
+      // senhaAntiga: form.senhaAntiga.value,
+      // senha: form.senha.value,
+      // confirmarSenha: form.confirmarSenha.value,
     }
     console.log("Objeto enviado: ", user)
-		// this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {
-      this.usuarioService.atualizarUsuario(user).subscribe(res => {
+		this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {
+      // this.usuarioService.atualizarUsuario(user, this.userId).subscribe(res => {
         console.log(res)
 			if (res && res.status) {
 				alert("Usuario alterado com sucesso!")
@@ -91,8 +93,8 @@ export class AtualizaUsuarioComponent implements OnInit {
     if(!modalDelete) this.exibeModalDelete(!modalDelete)
     else {
 		this.usuarioService.apagarUsuario(this.userId).subscribe(res => {
-			if (res && res.message && res.message == "Serviço deletado com sucesso") {
-				alert("Serviço apagado com sucesso!")
+			if (res && res.message && res.message == "Usuário deletado com sucesso") {
+				alert("Usuário apagado com sucesso!")
         this.router.navigateByUrl('users')
         this.exibeModalDelete(modalDelete)
 			}

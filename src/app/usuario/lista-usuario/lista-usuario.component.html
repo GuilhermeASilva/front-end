@@ -6,8 +6,8 @@
      <tr>
         <td></td>
         <td><b>Usuário</b></td>
-        <td><b>Tipo</b></td>
         <td><b>E-mail</b></td>
+        <td><b>Tipo</b></td>
      </tr>
      <tr class="{selected: user.selected}" *ngFor="let user of usersAux">
       <td>
@@ -18,8 +18,8 @@
         </a>
      </td>
         <td>{{user.nomeUsuario | uppercase}}</td>
-        <td>{{user.tipoUsuario}}</td>
         <td>{{user.email}}</td>
+        <td>{{user.tipoUsuario}}</td>
      </tr>
   </table>
   <hr>
