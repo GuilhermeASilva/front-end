@@ -17,6 +17,7 @@ import {
 
 export class ListaUsuarioComponent implements OnInit {
 
+  message = "Usuários"
 	users = []
 	usersAux = []
 	user

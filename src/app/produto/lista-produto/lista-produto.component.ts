@@ -17,6 +17,7 @@ import {
 
 export class ListaProdutoComponent implements OnInit {
 
+  message = "Produtos"
 	products = []
 	productsAux = []
 	product

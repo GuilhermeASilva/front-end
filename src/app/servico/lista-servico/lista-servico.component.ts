@@ -17,6 +17,7 @@ import {
 
 export class ListaServicoComponent implements OnInit {
 
+  message: "Serviços"
 	services = []
 	servicesAux = []
 	service

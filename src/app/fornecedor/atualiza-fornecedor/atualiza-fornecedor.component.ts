@@ -4,7 +4,8 @@
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	ActivatedRoute,
@@ -21,6 +22,7 @@ import {
 })
 export class AtualizaFornecedorComponent implements OnInit {
 
+  message = "Atualização de Fornecedor";
 	supplierId: number
 	supplier
 	supplierForm: FormGroup
@@ -30,15 +32,15 @@ export class AtualizaFornecedorComponent implements OnInit {
 
 	constructor(private activatedRoute: ActivatedRoute, private fornecedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
 		this.supplierForm = this.fb.group({
-			razaoSocial: [''],
-			cnpj: [''],
-			nomeFantasia: [''],
-			endereco: [''],
-			cidade: [''],
-			uf: [''],
-			telefone: [''],
-      email: [''],
-      site: ['']
+			razaoSocial: ['', [Validators.required]],
+			cnpj: ['', [Validators.required]],
+			nomeFantasia: ['', [Validators.required]],
+			endereco: ['', [Validators.required]],
+			cidade: ['', [Validators.required]],
+			uf: ['', [Validators.required]],
+			telefone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      site: ['', [Validators.required]]
     })
 	}
 

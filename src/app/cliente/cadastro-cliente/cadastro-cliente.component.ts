@@ -25,7 +25,7 @@ import {
 
 export class CadastroClienteComponent implements OnInit {
 
-	message = "Cadastro de Clientes";
+	message = "Cadastro de Cliente";
 	customers = [];
 	customer
 	customerForm: FormGroup
@@ -34,14 +34,14 @@ export class CadastroClienteComponent implements OnInit {
 	constructor(private clienteService: ClienteService, private fb: FormBuilder, private router: Router) {
 		this.customerForm = this.fb.group({
 			nome: ['', [Validators.required]],
-			cpf: [''],
-			dataNascimento: [''],
-			endereco: [''],
-			cidade: [''],
-			uf: [''],
-			telefone: [''],
-			sexo: [''],
-			email: ['']
+			cpf: ['', [Validators.required]],
+			dataNascimento: ['', [Validators.required]],
+			endereco: ['', [Validators.required]],
+			cidade: ['', [Validators.required]],
+			uf: ['', [Validators.required]],
+			telefone: ['', [Validators.required]],
+			sexo: ['', [Validators.required]],
+			email: ['', [Validators.required]]
 		})
 	}
 

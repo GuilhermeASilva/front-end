@@ -17,6 +17,7 @@ import {
 
 export class ListaClienteComponent implements OnInit {
 
+  message = "Clientes";
 	customers = []
 	customersAux = []
 	customer

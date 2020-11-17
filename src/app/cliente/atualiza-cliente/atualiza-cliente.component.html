@@ -2,18 +2,18 @@
   <h3>Atualização de Cliente</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="customerForm" name="customersForm">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Nome" required="true">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Nome">
       <input class="form-control" type="text" formControlName="cpf" placeholder="CPF" mask="000.000.000-00" required="false">
-      <input class="form-control" type="date" formControlName="dataNascimento" placeholder="Data de Nascimento" required="true">
-     <input class="form-control" type="text" formControlName="endereco" placeholder="Endereco" required="true">
-     <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade" required="true">
-     <input class="form-control" type="text" formControlName="uf" placeholder="UF" required="true">
-     <input class="form-control" type="text" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000" required="true">
-     <input class="form-control" type="text" formControlName="sexo" placeholder="Sexo" required="true">
-     <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
-     </form>
+      <input class="form-control" type="date" formControlName="dataNascimento" placeholder="Data de Nascimento">
+     <input class="form-control" type="text" formControlName="endereco" placeholder="Endereco">
+     <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade">
+     <input class="form-control" type="text" formControlName="uf" placeholder="UF">
+     <input class="form-control" type="text" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000">
+     <input class="form-control" type="text" formControlName="sexo" placeholder="Sexo">
+     <input class="form-control" type="email" formControlName="email" placeholder="E-mail">
      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Cliente</button>
      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Cliente</button>
+     </form>
   </app-loading>
 </div>
 

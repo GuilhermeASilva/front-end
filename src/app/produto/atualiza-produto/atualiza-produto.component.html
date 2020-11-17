@@ -2,13 +2,13 @@
   <h3>Atualização de Produto</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="productForm" name="productsForm">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Produto" required="true">
-      <input class="form-control" type="text" formControlName="marca" placeholder="Marca " required="true">
-      <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras" required="true">
-      <input class="form-control" type="number" formControlName="preco" placeholder="Valor" required="true">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Produto">
+      <input class="form-control" type="text" formControlName="marca" placeholder="Marca ">
+      <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras">
+      <input class="form-control" type="number" formControlName="preco" placeholder="Valor">
+      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Produto</button>
+      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Produto</button>
       </form>
-     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Produto</button>
-     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Produto</button>
   </app-loading>
 </div>
 

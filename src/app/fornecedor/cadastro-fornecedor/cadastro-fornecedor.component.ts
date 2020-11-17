@@ -22,7 +22,7 @@ import {
 
 export class CadastroFornecedorComponent implements OnInit {
 
-	message = "Cadastro de Fornecedores";
+	message = "Cadastro de Fornecedor";
 	suppliers = [];
 	supplier
 	supplierForm: FormGroup
@@ -31,23 +31,25 @@ export class CadastroFornecedorComponent implements OnInit {
 	constructor(private fornecedorService: FornecedorService, private fb: FormBuilder, private router: Router) {
 		this.supplierForm = this.fb.group({
 			razaoSocial: ['', [Validators.required]],
-			cnpj: [''],
-			nomeFantasia: [''],
-			endereco: [''],
-			cidade: [''],
-			uf: [''],
-			telefone: [''],
-      email: [''],
-      site: ['']
+			cnpj: ['', [Validators.required]],
+			nomeFantasia: ['', [Validators.required]],
+			endereco: ['', [Validators.required]],
+			cidade: ['', [Validators.required]],
+			uf: ['', [Validators.required]],
+			telefone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      site: ['', [Validators.required]]
 		})
 	}
 
 	ngOnInit(): void {}
 
 	adicionarFornecedor() {
-    if (this.supplierForm.invalid) alert("Erro, favor verificar os dados enviados!")
-		this.loading = true
-
+    if (this.supplierForm.invalid) {
+      this.loading = true
+      alert("Erro, favor verificar os dados enviados!")
+      this.loading = false
+    } else {
 		let form = this.supplierForm.controls
 		let supplier = {
 			razaoSocial: form.razaoSocial.value,
@@ -66,7 +68,8 @@ export class CadastroFornecedorComponent implements OnInit {
 				alert("Fornecedor cadastrado com sucesso!")
 				this.router.navigateByUrl('suppliers')
 			}
-		});
+    });
+    }
     this.loading = false
   }
 }

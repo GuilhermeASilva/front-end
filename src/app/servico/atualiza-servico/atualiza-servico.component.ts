@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	ActivatedRoute,
@@ -21,6 +22,7 @@ import {
 })
 export class AtualizaServicoComponent implements OnInit {
 
+  message = "Atualização de Serviço";
 	serviceId: number
 	service
 	serviceForm: FormGroup
@@ -30,12 +32,12 @@ export class AtualizaServicoComponent implements OnInit {
 
 	constructor(private activatedRoute: ActivatedRoute, private servicoService: ServicoService, private fb: FormBuilder, private router: Router) {
 		this.serviceForm = this.fb.group({
-			nroServico: [''],
-			nome: [''],
-			descricao: [''],
-			valor: [''],
-			prazoDias: [''],
-			categoria: ['']
+			nroServico: ['', [Validators.required]],
+			nome: ['', [Validators.required]],
+			descricao: ['', [Validators.required]],
+			valor: ['', [Validators.required]],
+			prazoDias: ['', [Validators.required]],
+			categoria: ['', [Validators.required]]
     })
 	}
 

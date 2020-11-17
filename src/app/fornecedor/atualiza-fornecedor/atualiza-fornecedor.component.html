@@ -1,19 +1,19 @@
 <div class="jumbotron">
-  <h3>Atualização de Fornecedor</h3>
+  <h3>{{message}}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="supplierForm" name="suppliersForm">
-      <input class="form-control" type="text" formControlName="razaoSocial" placeholder="Razão Social" required="true">
-      <input class="form-control" type="text" formControlName="cnpj" placeholder="CNPJ" mask="00.000.000/0000-00" required="true">
-      <input class="form-control" type="text" formControlName="nomeFantasia" placeholder="Nome Fantasia" required="true">
-      <input class="form-control" type="text" formControlName="endereco" placeholder="Endereço" required="true">
-      <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade" required="true">
-      <input class="form-control" type="text" formControlName="uf" placeholder="UF" required="true">
-      <input class="form-control" type="text" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000" required="true">
-      <input class="form-control" type="email" formControlName="email" placeholder="E-mail" required="true">
-      <input class="form-control" type="url" formControlName="site" placeholder="Site" required="true">
-      </form>
+      <input class="form-control" type="text" formControlName="razaoSocial" placeholder="Razão Social">
+      <input class="form-control" type="text" formControlName="cnpj" placeholder="CNPJ" mask="00.000.000/0000-00">
+      <input class="form-control" type="text" formControlName="nomeFantasia" placeholder="Nome Fantasia">
+      <input class="form-control" type="text" formControlName="endereco" placeholder="Endereço">
+      <input class="form-control" type="text" formControlName="cidade" placeholder="Cidade">
+      <input class="form-control" type="text" formControlName="uf" placeholder="UF">
+      <input class="form-control" type="text" formControlName="telefone" placeholder="Telefone" mask="(00) 00000-0000">
+      <input class="form-control" type="email" formControlName="email" placeholder="E-mail">
+      <input class="form-control" type="url" formControlName="site" placeholder="Site">
      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Fornecedor</button>
      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Fornecedor</button>
+    </form>
   </app-loading>
 </div>
 

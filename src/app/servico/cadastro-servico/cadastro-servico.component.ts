@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	Router
@@ -21,7 +22,7 @@ import {
 
 export class CadastroServicoComponent implements OnInit {
 
-	message = "Cadastro de Serviços";
+	message = "Cadastro de Serviço";
 	services = [];
 	service
 	serviceForm: FormGroup
@@ -29,12 +30,12 @@ export class CadastroServicoComponent implements OnInit {
 
 	constructor(private servicoService: ServicoService, private fb: FormBuilder, private router: Router) {
 		this.serviceForm = this.fb.group({
-			nroServico: [''],
-			nome: [''],
-			descricao: [''],
-			valor: [''],
-			prazoDias: [''],
-			categoria: ['']
+			nroServico: ['', [Validators.required]],
+			nome: ['', [Validators.required]],
+			descricao: ['', [Validators.required]],
+			valor: ['', [Validators.required]],
+			prazoDias: ['', [Validators.required]],
+			categoria: ['', [Validators.required]]
 		})
 	}
 

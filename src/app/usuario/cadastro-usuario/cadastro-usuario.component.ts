@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
 	FormBuilder,
-	FormGroup
+	FormGroup,
+  Validators
 } from '@angular/forms';
 import {
 	Router
@@ -21,7 +22,7 @@ import {
 
 export class CadastroUsuarioComponent implements OnInit {
 
-	message = "Cadastro de Usuários";
+	message = "Cadastro de Usuário";
 	users = [];
 	user
 	userForm: FormGroup
@@ -29,10 +30,10 @@ export class CadastroUsuarioComponent implements OnInit {
 
 	constructor(private usuarioService: UsuarioService, private fb: FormBuilder, private router: Router) {
 		this.userForm = this.fb.group({
-			nomeUsuario: [''],
-			email: [''],
-			senha: [''],
-			tipoUsuario: [''],
+			nomeUsuario: ['', [Validators.required]],
+			email: ['', [Validators.required]],
+			senha: ['', [Validators.required]],
+			tipoUsuario: ['', [Validators.required]],
 		})
 	}
 

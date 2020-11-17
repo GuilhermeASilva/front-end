@@ -17,6 +17,7 @@ import {
 
 export class ListaFornecedorComponent implements OnInit {
 
+  message = "Fornecedores";
 	suppliers = []
 	suppliersAux = []
 	supplier

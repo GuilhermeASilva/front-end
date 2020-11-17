@@ -2,14 +2,14 @@
   <h3>Atualização de Serviço</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="serviceForm" name="servicesForm">
-      <input class="form-control" type="text" formControlName="nroServico" placeholder="Número" required="true">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Servico" required="true">
-      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria " required="true">
-      <input class="form-control" type="text" formControlName="prazoDias" placeholder="Prazo" required="true">
-      <input class="form-control" type="number" formControlName="valor" placeholder="Valor" required="true">
-      </form>
-     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Servico</button>
-     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Servico</button>
+      <input class="form-control" type="text" formControlName="nroServico" placeholder="Número">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Servico">
+      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria ">
+      <input class="form-control" type="text" formControlName="prazoDias" placeholder="Prazo">
+      <input class="form-control" type="number" formControlName="valor" placeholder="Valor">
+     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Serviço</button>
+     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Serviço</button>
+    </form>
   </app-loading>
 </div>
 
