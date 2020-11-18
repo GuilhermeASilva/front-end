@@ -33,7 +33,6 @@ export class CadastroUsuarioComponent implements OnInit {
 			nomeUsuario: ['', [Validators.required]],
 			email: ['', [Validators.required]],
 			senha: ['', [Validators.required]],
-			confirmarSenha: ['', [Validators.required]],
 			tipoUsuario: ['', [Validators.required]],
 		})
 	}
@@ -48,7 +47,6 @@ export class CadastroUsuarioComponent implements OnInit {
 			nomeUsuario: form.nomeUsuario.value,
 			email: form.email.value,
       senha: form.senha.value,
-      confirmarSenha: form.confirmarSenha.value,
       tipoUsuario: form.tipoUsuario.value
 		}
 		this.usuarioService.adicionarUsuario(user).subscribe(res => {

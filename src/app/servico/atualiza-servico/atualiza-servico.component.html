@@ -2,10 +2,11 @@
   <h3>Atualização de Serviço</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="serviceForm" name="servicesForm">
-      <input class="form-control" type="text" formControlName="nroServico" placeholder="Número">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Servico">
-      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria ">
-      <input class="form-control" type="text" formControlName="prazoDias" placeholder="Prazo">
+      <input class="form-control" type="number" formControlName="nroServico" placeholder="Número" mask="000">
+      <input class="form-control" type="text" formControlName="nome" placeholder="Nome">
+      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria">
+      <input class="form-control" type="number" formControlName="prazoDias" placeholder="Prazo" mask="000">
+      <input class="form-control" type="text" formControlName="descricao" placeholder="Descrição">
       <input class="form-control" type="number" formControlName="valor" placeholder="Valor">
      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Serviço</button>
      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Serviço</button>

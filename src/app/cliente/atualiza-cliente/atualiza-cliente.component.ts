@@ -93,7 +93,7 @@ export class AtualizaClienteComponent implements OnInit {
 			}
 			this.clienteService.atualizarCliente(this.customerId, customer).subscribe(res => {
 				if (res && res.status) {
-          // alert("Cliente alterado com sucesso!")
+          alert("Cliente alterado com sucesso!")
           this.router.navigateByUrl('customers')
 				}
 			});

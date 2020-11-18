@@ -1,14 +1,13 @@
 <div class="jumbotron">
-  <h3>Atualização de Usuário</h3>
+  <h3>{{message}}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="userForm" name="usersForm">
       <input class="form-control" type="text" formControlName="nomeUsuario" placeholder="Usuário">
-      <input class="form-control" type="email" formControlName="email" placeholder="E-mail">
-      <input class="form-control" type="password" formControlName="senhaNova" placeholder="Nova Senha ">
       <input class="form-control" type="text" formControlName="tipoUsuario" placeholder="Tipo ">
-            <!-- <input class="form-control" type="password" formControlName="senhaAntiga" placeholder="Senha Antiga ">
-      <input class="form-control" type="password" formControlName="senha" placeholder="Senha ">
-      <input class="form-control" type="password" formControlName="confirmarSenha" placeholder="Confirme a Senha "> -->
+      <input class="form-control" type="email" formControlName="email" placeholder="E-mail">
+      <input class="form-control" type="password" formControlName="senhaAntiga" placeholder="Senha Antiga ">
+      <input class="form-control" type="password" formControlName="senha" placeholder="Nova Senha ">
+      <input class="form-control" type="password" formControlName="confirmarSenha" placeholder="Confirme a Senha ">
      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Usuário</button>
      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Usuário</button>
     </form>

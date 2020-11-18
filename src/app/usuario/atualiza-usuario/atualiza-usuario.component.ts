@@ -32,13 +32,12 @@ export class AtualizaUsuarioComponent implements OnInit {
 
 	constructor(private activatedRoute: ActivatedRoute, private usuarioService: UsuarioService, private fb: FormBuilder, private router: Router) {
 		this.userForm = this.fb.group({
-			nomeUsuario: ['', [Validators.required]],
+      nomeUsuario: ['', [Validators.required]],
+      tipoUsuario: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      senhaNova: ['', [Validators.required]],
-			tipoUsuario: ['', [Validators.required]]
-			// senhaAntiga: ['', [Validators.required]],
-			// senha: ['', [Validators.required]],
-			// confirmarSenha: ['', [Validators.required]],
+      senhaAntiga: ['', [Validators.required]],
+			senha: ['', [Validators.required]],
+			confirmarSenha: ['', [Validators.required]],
     })
 	}
 
@@ -68,13 +67,12 @@ export class AtualizaUsuarioComponent implements OnInit {
     else {
 		let form = this.userForm.controls
 		let user = {
-			nomeUsuario: form.nomeUsuario.value,
+      nomeUsuario: form.nomeUsuario.value,
+      tipoUsuario: form.tipoUsuario.value,
       email: form.email.value,
-      senhaNova: form.senhaNova.value,
-      tipoUsuario: form.tipoUsuario.value
-      // senhaAntiga: form.senhaAntiga.value,
-      // senha: form.senha.value,
-      // confirmarSenha: form.confirmarSenha.value,
+      senhaAntiga: form.senhaAntiga.value,
+      senha: form.senha.value,
+      confirmarSenha: form.confirmarSenha.value,
     }
     console.log("Objeto enviado: ", user)
 		this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {
