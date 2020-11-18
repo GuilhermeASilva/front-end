@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3>Cadastro de Usuários</h3>
+  <h3>{{message}}</h3>
   <app-loading [loading]="loading">
       <form [formGroup]="userForm" name="usersForm" (submit)="adicionarUsuario()">
       <input class="form-control" type="text" formControlName="nomeUsuario" placeholder="Usuário">

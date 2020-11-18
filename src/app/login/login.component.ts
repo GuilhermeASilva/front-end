@@ -10,6 +10,7 @@ import { AuthService } from '../interceptors/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  message = "Cicloview"
   loginForm : FormGroup
 
   constructor(private fb : FormBuilder, private authService : AuthService, private router: Router){

@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h3>Cadastro de Serviço</h3>
+  <h3>{{message}}</h3>
   <app-loading [loading]="loading">
      <form [formGroup]="serviceForm" name="servicesForm" (submit)="adicionarServico()">
      <input class="form-control" type="number" formControlName="nroServico" placeholder="Número" mask="000">

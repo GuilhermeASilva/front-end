@@ -1,5 +1,5 @@
 <div class="jumbotron listagem">
-  <h3>Serviços</h3>
+  <h3>{{message}}</h3>
   <app-loading [loading]="loading">
      <app-filtro-entidade [lista]="services" [parametro]="'nome'" (buscar)="atualizarLista($event)"></app-filtro-entidade>
      <table show="services.length > 0" class="table">
