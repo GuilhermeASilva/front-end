@@ -35,9 +35,9 @@ export class AtualizaUsuarioComponent implements OnInit {
       nomeUsuario: ['', [Validators.required]],
       tipoUsuario: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      senhaAntiga: ['', [Validators.required]],
-			senha: ['', [Validators.required]],
-			confirmarSenha: ['', [Validators.required]],
+      // senhaAntiga: ['', [Validators.required]],
+			senhaNova: ['', [Validators.required]],
+			// confirmarSenha: ['', [Validators.required]],
     })
 	}
 
@@ -70,9 +70,9 @@ export class AtualizaUsuarioComponent implements OnInit {
       nomeUsuario: form.nomeUsuario.value,
       tipoUsuario: form.tipoUsuario.value,
       email: form.email.value,
-      senhaAntiga: form.senhaAntiga.value,
-      senha: form.senha.value,
-      confirmarSenha: form.confirmarSenha.value,
+      // senhaAntiga: form.senhaAntiga.value,
+      senhaNova: form.senhaNova.value,
+      // confirmarSenha: form.confirmarSenha.value,
     }
     console.log("Objeto enviado: ", user)
 		this.usuarioService.atualizarUsuario(this.userId, user).subscribe(res => {

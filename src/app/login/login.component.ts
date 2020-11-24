@@ -6,38 +6,41 @@ import { AuthService } from '../interceptors/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  styleUrls: ['./login.component.less'],
 })
 export class LoginComponent implements OnInit {
+  message = 'Cicloview';
+  loginForm: FormGroup;
 
-  message = "Cicloview"
-  loginForm : FormGroup
-
-  constructor(private fb : FormBuilder, private authService : AuthService, private router: Router){
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
-      senha: ['', Validators.required]
-    })
-   }
+      senha: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
-    if (this.authService.estaLogadoBolean()) this.router.navigate(['/'])
+    if (this.authService.estaLogadoBolean()) this.router.navigate(['/']);
   }
 
   onSubmit() {
-    let form = this.loginForm.controls
+    let form = this.loginForm.controls;
     let login = {
       email: form.email.value,
-      senha: form.senha.value
-    }
+      senha: form.senha.value,
+    };
     this.authService.validaLogin(login).subscribe((res: any) => {
-      console.log("- Imit")
-      if(res && res.token!= undefined) {
-        this.authService.login(res.token, res.user.tipoUsuario)
-        this.router.navigate(['/'])
+      console.log('- Imit');
+      if (res && res.token != undefined) {
+        this.authService.login(res.token, res.user.tipoUsuario);
+        this.router.navigate(['/']);
       } else {
-      alert("Erro ao tentar realizar login!")
-    }
-})
-    }
+        alert('Erro ao tentar realizar login!');
+      }
+    });
+  }
 }

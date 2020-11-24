@@ -1,8 +1,17 @@
-<form [formGroup]="filtroForm" name="filtroForm">
+<form [formGroup]="filtroForm" name="filtroForm" (keydown)="filtrar()">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" formControlName="filtro" placeholder="Digite um nome" aria-label="Digite um nome" aria-describedby="basic-addon2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="filtro"
+      placeholder="Digite um nome"
+      aria-label="Digite um nome"
+      aria-describedby="basic-addon2"
+    />
     <div class="input-group-append">
-      <button class="btn btn-success" type="button" (click)="filtrar()">Filtrar</button>
+      <button class="btn btn-success" type="button" (click)="filtrar()">
+        Filtrar
+      </button>
     </div>
   </div>
 </form>
