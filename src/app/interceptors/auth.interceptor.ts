@@ -47,12 +47,12 @@ export class AuthInterceptor implements HttpInterceptor {
               (item) => item.property === 'concorrencia'
             ).message;
           } else if (err.error && err.error.length > 0 && err.status !== 500) {
-            console.log(err.error);
+            console.log("Erro 1 do intercept: ", err.error);
           } else {
             alert(
               'Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!'
             );
-            console.log('Erro: ', err);
+            console.log("Erro 2 do intercept: ", err);
           }
           return throwError(err);
         }

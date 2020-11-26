@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     };
     this.authService.validaLogin(login).subscribe((res: any) => {
       if (res && res.token != undefined) {
-        this.authService.login(res.token, res.user.tipoUsuario);
+        this.authService.login(res.user.id, res.user.email, res.user.tipoUsuario, res.token );
         this.router.navigate(['/']);
         // console.log('Resultado do login: ', res);
       } else {

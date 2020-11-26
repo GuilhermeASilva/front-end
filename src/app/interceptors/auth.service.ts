@@ -28,16 +28,20 @@ export class AuthService {
     return this.administrador.asObservable();
   }
 
-  login(token, tipoUsuario) {
-    localStorage.setItem('auth', JSON.stringify(token));
+  login(id, email, tipoUsuario, token) {
+    localStorage.setItem('id', JSON.stringify(id));
+    localStorage.setItem('email', JSON.stringify(email));
     localStorage.setItem('tipoUsuario', JSON.stringify(tipoUsuario));
+    localStorage.setItem('auth', JSON.stringify(token));
     if (tipoUsuario == 'admin') this.administrador.next(true);
     else this.administrador.next(false);
   }
 
   logout() {
-    localStorage.removeItem('auth');
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
     localStorage.removeItem('tipoUsuario');
+    localStorage.removeItem('auth');
     this.userSubject.next(false);
     this.administrador.next(false);
     // alert('Até mais!')

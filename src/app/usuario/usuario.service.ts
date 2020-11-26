@@ -20,9 +20,11 @@ export class UsuarioService {
   };
 
   atualizarUsuario = function (id: number, user) {
-    // atualizarUsuario = function (user) {
     return this.http.put(`http://localhost:3333/user/${id}`, user);
-    // return this.http.put('http://localhost:3333/user', user)
+  };
+
+  atualizarProprioUsuario = function (user) {
+    return this.http.put('http://localhost:3333/user', user);
   };
 
   apagarUsuario = function (id: number) {

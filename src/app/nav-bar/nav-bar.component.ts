@@ -24,21 +24,21 @@ export class NavBarComponent implements OnInit {
     this.admin$ = this.authService.ehAdministrador();
     this.cdr.detectChanges();
     this.ehAdmin = this.authService.getAdmin();
-    console.log(this.ehAdmin);
+    // console.log("É admin?", this.ehAdmin);
   }
 
   logout(modal?) {
     // console.log(modal)
-    if (!modal) this.exibeModal(!modal);
+    if (!modal) this.exibeModalLogout(!modal);
     else {
       this.authService.logout();
       this.cdr.detectChanges();
       this.router.navigateByUrl('login');
-      this.exibeModal(modal);
+      this.exibeModalLogout(modal);
     }
   }
 
-  exibeModal(fechar?) {
+  exibeModalLogout(fechar?) {
     if (fechar) this.modal = false;
     else this.modal = true;
   }

@@ -37,6 +37,7 @@ import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { ListaOrdemDeServicoComponent } from './ordem-de-servico/lista-ordem-de-servico/lista-ordem-de-servico.component';
 import { AtualizaOrdemDeServicoComponent } from './ordem-de-servico/atualiza-ordem-de-servico/atualiza-ordem-de-servico.component';
 import { CadastroOrdemDeServicoComponent } from './ordem-de-servico/cadastro-ordem-de-servico/cadastro-ordem-de-servico.component';
+import { AtualizaProprioUsuarioComponent } from './usuario/atualiza-proprio-usuario/atualiza-proprio-usuario.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -74,6 +75,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     ListaOrdemDeServicoComponent,
     AtualizaOrdemDeServicoComponent,
     CadastroOrdemDeServicoComponent,
+    AtualizaProprioUsuarioComponent,
   ],
   imports: [
     CommonModule,
