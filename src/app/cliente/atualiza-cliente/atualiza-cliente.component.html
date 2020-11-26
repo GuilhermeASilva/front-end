@@ -2,64 +2,141 @@
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="customerForm" name="customersForm">
-      <input
-        class="form-control"
-        type="text"
-        formControlName="nome"
-        placeholder="Nome"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="cpf"
-        placeholder="CPF"
-        mask="000.000.000-00"
-      />
-      <input
-        class="form-control"
-        type="date"
-        formControlName="dataNascimento"
-        placeholder="Data de Nascimento"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="endereco"
-        placeholder="Endereço"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="cidade"
-        placeholder="Cidade"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="uf"
-        placeholder="UF"
-        mask="SS"
-      />
-      <input
-        class="form-control"
-        type="tel"
-        formControlName="telefone"
-        placeholder="Telefone"
-        mask="(00) 00000-0000"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="sexo"
-        placeholder="Sexo"
-        mask="S"
-      />
-      <input
-        class="form-control"
-        type="email"
-        formControlName="email"
-        placeholder="E-mail"
-      />
+      <div class="form-group row">
+        <label for="inputNome" class="col-sm-2 col-form-label jumbotron-title"
+          >Nome:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="nome"
+            placeholder="Nome Completo"
+            id="inputNome"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputCpf" class="col-sm-2 col-form-label jumbotron-title"
+          >CPF:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cpf"
+            placeholder="000.000.000-00"
+            mask="000.000.000-00"
+            id="inputCpf"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputDataNascimento"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Data de Nasc.:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="date"
+            formControlName="dataNascimento"
+            id="inputDataNascimento"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputEndereco"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Endereço:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="endereco"
+            placeholder="Endereço Completo"
+            id="inputEndereco"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputCidade" class="col-sm-2 col-form-label jumbotron-title"
+          >Cidade:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cidade"
+            placeholder="Cidade"
+            id="inputCidade"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputUf" class="col-sm-2 col-form-label jumbotron-title"
+          >Estado:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="uf"
+            placeholder="UF"
+            mask="SS"
+            id="inputUf"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputTelefone"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Telefone:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="tel"
+            formControlName="telefone"
+            placeholder="(00) 00000-0000"
+            mask="(00) 00000-0009"
+            id="inputTelefone"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputSexo" class="col-sm-2 col-form-label jumbotron-title"
+          >Sexo:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="sexo"
+            placeholder="F/M/NB"
+            mask="S"
+            id="inputSexo"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label jumbotron-title"
+          >E-mail:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="email"
+            formControlName="email"
+            placeholder="email@domain.com.br"
+            id="inputEmail"
+          />
+        </div>
+      </div>
       <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">
         Atualizar Cliente
       </button>

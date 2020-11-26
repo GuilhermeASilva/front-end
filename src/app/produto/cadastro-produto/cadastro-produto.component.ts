@@ -43,6 +43,7 @@ export class CadastroProdutoComponent implements OnInit {
         preco: form.preco.value,
         codBarras: form.codBarras.value,
       };
+      // console.log("Objeto enviado: ", product)
       this.produtoService.adicionarProduto(product).subscribe((res) => {
         if (res && res.status) {
           console.log('Retorno da inserção: ', res);

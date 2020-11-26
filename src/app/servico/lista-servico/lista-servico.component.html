@@ -36,7 +36,7 @@
             </svg>
           </a>
         </td>
-        <td>{{ service.nroServico }}</td>
+        <td>{{ service.nroServico | mask:'990' }}</td>
         <td>{{ service.nome | uppercase }}</td>
         <td>{{ service.categoria }}</td>
         <td>{{ service.prazoDias + " dias" }}</td>

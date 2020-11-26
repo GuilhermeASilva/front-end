@@ -2,63 +2,143 @@
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="supplierForm" name="suppliersForm">
-      <input
-        class="form-control"
-        type="text"
-        formControlName="razaoSocial"
-        placeholder="Razão Social"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="cnpj"
-        placeholder="CNPJ"
-        mask="00.000.000/0000-00"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="nomeFantasia"
-        placeholder="Nome Fantasia"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="endereco"
-        placeholder="Endereço"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="cidade"
-        placeholder="Cidade"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="uf"
-        placeholder="UF"
-        mask="SS"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="telefone"
-        placeholder="Telefone"
-        mask="(00) 00000-0000"
-      />
-      <input
-        class="form-control"
-        type="email"
-        formControlName="email"
-        placeholder="E-mail"
-      />
-      <input
-        class="form-control"
-        type="url"
-        formControlName="site"
-        placeholder="Site"
-      />
+      <div class="form-group row">
+        <label
+          for="inputRazaoSocial"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Razão Social:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="razaoSocial"
+            placeholder="Razão Social"
+            id="inputRazaoSocial"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputCnpj" class="col-sm-2 col-form-label jumbotron-title"
+          >CNPJ:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cnpj"
+            placeholder="00.000.000/0000-00"
+            mask="00.000.000/0000-00"
+            id="inputCnpj"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputNomeFantasia"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Nome Fantasia:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="nomeFantasia"
+            placeholder="Nome Fantasia"
+            id="inputNomeFantasia"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputEndereço"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Endereço:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="endereco"
+            placeholder="Endereço"
+            id="inputEndereço"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputCidade" class="col-sm-2 col-form-label jumbotron-title"
+          >Cidade:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cidade"
+            placeholder="Cidade"
+            id="inputCidade"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputUf" class="col-sm-2 col-form-label jumbotron-title"
+          >Estado:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="uf"
+            placeholder="UF"
+            mask="SS"
+            id="inputUf"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputTelefone"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Telefone:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="tel"
+            formControlName="telefone"
+            placeholder="(00) 00000-0000"
+            mask="(00) 00000-0009"
+            id="inputTelefone"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 col-form-label jumbotron-title"
+          >E-mail:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="email"
+            formControlName="email"
+            placeholder="email@domain.com.br"
+            id="inputEmail"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputSite" class="col-sm-2 col-form-label jumbotron-title"
+          >Site:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="url"
+            formControlName="site"
+            placeholder="www.domain.com.br"
+            id="inputSite"
+          />
+        </div>
+      </div>
       <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">
         Atualizar Fornecedor
       </button>

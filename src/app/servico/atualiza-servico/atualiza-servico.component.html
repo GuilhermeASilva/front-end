@@ -2,44 +2,100 @@
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="serviceForm" name="servicesForm">
-      <input
-        class="form-control"
-        type="text"
-        formControlName="nroServico"
-        placeholder="Número"
-        mask="990"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="nome"
-        placeholder="Nome"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="categoria"
-        placeholder="Categoria"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="prazoDias"
-        placeholder="Prazo"
-        mask="990"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="descricao"
-        placeholder="Descrição"
-      />
-      <input
-        class="form-control"
-        type="number"
-        formControlName="valor"
-        placeholder="Valor"
-      />
+      <div class="form-group row">
+        <label
+          for="inputNroServico"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Número:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="nroServico"
+            placeholder="000"
+            mask="990"
+            id="inputNroServico"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputNome" class="col-sm-2 col-form-label jumbotron-title"
+          >Nome:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="nome"
+            placeholder="Nome"
+            id="inputNome"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputCategoria"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Categoria:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="categoria"
+            placeholder="Categoria"
+            id="inputCategoria"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputPrazoDias"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Prazo:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="prazoDias"
+            placeholder="Prazo em dias"
+            mask="990"
+            id="inputPrazoDias"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputDescricao"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Descrição:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="descricao"
+            placeholder="Breve descrição do serviço oferecido."
+            id="inputDescricao"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputValor" class="col-sm-2 col-form-label jumbotron-title"
+          >Valor:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="number"
+            formControlName="valor"
+            placeholder="0000.00"
+            id="inputValor"
+          />
+        </div>
+      </div>
       <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">
         Atualizar Serviço
       </button>

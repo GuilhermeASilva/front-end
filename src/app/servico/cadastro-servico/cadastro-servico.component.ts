@@ -44,6 +44,7 @@ export class CadastroServicoComponent implements OnInit {
       prazoDias: form.prazoDias.value,
       categoria: form.categoria.value,
     };
+    console.log("Objeto enviado: ", service)
     this.servicoService.adicionarServico(service).subscribe((res) => {
       if (res && res.status) {
         this.loading = false;
