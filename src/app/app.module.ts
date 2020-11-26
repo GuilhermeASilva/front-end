@@ -44,7 +44,6 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
   };
 };
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,20 +82,17 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     HttpClientModule,
     ReactiveFormsModule, // Controlar formulário
     NgxMaskModule.forRoot(),
-
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, // informa que será um interceptador
       useClass: AuthInterceptor, // Qual interceptador usar
-      multi: true // Se houver mais algum interceptador usar também
-    }
+      multi: true, // Se houver mais algum interceptador usar também
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule {
-}
+export class AppModule {}
 
 // declare module "@angular/core" {
 //   interface ModuleWithProviders<T = any> {

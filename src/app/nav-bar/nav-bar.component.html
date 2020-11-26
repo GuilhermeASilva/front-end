@@ -1,60 +1,166 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="['/']">Cicloview</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" *ngIf="(logado$ | async)" id="navbarNav">
-     <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','customers']">Listar clientes</a>
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','customer_registration']">Cadastrar novo cliente</a>
-           </div>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fornecedores</a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','suppliers']">Listar fornecedores</a>
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','supplier_registration']">Cadastrar novo fornecedor</a>
-           </div>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Produtos</a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','products']">Listar produtos</a>
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','product_registration']">Cadastrar novo produto</a>
-           </div>
-        </li>
-        <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Serviços</a>
-           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','services']">Listar serviços</a>
-              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','service_registration']">Cadastrar novo serviço</a>
-           </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordens de Serviço</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','orders']">Listar demandas</a>
-             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','order_registration']">Cadastrar nova ordem</a>
-          </div>
-       </li>
-        <li *ngIf="ehAdmin" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuários</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','users']">Listar usuários</a>
-             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','user_registration']">Cadastrar novo usuário</a>
-          </div>
-       </li>
-        <div class="botao-sair">
-           <button type=button class="btn btn-danger" (click)="exibeModal()">Sair</button>
+  <div class="collapse navbar-collapse" *ngIf="logado$ | async" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Clientes</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'customers']"
+            >Listar clientes</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'customer_registration']"
+            >Cadastrar novo cliente</a
+          >
         </div>
-     </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Fornecedores</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'suppliers']"
+            >Listar fornecedores</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'supplier_registration']"
+            >Cadastrar novo fornecedor</a
+          >
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Produtos</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'products']"
+            >Listar produtos</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'product_registration']"
+            >Cadastrar novo produto</a
+          >
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Serviços</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'services']"
+            >Listar serviços</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'service_registration']"
+            >Cadastrar novo serviço</a
+          >
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Ordens de Serviço</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'orders']"
+            >Listar demandas</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'order_registration']"
+            >Cadastrar nova ordem</a
+          >
+        </div>
+      </li>
+      <li *ngIf="ehAdmin" class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Usuários</a
+        >
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'users']"
+            >Listar usuários</a
+          >
+          <a
+            class="dropdown-item navigate-bar-option"
+            [routerLink]="['/', 'user_registration']"
+            >Cadastrar novo usuário</a
+          >
+        </div>
+      </li>
+      <div class="botao-sair">
+        <button type="button" class="btn btn-danger" (click)="exibeModal()">
+          Sair
+        </button>
+      </div>
+    </ul>
   </div>
 </nav>
 <div *ngIf="modal">
   <app-modal-confirmacao [title]="'Logout'" (confirmar)="logout($event)">
-  Deseja sair do sistema?
+    Deseja sair do sistema?
   </app-modal-confirmacao>
 </div>

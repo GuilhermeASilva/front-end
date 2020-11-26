@@ -35,7 +35,7 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
 
   adicionarOrdemDeServico() {
     if (this.orderForm.invalid) {
-      console.log(this.orderForm)
+      console.log(this.orderForm);
       this.loading = true;
       alert('Erro, favor verificar os dados enviados!');
       this.loading = false;

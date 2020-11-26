@@ -1,8 +1,31 @@
 <div class="jumbotron" ng-controller="loginCtrl">
-  <h3>{{message}}</h3>
+  <h3>{{ message }}</h3>
   <form [formGroup]="loginForm">
-      <input class="login-form-control" type="email" id="email" placeholder="E-mail" formControlName="email"><br>
-      <input class="login-form-control" type="password" id="senha" placeholder="Senha" formControlName="senha"><br>
-      <button class="btn btn-success mt-1" type="button" [disabled]="loginForm.controls.email.value && loginForm.controls.senha.value? false : true" (click)="onSubmit()">Entrar</button>
+    <input
+      class="login-form-control"
+      type="email"
+      id="email"
+      placeholder="E-mail"
+      formControlName="email"
+    /><br />
+    <input
+      class="login-form-control"
+      type="password"
+      id="senha"
+      placeholder="Senha"
+      formControlName="senha"
+    /><br />
+    <button
+      class="btn btn-success mt-1"
+      type="button"
+      [disabled]="
+        loginForm.controls.email.value && loginForm.controls.senha.value
+          ? false
+          : true
+      "
+      (click)="onSubmit()"
+    >
+      Entrar
+    </button>
   </form>
 </div>

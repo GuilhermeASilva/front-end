@@ -26,104 +26,121 @@ import { ListaUsuarioComponent } from './usuario/lista-usuario/lista-usuario.com
 
 const routes: Routes = [
   //Padrão
-  { path: '',
-  // pathMatch: 'full' // exatamente como está no path para não considerar nas outras rotas
-  // redirectTo: 'login',
-  component: HomeComponent,
-  canActivate: [AuthGuard], // Guarda de rotas
-},
+  {
+    path: '',
+    // pathMatch: 'full' // exatamente como está no path para não considerar nas outras rotas
+    // redirectTo: 'login',
+    component: HomeComponent,
+    canActivate: [AuthGuard], // Guarda de rotas
+  },
 
-{ path: 'login',
-component: LoginComponent,
-},
+  { path: 'login', component: LoginComponent },
 
-// Cliente
-{ path: 'customers',
-canActivate: [AuthGuard],
-component: ListaClienteComponent,
-},
-{ path: 'customer_registration',
-canActivate: [AuthGuard],
-component: CadastroClienteComponent,
-},
-{ path: 'customer/:id',
-canActivate: [AuthGuard],
-component: AtualizaClienteComponent,
-},
+  // Cliente
+  {
+    path: 'customers',
+    canActivate: [AuthGuard],
+    component: ListaClienteComponent,
+  },
+  {
+    path: 'customer_registration',
+    canActivate: [AuthGuard],
+    component: CadastroClienteComponent,
+  },
+  {
+    path: 'customer/:id',
+    canActivate: [AuthGuard],
+    component: AtualizaClienteComponent,
+  },
 
-//Fornecedor
-{ path: 'suppliers',
-canActivate: [AuthGuard],
-component: ListaFornecedorComponent,
-},
-{ path: 'supplier_registration',
-canActivate: [AuthGuard],
-component: CadastroFornecedorComponent,
-},
-{ path: 'supplier/:id',
-canActivate: [AuthGuard],
-component: AtualizaFornecedorComponent,
-},
+  //Fornecedor
+  {
+    path: 'suppliers',
+    canActivate: [AuthGuard],
+    component: ListaFornecedorComponent,
+  },
+  {
+    path: 'supplier_registration',
+    canActivate: [AuthGuard],
+    component: CadastroFornecedorComponent,
+  },
+  {
+    path: 'supplier/:id',
+    canActivate: [AuthGuard],
+    component: AtualizaFornecedorComponent,
+  },
 
-//Ordem de Serviço
-{ path: 'orders',
-canActivate: [AuthGuard],
-component: ListaOrdemDeServicoComponent,
-},
-{ path: 'order_registration',
-canActivate: [AuthGuard],
-component: CadastroOrdemDeServicoComponent,
-},
-{ path: 'order/:id',
-canActivate: [AuthGuard],
-component: AtualizaOrdemDeServicoComponent,
-},
+  //Ordem de Serviço
+  {
+    path: 'orders',
+    canActivate: [AuthGuard],
+    component: ListaOrdemDeServicoComponent,
+  },
+  {
+    path: 'order_registration',
+    canActivate: [AuthGuard],
+    component: CadastroOrdemDeServicoComponent,
+  },
+  {
+    path: 'order/:id',
+    canActivate: [AuthGuard],
+    component: AtualizaOrdemDeServicoComponent,
+  },
 
-//Produto
-{ path: 'products',
-canActivate: [AuthGuard],
-component: ListaProdutoComponent,
-},
-{ path: 'product_registration',
-canActivate: [AuthGuard],
-component: CadastroProdutoComponent,
-},
-{ path: 'product/:id',
-canActivate: [AuthGuard],
-component: AtualizaProdutoComponent,
-},
+  //Produto
+  {
+    path: 'products',
+    canActivate: [AuthGuard],
+    component: ListaProdutoComponent,
+  },
+  {
+    path: 'product_registration',
+    canActivate: [AuthGuard],
+    component: CadastroProdutoComponent,
+  },
+  {
+    path: 'product/:id',
+    canActivate: [AuthGuard],
+    component: AtualizaProdutoComponent,
+  },
 
-//Serviço
-{ path: 'services',
-canActivate: [AuthGuard],
-component: ListaServicoComponent,
-},
-{ path: 'service_registration',
-canActivate: [AuthGuard],
-component: CadastroServicoComponent,
-},
-{ path: 'service/:id',
-canActivate: [AuthGuard],
-component: AtualizaServicoComponent,
-},
+  //Serviço
+  {
+    path: 'services',
+    canActivate: [AuthGuard],
+    component: ListaServicoComponent,
+  },
+  {
+    path: 'service_registration',
+    canActivate: [AuthGuard],
+    component: CadastroServicoComponent,
+  },
+  {
+    path: 'service/:id',
+    canActivate: [AuthGuard],
+    component: AtualizaServicoComponent,
+  },
 
-//Usuário
-{ path: 'users',
-canActivate: [AuthGuard, PermissionGuard],
-component: ListaUsuarioComponent,
-},
-{ path: 'user_registration',
-canActivate: [AuthGuard, PermissionGuard],
-component: CadastroUsuarioComponent,
-},
-{ path: 'user/:id',
-canActivate: [AuthGuard, PermissionGuard],
-component: AtualizaUsuarioComponent,
-}];
+  //Usuário
+  {
+    path: 'users',
+    canActivate: [AuthGuard, PermissionGuard],
+    component: ListaUsuarioComponent,
+  },
+  {
+    path: 'user_registration',
+    canActivate: [AuthGuard, PermissionGuard],
+    component: CadastroUsuarioComponent,
+  },
+  {
+    path: 'user/:id',
+    canActivate: [AuthGuard, PermissionGuard],
+    component: AtualizaUsuarioComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

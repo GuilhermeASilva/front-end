@@ -18,10 +18,7 @@
         <td><b>Previsão de Entrega</b></td>
         <td><b>Valor</b></td>
       </tr>
-      <tr
-        class="{selected: order.selected}"
-        *ngFor="let order of ordersAux"
-      >
+      <tr class="{selected: order.selected}" *ngFor="let order of ordersAux">
         <td>
           <a (click)="alterarOrdemDeServico(order.id)">
             <svg
@@ -43,8 +40,8 @@
         <td>{{ order.idCliente }}</td>
         <!-- <td *ngFor="let item of order.itemsServico">{{item.valor}}:item.valor</td> -->
         <td>{{ order.userId }}</td>
-        <td>{{ order.categoria | uppercase}}</td>
-        <td>{{ order.statusOs | uppercase}}</td>
+        <td>{{ order.categoria | uppercase }}</td>
+        <td>{{ order.statusOs | uppercase }}</td>
         <td>{{ order.dataEntrega }}</td>
         <td>{{ order.valor | currency: "BRL" }}</td>
       </tr>
