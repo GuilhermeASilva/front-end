@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (res && res.token != undefined) {
         this.authService.login(res.token, res.user.tipoUsuario);
         this.router.navigate(['/']);
-        console.log('Resultado do login: ', res);
+        // console.log('Resultado do login: ', res);
       } else {
         alert('Erro ao tentar realizar login!');
       }

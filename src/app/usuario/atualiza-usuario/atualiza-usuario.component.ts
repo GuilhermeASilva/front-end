@@ -28,7 +28,7 @@ export class AtualizaUsuarioComponent implements OnInit {
       tipoUsuario: ['', [Validators.required]],
       email: ['', [Validators.required]],
       // senhaAntiga: ['', [Validators.required]],
-      senhaNova: ['', [Validators.required]],
+      senhaNova: [''],
       // confirmarSenha: ['', [Validators.required]],
     });
   }
@@ -64,9 +64,10 @@ export class AtualizaUsuarioComponent implements OnInit {
         tipoUsuario: form.tipoUsuario.value,
         email: form.email.value,
         // senhaAntiga: form.senhaAntiga.value,
-        senhaNova: form.senhaNova.value,
+        senhaNova: form.senhaNova.value
         // confirmarSenha: form.confirmarSenha.value,
       };
+      if (form.senhaNova.value == '') delete user.senhaNova
       // console.log("Objeto enviado: ", user)
       this.usuarioService
         .atualizarUsuario(this.userId, user)
