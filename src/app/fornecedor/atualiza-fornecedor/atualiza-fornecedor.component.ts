@@ -73,6 +73,7 @@ export class AtualizaFornecedorComponent implements OnInit {
         email: form.email.value,
         site: form.site.value,
       };
+      // console.log("Objeto enviado: ", supplier)
       this.fornecedorService
         .atualizarFornecedor(this.supplierId, supplier)
         .subscribe((res) => {
