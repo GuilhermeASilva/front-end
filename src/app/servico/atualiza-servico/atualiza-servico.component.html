@@ -1,15 +1,51 @@
 <div class="jumbotron">
-  <h3>{{message}}</h3>
+  <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="serviceForm" name="servicesForm">
-      <input class="form-control" type="number" formControlName="nroServico" placeholder="Número" mask="000">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Nome">
-      <input class="form-control" type="text" formControlName="categoria" placeholder="Categoria">
-      <input class="form-control" type="number" formControlName="prazoDias" placeholder="Prazo" mask="000">
-      <input class="form-control" type="text" formControlName="descricao" placeholder="Descrição">
-      <input class="form-control" type="number" formControlName="valor" placeholder="Valor">
-     <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Serviço</button>
-     <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Serviço</button>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nroServico"
+        placeholder="Número"
+        mask="000"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nome"
+        placeholder="Nome"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="categoria"
+        placeholder="Categoria"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="prazoDias"
+        placeholder="Prazo"
+        mask="000"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="descricao"
+        placeholder="Descrição"
+      />
+      <input
+        class="form-control"
+        type="number"
+        formControlName="valor"
+        placeholder="Valor"
+      />
+      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">
+        Atualizar Serviço
+      </button>
+      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">
+        Apagar Serviço
+      </button>
     </form>
   </app-loading>
 </div>
@@ -21,7 +57,10 @@
 </div>
 
 <div *ngIf="modalUpdate">
-  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarServico($event)">
+  <app-modal-confirmacao
+    [title]="'Atualizar'"
+    (confirmar)="atualizarServico($event)"
+  >
     Deseja realmente atualizar esse cadastro?
   </app-modal-confirmacao>
 </div>

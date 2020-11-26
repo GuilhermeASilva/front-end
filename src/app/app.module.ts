@@ -34,6 +34,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NotificationToastComponent } from './shared/notification-toast/notification-toast.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { ListaOrdemDeServicoComponent } from './ordem-de-servico/lista-ordem-de-servico/lista-ordem-de-servico.component';
+import { AtualizaOrdemDeServicoComponent } from './ordem-de-servico/atualiza-ordem-de-servico/atualiza-ordem-de-servico.component';
+import { CadastroOrdemDeServicoComponent } from './ordem-de-servico/cadastro-ordem-de-servico/cadastro-ordem-de-servico.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -69,6 +72,9 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     ModalConfirmacaoComponent,
     NotificationToastComponent,
     DashboardComponent,
+    ListaOrdemDeServicoComponent,
+    AtualizaOrdemDeServicoComponent,
+    CadastroOrdemDeServicoComponent,
   ],
   imports: [
     CommonModule,

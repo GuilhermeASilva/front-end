@@ -1,14 +1,38 @@
 <div class="jumbotron">
-  <h3>{{message}}</h3>
+  <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form [formGroup]="productForm" name="productsForm">
-      <input class="form-control" type="text" formControlName="nome" placeholder="Produto">
-      <input class="form-control" type="text" formControlName="marca" placeholder="Marca ">
-      <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras">
-      <input class="form-control" type="number" formControlName="preco" placeholder="Valor">
-      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">Atualizar Produto</button>
-      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">Apagar Produto</button>
-      </form>
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nome"
+        placeholder="Produto"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="marca"
+        placeholder="Marca "
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="codBarras"
+        placeholder="Código de Barras"
+      />
+      <input
+        class="form-control"
+        type="number"
+        formControlName="preco"
+        placeholder="Valor"
+      />
+      <button class="btn btn-success mr-5 mt-3" (click)="exibeModalUpdate()">
+        Atualizar Produto
+      </button>
+      <button class="btn btn-danger mt-3" (click)="exibeModalDelete()">
+        Apagar Produto
+      </button>
+    </form>
   </app-loading>
 </div>
 
@@ -19,7 +43,10 @@
 </div>
 
 <div *ngIf="modalUpdate">
-  <app-modal-confirmacao [title]="'Atualizar'" (confirmar)="atualizarProduto($event)">
+  <app-modal-confirmacao
+    [title]="'Atualizar'"
+    (confirmar)="atualizarProduto($event)"
+  >
     Deseja realmente atualizar esse cadastro?
   </app-modal-confirmacao>
 </div>

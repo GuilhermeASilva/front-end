@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit {
       senha: form.senha.value,
     };
     this.authService.validaLogin(login).subscribe((res: any) => {
-      console.log('- Imit');
       if (res && res.token != undefined) {
         this.authService.login(res.token, res.user.tipoUsuario);
         this.router.navigate(['/']);
+        console.log('Resultado do login: ', res);
       } else {
         alert('Erro ao tentar realizar login!');
       }

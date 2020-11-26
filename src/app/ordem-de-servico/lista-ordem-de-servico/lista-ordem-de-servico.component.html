@@ -2,25 +2,28 @@
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <app-filtro-entidade
-      [lista]="services"
-      [parametro]="'nome'"
+      [lista]="orders"
+      [parametro]="'statusOs'"
       (buscar)="atualizarLista($event)"
     ></app-filtro-entidade>
-    <table show="services.length > 0" class="table">
+    <table show="orders.length > 0" class="table">
       <tr>
         <td></td>
         <td><b>Número</b></td>
-        <td><b>Nome</b></td>
+        <td><b>Cliente</b></td>
+        <td><b>Itens</b></td>
+        <td><b>Responsável</b></td>
         <td><b>Categoria</b></td>
-        <td><b>Prazo</b></td>
+        <td><b>Status</b></td>
+        <td><b>Previsão de Entrega</b></td>
         <td><b>Valor</b></td>
       </tr>
       <tr
-        class="{selected: service.selected}"
-        *ngFor="let service of servicesAux"
+        class="{selected: order.selected}"
+        *ngFor="let order of ordersAux"
       >
         <td>
-          <a (click)="alterarServico(service.id)">
+          <a (click)="alterarOrdemDeServico(order.id)">
             <svg
               width="1em"
               height="1em"
@@ -36,11 +39,14 @@
             </svg>
           </a>
         </td>
-        <td>{{ service.nroServico }}</td>
-        <td>{{ service.nome | uppercase }}</td>
-        <td>{{ service.categoria }}</td>
-        <td>{{ service.prazoDias + " dias" }}</td>
-        <td>{{ service.valor | currency: "BRL" }}</td>
+        <td>{{ order.id }}</td>
+        <td>{{ order.idCliente }}</td>
+        <td>{{ order.itemsServico }}</td>
+        <td>{{ order.userId }}</td>
+        <td>{{ order.categoria | uppercase}}</td>
+        <td>{{ order.statusOs | uppercase}}</td>
+        <td>{{ order.dataEntrega }}</td>
+        <td>{{ order.valor | currency: "BRL" }}</td>
       </tr>
     </table>
     <hr />

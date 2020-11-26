@@ -10,6 +10,9 @@ import { ListaFornecedorComponent } from './fornecedor/lista-fornecedor/lista-fo
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './interceptors/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { AtualizaOrdemDeServicoComponent } from './ordem-de-servico/atualiza-ordem-de-servico/atualiza-ordem-de-servico.component';
+import { CadastroOrdemDeServicoComponent } from './ordem-de-servico/cadastro-ordem-de-servico/cadastro-ordem-de-servico.component';
+import { ListaOrdemDeServicoComponent } from './ordem-de-servico/lista-ordem-de-servico/lista-ordem-de-servico.component';
 import { AtualizaProdutoComponent } from './produto/atualiza-produto/atualiza-produto.component';
 import { CadastroProdutoComponent } from './produto/cadastro-produto/cadastro-produto.component';
 import { ListaProdutoComponent } from './produto/lista-produto/lista-produto.component';
@@ -59,6 +62,20 @@ component: CadastroFornecedorComponent,
 { path: 'supplier/:id',
 canActivate: [AuthGuard],
 component: AtualizaFornecedorComponent,
+},
+
+//Ordem de Serviço
+{ path: 'orders',
+canActivate: [AuthGuard],
+component: ListaOrdemDeServicoComponent,
+},
+{ path: 'order_registration',
+canActivate: [AuthGuard],
+component: CadastroOrdemDeServicoComponent,
+},
+{ path: 'order/:id',
+canActivate: [AuthGuard],
+component: AtualizaOrdemDeServicoComponent,
 },
 
 //Produto

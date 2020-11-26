@@ -1,12 +1,38 @@
 <div class="jumbotron">
-  <h3>{{message}}</h3>
+  <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
-     <form [formGroup]="productForm" name="productsForm" (submit)="adicionarProduto()">
-     <input class="form-control" type="text" formControlName="nome" placeholder="Produto">
-     <input class="form-control" type="text" formControlName="marca" placeholder="Marca">
-     <input class="form-control" type="text" formControlName="codBarras" placeholder="Código de Barras">
-     <input class="form-control" type="number" formControlName="preco" placeholder="Valor">
-     <button class="btn btn-success mt-3" type="submit">Adicionar Produto</button>
-     </form>
+    <form
+      [formGroup]="productForm"
+      name="productsForm"
+      (submit)="adicionarProduto()"
+    >
+      <input
+        class="form-control"
+        type="text"
+        formControlName="nome"
+        placeholder="Produto"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="marca"
+        placeholder="Marca"
+      />
+      <input
+        class="form-control"
+        type="text"
+        formControlName="codBarras"
+        placeholder="Código de Barras"
+      />
+      <input
+        class="form-control"
+        type="number"
+        formControlName="preco"
+        placeholder="Valor"
+      />
+      <button class="btn btn-success mt-3" type="submit">
+        Adicionar Produto
+      </button>
+    </form>
   </app-loading>
 </div>

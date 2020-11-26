@@ -2,22 +2,22 @@
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form
-      [formGroup]="serviceForm"
+      [formGroup]="orderForm"
       name="servicesForm"
-      (submit)="adicionarServico()"
+      (submit)="adicionarOrdemDeServico()"
     >
       <input
         class="form-control"
         type="text"
-        formControlName="nroServico"
-        placeholder="Número"
-        mask="000"
+        formControlName="idCliente"
+        placeholder="Código do Cliente"
+        mask="0000"
       />
       <input
         class="form-control"
         type="text"
-        formControlName="nome"
-        placeholder="Nome"
+        formControlName="itemsServico"
+        placeholder="Itens"
       />
       <input
         class="form-control"
@@ -28,15 +28,20 @@
       <input
         class="form-control"
         type="text"
-        formControlName="prazoDias"
-        placeholder="Prazo"
-        mask="000"
+        formControlName="descricao"
+        placeholder="Descrição"
+      />
+      <input
+        class="form-control"
+        type="date"
+        formControlName="dataEntrega"
+        placeholder="Data Prevista de Entrega"
       />
       <input
         class="form-control"
         type="text"
-        formControlName="descricao"
-        placeholder="Descrição"
+        formControlName="statusOs"
+        placeholder="Status"
       />
       <input
         class="form-control"
@@ -45,7 +50,7 @@
         placeholder="Valor"
       />
       <button class="btn btn-success mt-3" type="submit">
-        Adicionar Serviço
+        Adicionar Ordem Serviço
       </button>
     </form>
   </app-loading>
