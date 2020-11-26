@@ -5,34 +5,41 @@ import { AuthService } from '../interceptors/auth.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.less']
+  styleUrls: ['./nav-bar.component.less'],
 })
 export class NavBarComponent implements OnInit {
-  logado$
-  admin$
-  modal = false
+  logado$;
+  admin$;
+  modal = false;
+  ehAdmin: boolean = false;
 
-  constructor(private authService : AuthService, private cdr : ChangeDetectorRef, private router : Router) { }
+  constructor(
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.logado$ = this.authService.estaLogado()
-    this.admin$ = this.authService.ehAdministrador()
-    this.cdr.detectChanges()
+    this.logado$ = this.authService.estaLogado();
+    this.admin$ = this.authService.ehAdministrador();
+    this.cdr.detectChanges();
+    this.ehAdmin = this.authService.getAdmin();
+    console.log(this.ehAdmin);
   }
 
   logout(modal?) {
     // console.log(modal)
-    if(!modal) this.exibeModal(!modal)
+    if (!modal) this.exibeModal(!modal);
     else {
-    this.authService.logout()
-    this.cdr.detectChanges()
-    this.router.navigateByUrl('login')
-    this.exibeModal(modal)
+      this.authService.logout();
+      this.cdr.detectChanges();
+      this.router.navigateByUrl('login');
+      this.exibeModal(modal);
     }
   }
 
-  exibeModal(fechar?){
-    if(fechar) this.modal = false
-    else this.modal = true
+  exibeModal(fechar?) {
+    if (fechar) this.modal = false;
+    else this.modal = true;
   }
 }

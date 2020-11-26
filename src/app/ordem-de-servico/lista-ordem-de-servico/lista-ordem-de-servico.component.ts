@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormatDate } from 'src/app/utilities/format-date';
 import { OrdemDeServicoService } from '../ordem-de-servico.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class ListaOrdemDeServicoComponent implements OnInit {
   order;
   loading = false;
 
-  constructor(private ordemDeServicoService: OrdemDeServicoService, private router: Router) {}
+  constructor(
+    private ordemDeServicoService: OrdemDeServicoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -23,7 +27,13 @@ export class ListaOrdemDeServicoComponent implements OnInit {
 
   listarOrdensDeServico() {
     this.ordemDeServicoService.listarOrdensDeServico().subscribe((res) => {
-      this.orders = res.data;
+      this.orders = res.orders;
+      console.log(res.orders);
+      this.orders.forEach((o, i) => {
+        this.orders[i].dataEntrega = FormatDate.timestampToDate(
+          this.orders[i].dataEntrega
+        );
+      });
       this.ordersAux = this.orders;
       this.loading = false;
     });

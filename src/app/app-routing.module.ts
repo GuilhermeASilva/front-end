@@ -9,6 +9,7 @@ import { CadastroFornecedorComponent } from './fornecedor/cadastro-fornecedor/ca
 import { ListaFornecedorComponent } from './fornecedor/lista-fornecedor/lista-fornecedor.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './interceptors/auth.guard';
+import { PermissionGuard } from './interceptors/permission.guard';
 import { LoginComponent } from './login/login.component';
 import { AtualizaOrdemDeServicoComponent } from './ordem-de-servico/atualiza-ordem-de-servico/atualiza-ordem-de-servico.component';
 import { CadastroOrdemDeServicoComponent } from './ordem-de-servico/cadastro-ordem-de-servico/cadastro-ordem-de-servico.component';
@@ -108,15 +109,15 @@ component: AtualizaServicoComponent,
 
 //Usuário
 { path: 'users',
-canActivate: [AuthGuard],
+canActivate: [AuthGuard, PermissionGuard],
 component: ListaUsuarioComponent,
 },
 { path: 'user_registration',
-canActivate: [AuthGuard],
+canActivate: [AuthGuard, PermissionGuard],
 component: CadastroUsuarioComponent,
 },
 { path: 'user/:id',
-canActivate: [AuthGuard],
+canActivate: [AuthGuard, PermissionGuard],
 component: AtualizaUsuarioComponent,
 }];
 

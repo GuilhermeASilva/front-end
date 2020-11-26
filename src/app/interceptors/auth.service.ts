@@ -45,6 +45,10 @@ export class AuthService {
     // emite valor null
   }
 
+  getAdmin() {
+    return JSON.parse(localStorage.getItem('tipoUsuario')) == 'admin' ? true : false
+  }
+
   getToken(): string {
     const authData = JSON.parse(localStorage.getItem('auth'));
     if (authData) {

@@ -34,15 +34,19 @@
            </div>
         </li>
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordens de Serviço</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','orders']">Listar demandas</a>
+             <a class="dropdown-item navigate-bar-option" [routerLink]="['/','order_registration']">Cadastrar nova ordem</a>
+          </div>
+       </li>
+        <li *ngIf="ehAdmin" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuários</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','users']">Listar usuários</a>
              <a class="dropdown-item navigate-bar-option" [routerLink]="['/','user_registration']">Cadastrar novo usuário</a>
           </div>
        </li>
-        <!-- <li *ngIf="admin$ | async" class="nav-item">
-           <a class="nav-link" [routerLink]="['/','users']">Usuários</a>
-        </li> -->
         <div class="botao-sair">
            <button type=button class="btn btn-danger" (click)="exibeModal()">Sair</button>
         </div>

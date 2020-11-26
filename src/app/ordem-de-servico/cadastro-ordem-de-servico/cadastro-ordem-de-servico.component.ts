@@ -34,23 +34,36 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
   ngOnInit(): void {}
 
   adicionarOrdemDeServico() {
-    // if (this.orderForm.invalid) {
-    //   this.loading = true;
-    //   alert('Erro, favor verificar os dados enviados!');
-    //   this.loading = false;
-    // } else {
+    if (this.orderForm.invalid) {
+      console.log(this.orderForm)
+      this.loading = true;
+      alert('Erro, favor verificar os dados enviados!');
+      this.loading = false;
+    } else {
+      let itemsObj = [];
       let form = this.orderForm.controls;
-      let items = form.itemsServico.value.split(',')
+      let items = form.itemsServico.value.split(';');
+      if (items[items.length - 1] == '') {
+        items.pop();
+      }
+      items.forEach((item, posicao) => {
+        if (posicao % 2 == 1) {
+          itemsObj.push({
+            name: items[posicao - 1],
+            valor: item,
+          });
+        }
+      });
       let order = {
         idCliente: form.idCliente.value,
-        itemsServico: items,
+        itemsServico: itemsObj,
         categoria: form.categoria.value,
         descricao: form.descricao.value,
         dataEntrega: form.dataEntrega.value,
         statusOs: form.statusOs.value,
         valor: form.valor.value,
       };
-      console.log("Objeto enviado: ", order)
+      console.log('Objeto enviado: ', order);
       this.ordemDeServicoService
         .adicionarOrdemDeServico(order)
         .subscribe((res) => {
@@ -60,7 +73,7 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
             this.router.navigateByUrl('orders');
           }
         });
-    // }
+    }
     this.loading = false;
   }
 }
