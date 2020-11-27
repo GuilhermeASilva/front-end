@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
+import { CorrigeData } from 'src/app/utilities/corrige-data';
 import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { OrdemDeServicoService } from '../ordem-de-servico.service';
 
@@ -15,12 +18,13 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
   order;
   orderForm: FormGroup;
   loading = false;
-  ECategoriaServico = ECategoriaServicoEnum
+  ECategoriaServico = ECategoriaServicoEnum;
 
   constructor(
     private ordemDeServicoService: OrdemDeServicoService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.orderForm = this.fb.group({
       idCliente: ['', [Validators.required]],
@@ -40,7 +44,9 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
     if (this.orderForm.invalid) {
       // console.log(this.orderForm);
       this.loading = true;
-      alert('Erro, favor verificar os dados enviados!');
+      this.notificationToastService.atencao(
+        new NotificationToastModel('Verifique os campos!')
+      );
       this.loading = false;
     } else {
       let form = this.orderForm.controls;
@@ -64,7 +70,7 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
         itemsServico: form.itemsServico.value,
         categoria: form.categoria.value,
         descricao: form.descricao.value,
-        dataEntrega: form.dataEntrega.value,
+        dataEntrega: CorrigeData.corrigeData(form.dataEntrega.value),
         // statusOs: form.statusOs.value,
         valor: form.valor.value,
       };
@@ -72,11 +78,17 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
       this.ordemDeServicoService
         .adicionarOrdemDeServico(order)
         .subscribe((res) => {
-          console.log(res)
+          console.log(res);
           if (res && res.status) {
             this.loading = false;
-            alert('Ordem de Serviço cadastrada com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Salvo com sucesso!')
+            );
             this.router.navigateByUrl('orders');
+          } else {
+            this.notificationToastService.erro(
+              new NotificationToastModel('Erro ao tentar salvar!')
+            );
           }
         });
     }

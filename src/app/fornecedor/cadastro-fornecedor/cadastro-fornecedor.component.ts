@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
 import { FornecedorService } from '../fornecedor.service';
 
@@ -20,7 +22,8 @@ export class CadastroFornecedorComponent implements OnInit {
   constructor(
     private fornecedorService: FornecedorService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.supplierForm = this.fb.group({
       razaoSocial: ['', [Validators.required]],
@@ -40,7 +43,9 @@ export class CadastroFornecedorComponent implements OnInit {
   adicionarFornecedor() {
     if (this.supplierForm.invalid) {
       this.loading = true;
-      alert('Erro, favor verificar os dados enviados!');
+      this.notificationToastService.atencao(
+        new NotificationToastModel('Verifique os campos!')
+      );
       this.loading = false;
     } else {
       let form = this.supplierForm.controls;
@@ -58,8 +63,14 @@ export class CadastroFornecedorComponent implements OnInit {
       this.fornecedorService.adicionarFornecedor(supplier).subscribe((res) => {
         if (res && res.status) {
           this.loading = false;
-          alert('Fornecedor cadastrado com sucesso!');
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Salvo com sucesso!')
+          );
           this.router.navigateByUrl('suppliers');
+        } else {
+          this.notificationToastService.erro(
+            new NotificationToastModel('Erro ao tentar salvar!')
+          );
         }
       });
     }

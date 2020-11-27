@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { ServicoService } from '../servico.service';
 
@@ -17,13 +19,14 @@ export class AtualizaServicoComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
-  ECategoriaServico = ECategoriaServicoEnum
+  ECategoriaServico = ECategoriaServicoEnum;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicoService: ServicoService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.serviceForm = this.fb.group({
       nroServico: ['', [Validators.required]],
@@ -73,8 +76,14 @@ export class AtualizaServicoComponent implements OnInit {
         .atualizarServico(this.serviceId, service)
         .subscribe((res) => {
           if (res && res.status) {
-            alert('Servico alterado com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Salvo com sucesso!')
+            );
             this.router.navigateByUrl('services');
+          } else {
+            this.notificationToastService.erro(
+              new NotificationToastModel('Erro ao tentar salvar!')
+            );
           }
         });
       this.exibeModalUpdate(modalUpdate);
@@ -90,9 +99,15 @@ export class AtualizaServicoComponent implements OnInit {
           res.message &&
           res.message == 'Serviço deletado com sucesso'
         ) {
-          alert('Serviço apagado com sucesso!');
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Serviço deletado com sucesso!')
+          );
           this.router.navigateByUrl('services');
           this.exibeModalDelete(modalDelete);
+        } else {
+          this.notificationToastService.erro(
+            new NotificationToastModel('Erro ao tentar deletar!')
+          );
         }
       });
     }

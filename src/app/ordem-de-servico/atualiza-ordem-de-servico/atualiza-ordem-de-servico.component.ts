@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { CorrigeData } from 'src/app/utilities/corrige-data';
 import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { EStatusOsEnum } from 'src/app/utilities/enums/status-os.enum';
@@ -20,14 +22,15 @@ export class AtualizaOrdemDeServicoComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
-  EStatusOs = EStatusOsEnum
-  ECategoriaServico = ECategoriaServicoEnum
+  EStatusOs = EStatusOsEnum;
+  ECategoriaServico = ECategoriaServicoEnum;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private ordemDeServicoService: OrdemDeServicoService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.orderForm = this.fb.group({
       // idCliente: ['', [Validators.required]],
@@ -88,7 +91,9 @@ export class AtualizaOrdemDeServicoComponent implements OnInit {
         .atualizarOrdemDeServico(this.orderId, order)
         .subscribe((res) => {
           if (res && res.status) {
-            alert('OS alterada com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Salvo com sucesso!')
+            );
             this.router.navigateByUrl('orders');
           }
         });
@@ -107,9 +112,15 @@ export class AtualizaOrdemDeServicoComponent implements OnInit {
             res.message &&
             res.message == 'Ordem de serviço deletada com sucesso.'
           ) {
-            alert('OS apagada com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('OS apagada com sucesso!')
+            );
             this.router.navigateByUrl('orders');
             this.exibeModalDelete(modalDelete);
+          } else {
+            this.notificationToastService.erro(
+              new NotificationToastModel('Erro ao tentar apagar OS!')
+            );
           }
         });
     }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -10,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 })
 export class AtualizaProprioUsuarioComponent implements OnInit {
   message = 'Atualização de Cadastro';
-  userId
+  userId;
   user;
   userForm: FormGroup;
   loading = false;
@@ -21,7 +23,8 @@ export class AtualizaProprioUsuarioComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.userForm = this.fb.group({
       nomeUsuario: ['', [Validators.required]],
@@ -33,7 +36,7 @@ export class AtualizaProprioUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('id')
+    this.userId = localStorage.getItem('id');
     // console.log("userId no Init: ", this.userId)
 
     if (this.userId !== 0) {
@@ -73,15 +76,19 @@ export class AtualizaProprioUsuarioComponent implements OnInit {
         delete user.confirmarSenha;
       }
       // console.log("Objeto enviado: ", user)
-      this.usuarioService
-        .atualizarProprioUsuario(user)
-        .subscribe((res) => {
-          // console.log("Resultado da Atualização do Próprio Usuário: ", res)
-          if (res && res.status) {
-            alert('Informações salvas com sucesso!');
-            this.router.navigateByUrl('/');
-          }
-        });
+      this.usuarioService.atualizarProprioUsuario(user).subscribe((res) => {
+        // console.log("Resultado da Atualização do Próprio Usuário: ", res)
+        if (res && res.status) {
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Salvo com sucesso!')
+          );
+          this.router.navigateByUrl('/');
+        } else {
+          this.notificationToastService.erro(
+            new NotificationToastModel('Erro ao tentar salvar!')
+          );
+        }
+      });
       this.exibeModalUpdate(modalUpdate);
     }
   }

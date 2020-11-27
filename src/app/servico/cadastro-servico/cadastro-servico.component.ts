@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { ServicoService } from '../servico.service';
 
@@ -15,12 +17,13 @@ export class CadastroServicoComponent implements OnInit {
   service;
   serviceForm: FormGroup;
   loading = false;
-  ECategoriaServico = ECategoriaServicoEnum
+  ECategoriaServico = ECategoriaServicoEnum;
 
   constructor(
     private servicoService: ServicoService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.serviceForm = this.fb.group({
       nroServico: ['', [Validators.required]],
@@ -46,12 +49,17 @@ export class CadastroServicoComponent implements OnInit {
       prazoDias: form.prazoDias.value,
       categoria: form.categoria.value,
     };
-    // console.log("Objeto enviado: ", service)
     this.servicoService.adicionarServico(service).subscribe((res) => {
       if (res && res.status) {
         this.loading = false;
-        alert('Serviço cadastrado com sucesso!');
+        this.notificationToastService.sucesso(
+          new NotificationToastModel('Salvo com sucesso!')
+        );
         this.router.navigateByUrl('services');
+      } else {
+        this.notificationToastService.erro(
+          new NotificationToastModel('Erro ao tentar salvar!')
+        );
       }
     });
     this.loading = false;

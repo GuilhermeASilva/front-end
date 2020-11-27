@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { ProdutoService } from '../produto.service';
 
 @Component({
@@ -21,7 +23,8 @@ export class AtualizaProdutoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private produtoService: ProdutoService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.productForm = this.fb.group({
       nome: ['', [Validators.required]],
@@ -67,7 +70,9 @@ export class AtualizaProdutoComponent implements OnInit {
         .atualizarProduto(this.productId, product)
         .subscribe((res) => {
           if (res && res.status) {
-            alert('Produto alterado com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Salvo com sucesso!')
+            );
             this.router.navigateByUrl('products');
           }
         });
@@ -80,9 +85,15 @@ export class AtualizaProdutoComponent implements OnInit {
     else {
       this.produtoService.apagarProduto(this.productId).subscribe((res) => {
         if (res && res.message && res.message == 'Produto deletado') {
-          alert('Produto apagado com sucesso!');
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Produto deletado com sucesso!')
+          );
           this.router.navigateByUrl('products');
           this.exibeModalDelete(modalDelete);
+        } else {
+          this.notificationToastService.erro(
+            new NotificationToastModel('Erro ao tentar deletar produto!')
+          );
         }
       });
     }

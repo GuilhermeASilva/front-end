@@ -32,7 +32,7 @@ export class NotificationToastComponent implements OnChanges {
         // console.log('SettimeOut Notification');
         this.finalizado.emit();
       }, this.delay);
-      // console.log('Delay: do Toast', this.delay);
+    // console.log('Delay: do Toast', this.delay);
       $('.toast').toast('show');
       // this.exibir = null;
     }

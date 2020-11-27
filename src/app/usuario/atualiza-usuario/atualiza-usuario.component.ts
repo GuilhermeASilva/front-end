@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { ETipoUsuarioEnum } from 'src/app/utilities/enums/tipo-usuario.enum';
 import { UsuarioService } from '../usuario.service';
 
@@ -17,13 +19,14 @@ export class AtualizaUsuarioComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
-  ETipoUsuario = ETipoUsuarioEnum
+  ETipoUsuario = ETipoUsuarioEnum;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private usuarioService: UsuarioService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.userForm = this.fb.group({
       nomeUsuario: ['', [Validators.required]],
@@ -76,8 +79,14 @@ export class AtualizaUsuarioComponent implements OnInit {
         .subscribe((res) => {
           // console.log(res)
           if (res && res.status) {
-            alert('Usuario alterado com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Salvo com sucesso!')
+            );
             this.router.navigateByUrl('users');
+          } else {
+            this.notificationToastService.erro(
+              new NotificationToastModel('Erro ao tentar salvar!')
+            );
           }
         });
       this.exibeModalUpdate(modalUpdate);
@@ -93,9 +102,15 @@ export class AtualizaUsuarioComponent implements OnInit {
           res.message &&
           res.message == 'Usuário deletado com sucesso'
         ) {
-          alert('Usuário apagado com sucesso!');
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Apagado com sucesso!')
+          );
           this.router.navigateByUrl('users');
           this.exibeModalDelete(modalDelete);
+        } else {
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Erro ao tentar apagar!')
+          );
         }
       });
     }

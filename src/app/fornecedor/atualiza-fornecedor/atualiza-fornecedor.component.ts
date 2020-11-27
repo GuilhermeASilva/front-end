@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
 import { FornecedorService } from '../fornecedor.service';
 
@@ -23,7 +25,8 @@ export class AtualizaFornecedorComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fornecedorService: FornecedorService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.supplierForm = this.fb.group({
       razaoSocial: ['', [Validators.required]],
@@ -80,8 +83,10 @@ export class AtualizaFornecedorComponent implements OnInit {
         .atualizarFornecedor(this.supplierId, supplier)
         .subscribe((res) => {
           if (res && res.status) {
-            alert('Fornecedor alterado com sucesso!');
+            this.notificationToastService.sucesso(new NotificationToastModel('Salvo com sucesso!'))
             this.router.navigateByUrl('suppliers');
+          } else {
+            this.notificationToastService.erro(new NotificationToastModel('Erro ao tentar salvar!'))
           }
         });
       this.exibeModalUpdate(modalUpdate);
@@ -95,9 +100,11 @@ export class AtualizaFornecedorComponent implements OnInit {
         .apagarFornecedor(this.supplierId)
         .subscribe((res) => {
           if (res && res.message && res.message == 'Fornecedor deletado') {
-            alert('Fornecedor apagado com sucesso!');
+            this.notificationToastService.sucesso(new NotificationToastModel('Deletado com sucesso!'))
             this.router.navigateByUrl('suppliers');
             this.exibeModalDelete(modalDelete);
+          } else {
+            this.notificationToastService.erro(new NotificationToastModel('Erro ao tentar deletar!'))
           }
         });
     }

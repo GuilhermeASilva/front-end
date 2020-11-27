@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { ETipoUsuarioEnum } from 'src/app/utilities/enums/tipo-usuario.enum';
 import { UsuarioService } from '../usuario.service';
 
@@ -15,12 +17,13 @@ export class CadastroUsuarioComponent implements OnInit {
   user;
   userForm: FormGroup;
   loading = false;
-  ETipoUsuario = ETipoUsuarioEnum
+  ETipoUsuario = ETipoUsuarioEnum;
 
   constructor(
     private usuarioService: UsuarioService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.userForm = this.fb.group({
       nomeUsuario: ['', [Validators.required]],
@@ -45,7 +48,9 @@ export class CadastroUsuarioComponent implements OnInit {
     this.usuarioService.adicionarUsuario(user).subscribe((res) => {
       if (res && res.status) {
         this.loading = false;
-        alert('Usuário cadastrado com sucesso!');
+        this.notificationToastService.sucesso(
+          new NotificationToastModel('Salvo com sucesso!')
+        );
         this.router.navigateByUrl('users');
       }
     });

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { CorrigeData } from 'src/app/utilities/corrige-data';
 import { EGeneroEnum } from 'src/app/utilities/enums/genero.enum';
 import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
@@ -23,7 +25,8 @@ export class CadastroClienteComponent implements OnInit {
   constructor(
     private clienteService: ClienteService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.customerForm = this.fb.group({
       nome: ['', [Validators.required]],
@@ -44,7 +47,7 @@ export class CadastroClienteComponent implements OnInit {
   adicionarCliente() {
     if (this.customerForm.invalid) {
       this.loading = true;
-      alert('Erro, favor verificar os dados enviados!');
+      this.notificationToastService.atencao(new NotificationToastModel('Verifique os campos!'))
       this.loading = false;
     } else {
       let form = this.customerForm.controls;
@@ -63,8 +66,10 @@ export class CadastroClienteComponent implements OnInit {
         this.loading = true;
         if (res && res.status) {
           this.loading = false;
-          alert('Cliente cadastrado com sucesso!');
+          this.notificationToastService.sucesso(new NotificationToastModel('Salvo com sucesso!'))
           this.router.navigateByUrl('customers');
+        } else {
+          this.notificationToastService.erro(new NotificationToastModel('Erro ao tentar salvar!'))
         }
       });
     }

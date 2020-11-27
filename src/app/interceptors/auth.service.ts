@@ -15,6 +15,15 @@ export class AuthService {
     return this.http.post('http://localhost:3333/login', login);
   }
 
+  getUserAtual() {
+    let user = {
+      id: localStorage.getItem('id'),
+      email: localStorage.getItem('email'),
+      tipoUsuario: localStorage.getItem('tipoUsuario'),
+    }
+    return user
+  }
+
   estaLogadoBolean() {
     return !!this.estaLogado();
   }
@@ -44,7 +53,6 @@ export class AuthService {
     localStorage.removeItem('auth');
     this.userSubject.next(false);
     this.administrador.next(false);
-    // alert('Até mais!')
     // emite valor null
   }
 

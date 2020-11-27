@@ -40,6 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
             if (this.redirTryes < 3) {
+              // console.log("chegou", err)
               this.redirTryes += 1;
               this.notificationToastService.erro(
                 new NotificationToastModel('Verifique as credenciais!')
@@ -55,12 +56,12 @@ export class AuthInterceptor implements HttpInterceptor {
               (item) => item.property === 'concorrencia'
             ).message;
           } else if (err.error && err.error.length > 0 && err.status !== 500) {
-            // console.log('Erro 1 do intercept: ', err.error);
           } else {
-            alert(
-              'Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!'
+            this.notificationToastService.erro(
+              new NotificationToastModel(
+                'Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!'
+              )
             );
-            // console.log('Erro 2 do intercept: ', err);
           }
           return throwError(err);
         }

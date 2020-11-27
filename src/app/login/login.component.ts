@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         senha: form.senha.value,
       };
       this.authService.validaLogin(login).subscribe((res: any) => {
+        console.log(res)
         if (res && res.token != undefined) {
           // console.log(res);
           this.authService.login(

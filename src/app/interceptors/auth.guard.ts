@@ -7,13 +7,19 @@ import {
   ActivatedRoute,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { NotificationToastModel } from '../shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from '../shared/notification-toast/notification-toast.service';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationToastService: NotificationToastService
+  ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -22,9 +28,10 @@ export class AuthGuard implements CanActivate {
     const nextUrl = state.url !== '/' ? `/${btoa(state.url)}` : '';
     const token = this.authService.getToken();
     const loggedIn = token ? true : false;
-    // console.log("Ativa: ", this.router.url)
     if (!loggedIn && this.router.url != '/login') {
-      alert('Favor realizar login.');
+      this.notificationToastService.atencao(
+        new NotificationToastModel('Favor realizar login.')
+      );
       this.router.navigate(['login']);
     }
     return loggedIn;
