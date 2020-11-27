@@ -1,4 +1,4 @@
-<footer class="mt-5">
+<footer class="mt-5" *ngIf="logado$ | async">
   <!-- Se o usuário existir exibe o footer -->
   <div class="fixed-bottom bg-white p-1">
     <div class="container">
