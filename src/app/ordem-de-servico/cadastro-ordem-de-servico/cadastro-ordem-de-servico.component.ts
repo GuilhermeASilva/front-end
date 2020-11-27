@@ -74,11 +74,11 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
         // statusOs: form.statusOs.value,
         valor: form.valor.value,
       };
-      console.log('Objeto enviado: ', order);
+      // console.log('Objeto enviado: ', order);
       this.ordemDeServicoService
         .adicionarOrdemDeServico(order)
         .subscribe((res) => {
-          console.log(res);
+          // console.log(res);
           if (res && res.status) {
             this.loading = false;
             this.notificationToastService.sucesso(
