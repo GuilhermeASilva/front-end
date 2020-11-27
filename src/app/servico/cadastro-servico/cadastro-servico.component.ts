@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { ServicoService } from '../servico.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CadastroServicoComponent implements OnInit {
   service;
   serviceForm: FormGroup;
   loading = false;
+  ECategoriaServico = ECategoriaServicoEnum
 
   constructor(
     private servicoService: ServicoService,

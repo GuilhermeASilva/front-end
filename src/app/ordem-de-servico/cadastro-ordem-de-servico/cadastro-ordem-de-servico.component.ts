@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { OrdemDeServicoService } from '../ordem-de-servico.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CadastroOrdemDeServicoComponent implements OnInit {
   order;
   orderForm: FormGroup;
   loading = false;
+  ECategoriaServico = ECategoriaServicoEnum
 
   constructor(
     private ordemDeServicoService: OrdemDeServicoService,

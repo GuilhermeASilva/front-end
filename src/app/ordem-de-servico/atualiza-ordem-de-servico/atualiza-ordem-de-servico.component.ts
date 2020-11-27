@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CorrigeData } from 'src/app/utilities/corrige-data';
+import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { EStatusOsEnum } from 'src/app/utilities/enums/status-os.enum';
 import { FormatDate } from 'src/app/utilities/format-date';
 import { OrdemDeServicoService } from '../ordem-de-servico.service';
@@ -20,6 +21,7 @@ export class AtualizaOrdemDeServicoComponent implements OnInit {
   modalUpdate = false;
   modalDelete = false;
   EStatusOs = EStatusOsEnum
+  ECategoriaServico = ECategoriaServicoEnum
 
   constructor(
     private activatedRoute: ActivatedRoute,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ECategoriaServicoEnum } from 'src/app/utilities/enums/categoria-servico.enum';
 import { ServicoService } from '../servico.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AtualizaServicoComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
+  ECategoriaServico = ECategoriaServicoEnum
 
   constructor(
     private activatedRoute: ActivatedRoute,
