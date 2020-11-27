@@ -46,7 +46,7 @@ export class CadastroProdutoComponent implements OnInit {
       // console.log("Objeto enviado: ", product)
       this.produtoService.adicionarProduto(product).subscribe((res) => {
         if (res && res.status) {
-          console.log('Retorno da inserção: ', res);
+          // console.log('Retorno da inserção: ', res);
           //Adicionar notificação melhor
           this.loading = false;
           // console.log("Parando de rodar!")

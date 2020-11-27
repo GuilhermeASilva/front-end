@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ETipoUsuarioEnum } from 'src/app/utilities/enums/tipo-usuario.enum';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AtualizaUsuarioComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
+  ETipoUsuario = ETipoUsuarioEnum
 
   constructor(
     private activatedRoute: ActivatedRoute,

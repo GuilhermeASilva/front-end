@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ETipoUsuarioEnum } from 'src/app/utilities/enums/tipo-usuario.enum';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CadastroUsuarioComponent implements OnInit {
   user;
   userForm: FormGroup;
   loading = false;
+  ETipoUsuario = ETipoUsuarioEnum
 
   constructor(
     private usuarioService: UsuarioService,

@@ -11,6 +11,10 @@ export class OrdemDeServicoService {
     return this.http.get('http://localhost:3333/orders');
   };
 
+  buscarOrdemDeServicoPorId = function (id: number) {
+    return this.http.get(`http://localhost:3333/order/${id}`);
+  };
+
   adicionarOrdemDeServico = function (order) {
     return this.http.post('http://localhost:3333/orders', order);
   };

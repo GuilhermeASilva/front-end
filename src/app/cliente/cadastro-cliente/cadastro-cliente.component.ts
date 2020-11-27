@@ -39,7 +39,6 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.EGenero.members)
   }
 
   adicionarCliente() {

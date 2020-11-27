@@ -28,7 +28,7 @@ export class ListaOrdemDeServicoComponent implements OnInit {
   listarOrdensDeServico() {
     this.ordemDeServicoService.listarOrdensDeServico().subscribe((res) => {
       this.orders = res.orders;
-      console.log(res.orders);
+      // console.log("Ordens: ", res.orders);
       this.orders.forEach((o, i) => {
         this.orders[i].dataEntrega = FormatDate.timestampToDate(
           this.orders[i].dataEntrega

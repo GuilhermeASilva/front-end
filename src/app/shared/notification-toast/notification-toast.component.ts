@@ -26,13 +26,13 @@ export class NotificationToastComponent implements OnChanges {
 
   ngOnChanges(changes) {
     if (changes.exibir) {
-      console.log('Aqui!');
+      // console.log('NgOnChanges do Toast Notification');
       this.cdr.detectChanges();
       setTimeout(() => {
-        console.log('Settimerout');
+        // console.log('SettimeOut Notification');
         this.finalizado.emit();
       }, this.delay);
-      console.log('Delay: ', this.delay);
+      // console.log('Delay: do Toast', this.delay);
       $('.toast').toast('show');
       // this.exibir = null;
     }

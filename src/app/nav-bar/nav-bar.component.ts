@@ -56,7 +56,7 @@ export class NavBarComponent implements OnInit {
   }
 
   fecharNotificacao(){
-    console.log("Fechar")
+    // console.log("Fechar notificacao!")
     this.closeNotificacao = false
   }
 }

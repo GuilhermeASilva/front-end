@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron listagem">
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form
@@ -88,14 +88,11 @@
           >Estado:
         </label>
         <div class="col-sm-10">
-          <input
-            class="form-control"
-            type="text"
-            formControlName="uf"
-            placeholder="UF"
-            mask="SS"
-            id="inputUf"
-          />
+          <select class="form-control" formControlName="uf" id="inputUf">
+            <option *ngFor="let uf of EEstados.members" [value]="uf">
+              {{ uf }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="form-group row">

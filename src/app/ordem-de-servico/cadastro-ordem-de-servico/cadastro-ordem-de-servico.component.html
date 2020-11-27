@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron listagem">
   <h3>{{ message }}</h3>
   <app-loading [loading]="loading">
     <form
@@ -6,49 +6,108 @@
       name="servicesForm"
       (submit)="adicionarOrdemDeServico()"
     >
-      <input
-        class="form-control"
-        type="text"
-        formControlName="idCliente"
-        placeholder="Código do Cliente"
-        mask="9990"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="itemsServico"
-        placeholder="Itens"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="categoria"
-        placeholder="Categoria"
-      />
-      <input
-        class="form-control"
-        type="text"
-        formControlName="descricao"
-        placeholder="Descrição"
-      />
-      <input
-        class="form-control"
-        type="date"
-        formControlName="dataEntrega"
-        placeholder="Data Prevista de Entrega"
-      />
-      <input
+      <div class="form-group row">
+        <label
+          for="inputIdCliente"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Cód. Cliente:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="idCliente"
+            placeholder="0000"
+            mask="9990"
+            id="inputIdCliente"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputItemsServico"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Itens:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="itemsServico"
+            placeholder="Digite as peças que serão trocadas/inseridas."
+            id="inputItemsServico"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputCategoria"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Categoria:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="categoria"
+            placeholder="Categoria"
+            id="inputCategoria"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputDescricao"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Descrição:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="text"
+            formControlName="descricao"
+            placeholder="Breve descrição do serviço a ser realizado."
+            id="inputDescricao"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputDataEntrega"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Entrega:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="date"
+            formControlName="dataEntrega"
+            id="inputDataEntrega"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label
+          for="inputValor"
+          class="col-sm-2 col-form-label jumbotron-title"
+          >Valor:
+        </label>
+        <div class="col-sm-10">
+          <input
+            class="form-control"
+            type="number"
+            formControlName="valor"
+            placeholder="0000.00"
+            id="inputValor"
+          />
+        </div>
+      </div>
+      <!-- <input
         class="form-control"
         type="text"
         formControlName="statusOs"
         placeholder="Status"
-      />
-      <input
-        class="form-control"
-        type="number"
-        formControlName="valor"
-        placeholder="Valor"
-      />
+      /> -->
       <button class="btn btn-success mt-3" type="submit">Salvar</button>
     </form>
   </app-loading>

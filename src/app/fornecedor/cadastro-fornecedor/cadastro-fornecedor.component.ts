@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
 import { FornecedorService } from '../fornecedor.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CadastroFornecedorComponent implements OnInit {
   supplier;
   supplierForm: FormGroup;
   loading = false;
+  EEstados = EEstadosEnum;
 
   constructor(
     private fornecedorService: FornecedorService,
