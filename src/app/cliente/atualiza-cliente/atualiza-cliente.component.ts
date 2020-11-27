@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationToastModel } from 'src/app/shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from 'src/app/shared/notification-toast/notification-toast.service';
 import { CorrigeData } from 'src/app/utilities/corrige-data';
+import { EGeneroEnum } from 'src/app/utilities/enums/genero.enum';
+import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
 import { FormatDate } from 'src/app/utilities/format-date';
 import { ClienteService } from '../cliente.service';
 
@@ -19,12 +23,15 @@ export class AtualizaClienteComponent implements OnInit {
   loading = false;
   modalUpdate = false;
   modalDelete = false;
+  EGenero = EGeneroEnum;
+  EEstados = EEstadosEnum;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private clienteService: ClienteService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {
     this.customerForm = this.fb.group({
       nome: ['', [Validators.required]],
@@ -83,7 +90,9 @@ export class AtualizaClienteComponent implements OnInit {
         .atualizarCliente(this.customerId, customer)
         .subscribe((res) => {
           if (res && res.status) {
-            alert('Cliente alterado com sucesso!');
+            this.notificationToastService.sucesso(
+              new NotificationToastModel('Cliente alterado com sucesso!')
+            );
             this.router.navigateByUrl('customers');
           }
         });
@@ -96,7 +105,9 @@ export class AtualizaClienteComponent implements OnInit {
     else {
       this.clienteService.apagarCliente(this.customerId).subscribe((res) => {
         if (res && res.message && res.message == 'Cliente deletado') {
-          alert('Cliente apagado com sucesso!');
+          this.notificationToastService.sucesso(
+            new NotificationToastModel('Cliente apagado com sucesso!')
+          );
           this.router.navigateByUrl('customers');
           this.exibeModalDelete(modalDelete);
         }

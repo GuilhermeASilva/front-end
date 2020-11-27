@@ -26,6 +26,7 @@ export class ListaServicoComponent implements OnInit {
       this.services = res.data;
       this.servicesAux = this.services;
       this.loading = false;
+      // console.log(res.data)
     });
   }
 

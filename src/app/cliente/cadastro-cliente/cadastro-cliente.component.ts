@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CorrigeData } from 'src/app/utilities/corrige-data';
+import { EGeneroEnum } from 'src/app/utilities/enums/genero.enum';
+import { EEstadosEnum } from 'src/app/utilities/enums/uf.enum';
 import { ClienteService } from '../cliente.service';
 
 @Component({
@@ -15,6 +17,8 @@ export class CadastroClienteComponent implements OnInit {
   customer;
   customerForm: FormGroup;
   loading = false;
+  EGenero = EGeneroEnum
+  EEstados = EEstadosEnum
 
   constructor(
     private clienteService: ClienteService,
@@ -34,7 +38,9 @@ export class CadastroClienteComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.EGenero.members)
+  }
 
   adicionarCliente() {
     if (this.customerForm.invalid) {

@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Component, Input, OnChanges } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 import { TipoToast } from 'src/app/utilities/enums/tipo-toast.enum';
 declare var $: any;
 
@@ -12,14 +19,22 @@ export class NotificationToastComponent implements OnChanges {
   @Input() delay?: number = 3000;
   @Input() tipo: number;
   @Input() texto: string;
+  @Output() finalizado = new EventEmitter<any>();
   ETipoEnum = TipoToast;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes) {
     if (changes.exibir) {
+      console.log('Aqui!');
       this.cdr.detectChanges();
+      setTimeout(() => {
+        console.log('Settimerout');
+        this.finalizado.emit();
+      }, this.delay);
+      console.log('Delay: ', this.delay);
       $('.toast').toast('show');
+      // this.exibir = null;
     }
   }
 }

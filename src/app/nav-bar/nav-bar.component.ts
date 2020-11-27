@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../interceptors/auth.service';
+import { NotificationToastModel } from '../shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from '../shared/notification-toast/notification-toast.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,11 +14,14 @@ export class NavBarComponent implements OnInit {
   admin$;
   modal = false;
   ehAdmin: boolean = false;
+  notificacao : NotificationToastModel
+  closeNotificacao: boolean = false
 
   constructor(
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private notificationToastService: NotificationToastService
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +29,13 @@ export class NavBarComponent implements OnInit {
     this.admin$ = this.authService.ehAdministrador();
     this.cdr.detectChanges();
     this.ehAdmin = this.authService.getAdmin();
+    this.notificationToastService.monitoraNotificacao().subscribe(res => {
+      // console.log(res)
+      if (res != null) {
+        this.closeNotificacao = true
+        this.notificacao = res
+      }
+    })
     // console.log("É admin?", this.ehAdmin);
   }
 
@@ -41,5 +53,10 @@ export class NavBarComponent implements OnInit {
   exibeModalLogout(fechar?) {
     if (fechar) this.modal = false;
     else this.modal = true;
+  }
+
+  fecharNotificacao(){
+    console.log("Fechar")
+    this.closeNotificacao = false
   }
 }

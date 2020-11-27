@@ -1,6 +1,6 @@
 <div class="jumbotron" ng-controller="loginCtrl">
   <h3>{{ message }}</h3>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (keydown)="onSubmit($event)">
     <input
       class="login-form-control"
       type="email"

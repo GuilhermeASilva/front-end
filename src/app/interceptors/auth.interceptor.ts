@@ -10,11 +10,17 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { NotificationToastModel } from '../shared/notification-toast/notification-toast.model';
+import { NotificationToastService } from '../shared/notification-toast/notification-toast.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   redirTryes = 0;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private notificationToastService: NotificationToastService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -35,7 +41,9 @@ export class AuthInterceptor implements HttpInterceptor {
           if (err.status === 401) {
             if (this.redirTryes < 3) {
               this.redirTryes += 1;
-              alert('Credenciais inválidas.');
+              this.notificationToastService.erro(
+                new NotificationToastModel('Verifique as credenciais!')
+              );
               // console.log(this.router.url);
               //Inserir lógica de redirecionamento quando não estiver logado!
               //Usar navigate.
@@ -47,12 +55,12 @@ export class AuthInterceptor implements HttpInterceptor {
               (item) => item.property === 'concorrencia'
             ).message;
           } else if (err.error && err.error.length > 0 && err.status !== 500) {
-            console.log("Erro 1 do intercept: ", err.error);
+            console.log('Erro 1 do intercept: ', err.error);
           } else {
             alert(
               'Desculpe, encontramos um problema ao tentar realizar essa operação, tente novamente!'
             );
-            console.log("Erro 2 do intercept: ", err);
+            console.log('Erro 2 do intercept: ', err);
           }
           return throwError(err);
         }
